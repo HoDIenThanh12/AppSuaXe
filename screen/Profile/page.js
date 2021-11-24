@@ -1,22 +1,19 @@
 import React from 'react'
-import { View, StyleSheet, Image, Text, ScrollView } from 'react-native'
+import { View, TouchableOpacity, Image, Text } from 'react-native'
 import styles from './style'
 import Img from '../../assets/index'
 import TextInput from '../../components/textinput/index'
 import In18 from '../../common/constans'
 import Button from '../../components/btn/index'
 const page = (p) => {
-    const { txtSDT, txtPass } = p.state
-    const { onPressLogin, onChangePassword, onChangeSDT } = p.func
+    const { type, sdt, name, address, password } = p.state
+    const { onEditImg, onChangeName, onChangeSDT, onChangePassword, onChangeAddress, onPressEdit } = p.func
     return (
-        <View style={styles.container} >
-            <ScrollView >
-                <View style={{alignItems: 'center',justifyContent:'center'}}>
-             <View style={styles.containerLogo}>
+        <View style={styles.container}>
+            <View style={styles.containerImg}>
                 <Image
                     style={styles.imgLoGo}
-                    source={Img.Image.worker}
-
+                    source={Img.Image.worker} 
                 />
             </View> 
             <View style={styles.containerContext}>
@@ -29,7 +26,7 @@ const page = (p) => {
                 <TextInput
                     value={txtPass}
                     placeholder={In18.User.password}
-                    onChangeText={onChangePassword}
+                    onChangeText={onChangeSDT}
                 >
                 </TextInput>
             </View>
@@ -45,11 +42,10 @@ const page = (p) => {
             <Button
                 title={In18.TitleBtn.login}
                 onPress={onPressLogin}
+                // styleBTN={styles.btnLogin}
             >
 
             </Button>
-            </View> 
-            </ScrollView>  
         </View>
     )
 }

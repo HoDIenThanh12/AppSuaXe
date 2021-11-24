@@ -2,23 +2,18 @@ import React from 'react'
 import Colors from '../../common/Colors';
 import {StyleSheet} from 'react-native'
 import TextInput from '../../components/textinput/index'
-const styles = StyleSheet.create({ 
-    containerView:{
-        justifyContent:'center',
-        alignItems:'center',
-        backgroundColor: 'blue',
-        // flex:1
-    },  
+const styles = StyleSheet.create({
     container:{
         flex:1,
-        display: 'flex',
-        justifyContent:'center', 
+        justifyContent:'center',
+        alignItems:'center',
+        // backgroundColor: 'red',
+        width: '100%',
     },
     imgLoGo:{
         height:150,
         width:150,
-        resizeMode: 'contain',
-        marginTop:'15%'
+        resizeMode: 'contain'
     },
     conatinerRegitster:{ 
         flexDirection:'row', 

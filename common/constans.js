@@ -8,6 +8,9 @@ export default Title = {
         address: 'Địa chỉ ',
         password2: 'Mời bạn nhập lại mật khẩu'
     },
+    Error:{
+        noLogin: 'Sai tài khoản hoặc mật khẩu'
+    },
     War: {
         warningDelete: 'Bạn có chắc chắn xóa ?',
         warningLocation: 'Bạn chưa bật GPS',

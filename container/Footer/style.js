@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
+// import {height, width} from '../../common/styles'
 const styles = StyleSheet.create({
   container: {
     display: 'flex',
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   boxMenuInActive: {
-    height: 28,
+    height:28,
     width: 28,
     padding: 2.5
   },
