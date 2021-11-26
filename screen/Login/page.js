@@ -5,6 +5,8 @@ import Img from '../../assets/index'
 import TextInput from '../../components/textinput/index'
 import In18 from '../../common/constans'
 import Button from '../../components/btn/index'
+import {Router, Actions, Scene} from 'react-native-router-flux';
+
 const page = (p) => {
     const { txtSDT, txtPass } = p.state
     const { onPressLogin, onChangePassword, onChangeSDT } = p.func
@@ -24,6 +26,7 @@ const page = (p) => {
                     value={txtSDT}
                     placeholder={In18.User.numberPhone}
                     onChangeText={onChangeSDT}
+                    keyboardType='numeric'
                 >
                 </TextInput>
                 <TextInput
@@ -37,7 +40,8 @@ const page = (p) => {
                 <Text>{In18.NomalTitle.questionAccount}</Text>
                 <Button
                     title={In18.TitleBtn.register}
-                    onPress={onPressLogin}
+                    //edit
+                    onPress={()=>Actions.register()}
                     styleText={styles.textRegister}
                     styleBTN={styles.btnRegister}
                 ></Button>
@@ -46,7 +50,6 @@ const page = (p) => {
                 title={In18.TitleBtn.login}
                 onPress={onPressLogin}
             >
-
             </Button>
             </View> 
             </ScrollView>  

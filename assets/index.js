@@ -8,10 +8,13 @@ const Img = {
     icMess: require('./icons/iconMess.png'),
     icSearch: require('./icons/iconSearch.png'),
     icBack: require('./icons/iconBack.png'),
-    icProfile: require('./icons/iconProfile.png')
+    icProfile: require('./icons/iconProfile.png'),
+    iconEditImg: require('./icons/iconEditImg.png')
   },
   Image:{
     worker: require('./tho.png'),
+    imgAvatar: require('./images/imgAvatar.png'),
+    imgCall: require('./images/imgCall.png')
   }
   
 };

@@ -12,20 +12,21 @@ class User {
     address = "";
     luotXem = 0;
     check = 0;
-    x = 0;
+    x = 0;  
     y = 0;
-    static getInstance() {
-        if (this._user == null) {
+    constructor(){
+        if (this._user === null) {
             this._user = new User();
-
-
-    console.log(this.Login('dshf','sdfg'))
-            console.log(this._user)
         }
-        return this._user;
+        this._user=this
     }
-    static tesst =()=> Alert.alert("ok")
-    static async Regitster(name, SDT, pass, address, checkWorker) {
+     getInstance(){
+        if (this._user === null) {
+            this._user = new User();
+        }
+        return this._user
+    }
+    async Regitster(name, SDT, pass, address, checkWorker) {
         if (address == null)
             address = "Việt nam";
         var check = checkWorker == true ? "1" : "0";
@@ -54,11 +55,11 @@ class User {
                 address: address
             })
                 .then(() => {
-                    Alert.alert("Đăng ký thành công")
+                    Alert.alert("Đăng ký thành công", )
                 });
         }
     }
-   static async  Login(acount, pass) {
+    async Login(acount, pass) {
     // Alert.alert("Đăng ký thành công")
         const usersCollection = firestore().collection('User');
         var i = 0;
@@ -81,7 +82,7 @@ class User {
             });
         return i;
     }
-    static async ListWorkerQualyity() {
+     async ListWorkerQualyity() {
         let list = []
         const firestores = firestore().collection('User')
         await firestores.get()
@@ -106,7 +107,7 @@ class User {
         this.sort(list)
         return list;
     }
-    static sort(list) {
+     sort(list) {
         for (var i = 0; i < (list.length - 1); i++) {
             for (var y = i + 1; y < (list.length); y++) {
                 if (list[i].luotXem > list[y].luotXem) {
@@ -120,7 +121,7 @@ class User {
             console.log(list[i].id);
         }
     }
-    static async Update(name, type) {
+     async Update(name, type) {
 
         var firestores = firestore().collection('User')
         firestores.add({
@@ -137,7 +138,7 @@ class User {
                 Alert.alert("Cập nhật thành công")
             });
     }
-    static async getProfileWorker(id) {
+     async getProfileWorker(id) {
         var worker
         const usersCollection = firestore().collection('User');
         await usersCollection.get()
@@ -162,7 +163,7 @@ class User {
         return worker;
     }
 
-    static async getListBuild() {
+     async getListBuild() {
         var list = []
         const usersCollection = firestore().collection('Build');
         await usersCollection.where('SDT1', '==', ['' + this.getSDT() + ''])
