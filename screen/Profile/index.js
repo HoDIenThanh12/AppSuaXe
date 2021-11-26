@@ -5,52 +5,69 @@ import Page from './page';
 import { Alert } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
 import User from '../../modals/User'
+// import firestore from '@react-native-firebase/firestore';
 class Profile extends Base {
   constructor(props) {
     super(props);
     this.page = Page;
-    this.user =User.getInstance()
     this.state = {
-      type: 0,
-      nameTile: 'Tên cũ',
-      contextOld: '',
-      newContext: '',
-      img: this.user.getImage(),
-      name: this.user.getName(),
-      pass: this.user.getPass(),
-      address: this.user.getAddress(),
-      sdt: this.user.getSDT()
+      sdt: '0387373405',
+      pass: '1',
+      name: '',
+      address: '10 a/1, Bình đngs, Bình hào, thuận An, Bình Dương',
+      img: '',
+      isWorker: false
     };
   }
-  onEditImg = async () => {
-
+  async componentDidMount() {
+    var users = new User()
+    await this.setState({
+      sdt: users.getSDT(),
+      pass: users.getPass(),
+      name: users.getName(),
+      address: users.getAddress(),
+      img: users.getImage(),
+    })
+  }
+  onPressSave = async (type) => { 
+    var user =new User()
+    if (type === '0') {
+      console.log(this.state.name)
+    }
+    if (type === '1') {
+      this.setState({ ...this.state, sdt: context });
+    }
+    if (type === '2') {
+      this.setState({ ...this.state, pass: context });
+    }
+    if (type === '3') {
+      this.setState({ ...this.state, address: context });
+    }
   };
 
-  onPressEdit = async () => {
-    const { type, newContext } = this.state
+  onChangeText = (type, context) => {
+    if (type === '0') {
+      this.setState({ ...this.state, name: context });
+    }
+    if (type === '1') {
+      this.setState({ ...this.state, sdt: context });
+    }
+    if (type === '2') {
+      this.setState({ ...this.state, pass: context });
+    }
+    if (type === '3') {
+      this.setState({ ...this.state, address: context });
+    }
   };
-  onChangeName = async (value) => {
-    this.setState({...this.state, name: value,type: 0 });
-    this.setState({ type: 0 });
-  };
-  onChangeSDT = async (value) => {
-    this.setState({ sdt: value });
-    this.setState({ type: 1 });
-  };
-  onChangePassword = async (value) => {
-    this.setState({ pass: value });
-    this.setState({ type: 2 });
-  };
-  onChangeAddress = async (value) => {
-    this.setState({ address: value });
-    this.setState({ type: 3 });
+  onChangeImgAvatar = (value) => {
+    this.setState({ ...this.state, txtSDT: value });
   };
   render() {
     var Template = this.view;
     return (
       <Template
         title={In18.TitleBtn.login}
-        // noFooter
+        noFooter
         props={this.props}
         func={this}
         state={this.state}
