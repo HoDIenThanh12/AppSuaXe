@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import firestore from '@react-native-firebase/firestore';
 import { Alert, Image, StyleSheet, Text, TouchableOpacity, View, ScrollView } from 'react-native';
-
+import store from 'react-native-simple-store';
 class User {
     static _user = null;
     id = "";
@@ -12,15 +12,12 @@ class User {
     address = "";
     luotXem = 0;
     check = 0;
-    x = 0;  
+    x = 0;
     y = 0;
-    constructor(){
-        if (this._user === null) {
-            this._user = new User();
-        }
-        this._user=this
+    constructor() {
+        this.setAccount()
     }
-     getInstance(){
+    getInstance() {
         if (this._user === null) {
             this._user = new User();
         }
@@ -55,12 +52,27 @@ class User {
                 address: address
             })
                 .then(() => {
-                    Alert.alert("Đăng ký thành công", )
+                    Alert.alert("Đăng ký thành công",)
                 });
         }
     }
+    setAccount() {
+        if (store.get('id')) {
+
+            store.get('id').then((value) => this.setID(value))
+            store.get('pass').then((value) => this.setPass(value))
+            store.get('sdt').then((value) => this.setSDT(value))
+            store.get('name').then((value) => this.setName(value))
+            store.get('luotXem').then((value) => this.setLuotXem(value))
+            store.get('img').then((value) => this.setImage(value))
+            store.get('address').then((value) => this.setAddress(value))
+            store.get('x').then((value) => this.setX(value))
+            store.get('y').then((value) => this.setY(value))
+
+        }
+    }
     async Login(acount, pass) {
-    // Alert.alert("Đăng ký thành công")
+        // Alert.alert("Đăng ký thành công")
         const usersCollection = firestore().collection('User');
         var i = 0;
         await usersCollection.get()
@@ -68,21 +80,48 @@ class User {
                 querySnapshot.forEach(documentSnapshot => {
                     var datas = documentSnapshot.data();
                     if (acount == datas["sdt"] && pass == datas["pass"]) {
+                        var temp = {
+                            id: documentSnapshot.id,
+
+                            sdt: datas["sdt"],
+                            pass: datas["pass"],
+                            address: (datas["pass"]),
+                            name: (datas["pass"]),
+                            img: (datas["pass"]),
+                            setLuotXem: (datas["pass"]),
+                            x: (datas["x"]),
+                            y: (datas["y"]),
+
+                        }
+                        store.push("id", documentSnapshot.id);
+                        store.push("pass", datas["pass"]);
+                        store.push("sdt", datas["sdt"]);
+                        store.push("name", datas["name"]);
+                        store.push("luotXem", datas["luotXem"]);
+                        store.push("img", datas["image"]);
+                        store.push("address", datas['address']);
+                        store.push("x", datas['x']);
+                        store.push("y", datas['y']);
+                        store.push("checkWorker", datas['checkWorker']);
+                        // store.push("user", temp);
                         this.setID(documentSnapshot.id),
                             this.setPass(datas["pass"]),
                             this.setSDT(datas["sdt"]),
                             this.setName(datas["name"]),
                             this.setLuotXem(datas["luotXem"]),
                             this.setImage(datas["image"]),
-                            this.setAddress(datas['address'])
+                            this.setAddress(datas['address']),
+                            this.setX(datas['x']),
+                            this.setY(datas['y']),
                             i = 1,
-                            console.log("sdt : " + this.getSDT() + "i :" + i)
+                            console.log((datas["name"]))
                     }
                 });
             });
         return i;
     }
-     async ListWorkerQualyity() {
+
+    async ListWorkerQualyity() {
         let list = []
         const firestores = firestore().collection('User')
         await firestores.get()
@@ -104,24 +143,44 @@ class User {
                     }
                 });
             });
-        this.sort(list)
-        return list;
-    }
-     sort(list) {
         for (var i = 0; i < (list.length - 1); i++) {
             for (var y = i + 1; y < (list.length); y++) {
-                if (list[i].luotXem > list[y].luotXem) {
+                console.log(list[y].luotXem);
+                if (parseInt(list[i].luotXem) < parseInt(list[y].luotXem)) {
+                    console.log(list[y].luotXem);
                     var temps = list[i];
                     list[i] = list[y];
                     list[y] = temps;
                 }
             }
         }
-        for (var i = 0; i < (list.length); i++) {
-            console.log(list[i].id);
-        }
+        return list;
     }
-     async Update(name, type) {
+    async ListWorker() {
+        let list = []
+        const firestores = firestore().collection('User')
+        await firestores.get()
+            .then(querySnapshot => {
+                querySnapshot.forEach(documentSnapshot => {
+                    var datas = documentSnapshot.data();
+                    if (datas["checkWorker"] == "1") {
+                        let temp = {
+                            id: documentSnapshot.id,
+                            name: datas["name"],
+                            sdt: datas["sdt"],
+                            luotXem: datas["luotXem"],
+                            x: datas["x"],
+                            y: datas["y"],
+                            address: datas["address"],
+                            image: datas["image"],
+                        }
+                        list.push(temp)
+                    }
+                });
+            });
+        return list;
+    }
+    async Update(name, type) {
 
         var firestores = firestore().collection('User')
         firestores.add({
@@ -129,8 +188,8 @@ class User {
             SDT: SDT,
             pass: pass,
             image: "",
-            x:'-1',
-            y:'-1',
+            x: '-1',
+            y: '-1',
             checkWorker: 0,
             luotXem: 0
         })
@@ -138,7 +197,7 @@ class User {
                 Alert.alert("Cập nhật thành công")
             });
     }
-     async getProfileWorker(id) {
+    async getProfileWorker(id) {
         var worker
         const usersCollection = firestore().collection('User');
         await usersCollection.get()
@@ -163,7 +222,7 @@ class User {
         return worker;
     }
 
-     async getListBuild() {
+    async getListBuild() {
         var list = []
         const usersCollection = firestore().collection('Build');
         await usersCollection.where('SDT1', '==', ['' + this.getSDT() + ''])
@@ -204,7 +263,7 @@ class User {
 
         return list;
     }
-    
+
     getID() {
         return this.id;
     }
@@ -223,12 +282,19 @@ class User {
     getLuotXem() {
         return this.luotXem
     }
-    getAddress(){
+    getAddress() {
         this.address
     }
-
-    setAddress(address){
-        this.address=address
+    getX = () => this.x
+    getY = () => this.y
+    setY(y) {
+        this.y = y
+    }
+    setX(x) {
+        this.x = x
+    }
+    setAddress(address) {
+        this.address = address
     }
     setLuotXem(lx) {
         this.luotXem = lx

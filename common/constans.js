@@ -1,5 +1,5 @@
 import React from 'react'
-
+export const MENU = 'MENU'
 export default Title = {
     User: {
         password: 'Mật khẩu',
@@ -29,7 +29,8 @@ export default Title = {
         bad: 'Chưa tốt lém',
         call: 'Gọi ngay',
         maintenance: 'Bảo trì',
-        history: 'Xem lại hóa đơn'
+        history: 'Xem lại hóa đơn',
+        logOut:'Đăng xuất'
     },
     List: {
         listSearch: 'Danh sách thợ',
@@ -46,7 +47,8 @@ export default Title = {
     Options: {
         near: 'Gần bạn nhất',
         placeYourLive: 'Gần nơi bạn đang sống',
-        quality: 'Nhiều khách gọi nhất'
+        quality: 'Nhiều khách Xem nhất',
+        option:'Chức năng'
     },
     NomalTitle: {
         addressNew: 'Địa chỉ mặc định khi không bật GPS',
@@ -64,8 +66,13 @@ export default Title = {
         new: 'Mới',
         questionWorker: 'Bạn có phải là thợ không ?',
         totalMoney: 'Tổng tiền',
-        note: 'Nội dung '
+        note: 'Nội dung ',
+        titleInforWord: 'Thông tin thợ'
+    },
+    Menu:{
+        home:'home',
+        search:'search',
+        call:'call',
+        profile:'profile'
     }
-
-
 }

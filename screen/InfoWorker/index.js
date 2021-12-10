@@ -4,37 +4,37 @@ import In18 from '../../common/constans';
 import Page from './page';
 import {Alert} from 'react-native';
 import {Router, Actions, Scene} from 'react-native-router-flux';
+import { height, width } from '../../common/styles'
 
-class Login extends Base {
+class InfoWorker extends Base {
   constructor(props) {
     super(props);
     this.page = Page;
-    this.state = {
-      txtSDT: '',
-      txtPass: '',
+    this.state = { 
     };
   }
-  onPressLogin = async () => {
-    Alert.alert(this.state.txtSDT + ' - ' + this.state.txtPass);
-  };
+  componentDidMount() {
+    const{item} = this.props
+    
+  }
+  onPressSetup=()=>{
 
-  onChangePassword = value => {
-    this.setState({txtPass: value});
-  };
-  onChangeSDT = value => {
-    this.setState({txtSDT: value});
-  };
+  }
+  onPressCall=()=>{
+
+  }
   render() {
     var Template = this.view;
     return (
       <Template
-        title={In18.TitleBtn.login}
+        title={In18.NomalTitle.titleInforWord}
         noFooter={false}
         props={this.props}
         func={this}
         state={this.state}
+        
       />
     );
   }
 }
-export default Login;
+export default InfoWorker;

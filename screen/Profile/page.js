@@ -17,15 +17,16 @@ import Modal from 'react-native-modal';
 import { height, width } from '../../common/styles';
 import { IconButton } from 'react-native-paper'
 const page = (p) => {
-    const { sdt, pass, name, address, img } = p.state;
+    const { sdt, pass, names, address, img } = p.state;
 
-    const { onChangeText, onChangeImgAvatar, onPressSave } = p.func;
+    const { onChangeTexts, onChangeImgAvatar, onPressSave, onPressLogOut} = p.func;
 
     const [isModals, setisModals] = useState(false);
 
     const [contentOld, setcontentOld] = useState('');
     const [content, setcontent] = useState('');
     const [type, settype] = useState('0');
+    const [txtContext, settxtContext] = useState('')
     const [nameContent, setnameContent] = useState('Tên');
     // const WrapperComponent = (props) => {
     //     return (
@@ -68,7 +69,7 @@ const page = (p) => {
         setisModals(!isModals);
         settype(types);
         if (types === '0') {
-            setcontentOld(name);
+            setcontentOld(names);
             setnameContent('Tên ');
         }
         if (types === '1') {
@@ -105,10 +106,13 @@ const page = (p) => {
             </View>
         );
     };
-
+    const nhap=(type, txt)=>{ 
+        onChangeTexts(type, txt);
+    }
     return (
         <View style={styles.container}>
-            <ScrollView>
+            <ScrollView showsHorizontalScrollIndicator={false}
+              showsVerticalScrollIndicator={false}>
                 <View style={styles.containerAvatar}>
                     {img ? (
                         <Image style={styles.imgAvatart} source={Img.Image.img} />
@@ -123,20 +127,20 @@ const page = (p) => {
                 </View>
                 
                 <View>
-                    <Texts nameConent='Tên' state={name} type={'0'}  ></Texts>
+                    <Texts nameConent='Tên' state={names+'Hồ Diên công'}  type={'0'}  ></Texts>
                     <Texts nameConent='SDT' state={sdt} type={'1'}></Texts>
                     <Texts nameConent='Mật khẩu' state={pass} type={'2'} ></Texts>
                     <Texts nameConent='Địa chỉ' state={address} type={'3'} style={styles.txtAddress}></Texts>
                 </View>
-                <View style={styles.btnModal}>
+                <View style={[styles.btnModal, styles.btnOption]}>
                     <Buttons
                         styleBTN={styles.styleBtnModal}
-                        title="Xem lại hóa đơn"
+                        title={In18.TitleBtn.history}
                         onPress={() => setisModals(!isModals)}></Buttons>
-                    {/* <Buttons
-                        title="Save"
+                    <Buttons
+                        title={In18.TitleBtn.logOut}
                         styleBTN={styles.styleBtnModalSave}
-                        onPress={() => onPressSave(type)}></Buttons> */}
+                        onPress={() => onPressLogOut()}></Buttons>
                 </View>
             </ScrollView>
             <Modal isVisible={isModals} animationType="slide" transparent={true}>
@@ -148,8 +152,9 @@ const page = (p) => {
                         {nameContent} cũ : {contentOld}
                     </Text>
                     <TextInput
+                        // value={}
                         placeholder="Mới"
-                        onChangeText={text => onChangeText(type, text)}
+                        onChangeText={(text) => nhap(type, text)}
                         style={styles.txtEdit}></TextInput>
                     <View style={styles.btnModal}>
                         <Buttons
