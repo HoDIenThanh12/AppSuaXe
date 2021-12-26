@@ -1,10 +1,9 @@
+import * as pageReducers from './Reducer';
 
-import pageReducers from './Reducer'
+import { combineReducers } from 'redux';
 
-import { combineReducers } from 'redux'
+const rootReducer = combineReducers({
+  ...pageReducers,
+});
 
-const rootReducer = combineReducers({ 
-  ...pageReducers
-})
-
-export default rootReducer
+export default rootReducer;

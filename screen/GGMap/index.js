@@ -1,6 +1,6 @@
 import React from 'react';
 import Base from '../../container/BaseContainer';
-import In18 from '../../common/constans';
+import In18 from '../../common/constants';
 import Page from './page';
 import {Alert} from 'react-native';
 import {Router, Actions, Scene} from 'react-native-router-flux';

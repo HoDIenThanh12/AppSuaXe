@@ -1,6 +1,6 @@
 import React from 'react'
 import {View, TouchableOpacity, StyleSheet, Text} from 'react-native'
-import In18 from '../../common/constans';
+import In18 from '../../common/constants';
 const Button =(props)=>{
     const {title, isDisable=false, styleText, styleBTN} = props
     return(

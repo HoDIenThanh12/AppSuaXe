@@ -1,12 +1,12 @@
-import React, { PureComponent, Component } from 'react';
-import { View, Text, Button, Alert } from 'react-native';
-import { Router, Actions, Scene } from 'react-native-router-flux';
-import { Provider } from 'react-redux';
+import React, {PureComponent, Component} from 'react';
+import {View, Text, Button, Alert} from 'react-native';
+import {Router, Actions, Scene} from 'react-native-router-flux';
+import {Provider} from 'react-redux';
 import Geolocation from 'react-native-geolocation-service';
-import scenes from './common/router'
-import Login from './screen/Login/index'
+import scenes from './common/router';
+import Login from './screen/Login/index';
 import rootReducer from './redux/Reducer/index';
-import { createStore } from 'redux';
+import {createStore} from 'redux';
 const store = createStore(rootReducer);
 class Tex extends PureComponent {
   constructor(props) {
@@ -19,7 +19,7 @@ class Tex extends PureComponent {
         <Button
           title="dang nhap"
           onPress={() => {
-            Actions.home2({ names: 'Dien thanh', id: '123' });
+            Actions.home2({names: 'Dien thanh', id: '123'});
           }}
         />
       </View>
@@ -39,8 +39,7 @@ class App extends Component {
     // await Geolocation.getCurrentPosition(
     //   (position) => {
     //     gps =  JSON.stringify(position.coords);
-    //     // Alert.alert(gps) 
-
+    //     // Alert.alert(gps)
     //     console.log(position.coords.latitude + '  / ' + position.coords.longitude);
     //   },
     //   (error) => {
@@ -48,10 +47,8 @@ class App extends Component {
     //     console.log(error.code, error.message);
     //   },
     //   { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
-
     // )
-    // Alert.alert(gps['latitude']) 
-
+    // Alert.alert(gps['latitude'])
   }
   render() {
     return (

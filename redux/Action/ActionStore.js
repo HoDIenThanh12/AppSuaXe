@@ -1,10 +1,10 @@
-import {MENU} from '../../common/constans'
+import {MENU} from '../../common/constants'
 export default class StorageReduxAction{
   static setMenuFooter (payload) {
     // checkStore(payload, 'SET_MENU_FOOTER')
     return {
-      type: MENU,
-      page
+      type: MENU.SET_MENU_FOOTER,
+      payload
     }
   }
   // static setSDT (payload) {

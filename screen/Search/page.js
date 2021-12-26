@@ -3,7 +3,7 @@ import { View, FlatList, Image, Text, TouchableOpacity, Alert, ScrollView } from
 import styles from './style'
 import Img from '../../assets/index'
 import TextInput from '../../components/textinput/index'
-import In18 from '../../common/constans'
+import In18 from '../../common/constants'
 import Button from '../../components/btn/index'
 import { Router, Actions, Scene } from 'react-native-router-flux';
 import Geolocation from 'react-native-geolocation-service';
