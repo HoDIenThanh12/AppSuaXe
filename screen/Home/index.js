@@ -12,38 +12,31 @@ class Home extends Base {
     this.page = Page; 
     this.state = { 
         listQuality: [],
-        lisstWorker:[]
+        listWorker:[]
     };
   }
   async componentDidMount() {
     var user = new User()
     var l= await user.ListWorkerQualyity()
-    await this.setState({...this.state, listQuality:l})
+    var l2= await user.ListWorker()
+    await this.setState({listWorker:l2, listQuality:l})
+
     // console.log(l)
   }
-  onClickWorkQuality = async (id) => { 
-   
-  };
-
-  onClickWorkDetals = id => {
-    
-  };
-  onPressBaoTri = (value) => {
-
-  };
-  onPressCall=(id)=>{{
-
-  }}
+  onPressViewWorkerSort=()=>{
+    Actions.search({types:1})
+  }
+  onPressViewList=()=>Actions.search()
   render() {
     var Template = this.view;
     return (
       <Template
         title={In18.NomalTitle.home}
-        noFooter
+        // noFooter
         props={this.props}
         func={this}
         state={this.state}
-        // showBtnBack={true}
+        showBtnBack={false}
       />
     );
   }

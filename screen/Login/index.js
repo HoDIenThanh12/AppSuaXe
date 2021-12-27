@@ -4,7 +4,7 @@ import In18 from '../../common/constans';
 import Page from './page';
 import { Alert } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
-import User from '../../modals/User'
+import User from '../../modals/User' 
 // import firestore from '@react-native-firebase/firestore';
 class Login extends Base {
   constructor(props) {
@@ -18,9 +18,7 @@ class Login extends Base {
   onPressLogin = async () => {
     var kt = new User()
     var i = await kt.Login(this.state.txtSDT.toString(), this.state.txtPass.toString())
-    // // // Alert.alert(ii)
-    // console.log(ii)
-    // console.log(kt)
+    
     i > 0 ? Actions.home() : Alert.alert(In18.Error.noLogin)
   };
 

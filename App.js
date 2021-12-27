@@ -5,6 +5,9 @@ import { Provider } from 'react-redux';
 import Geolocation from 'react-native-geolocation-service';
 import scenes from './common/router'
 import Login from './screen/Login/index'
+import rootReducer from './redux/Reducer/index';
+import { createStore } from 'redux';
+const store = createStore(rootReducer);
 class Tex extends PureComponent {
   constructor(props) {
     super(props);
@@ -45,22 +48,24 @@ class App extends Component {
     //     console.log(error.code, error.message);
     //   },
     //   { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
-       
+
     // )
     // Alert.alert(gps['latitude']) 
 
   }
   render() {
     return (
-  //     <View>
-  // <Tex></Tex>
-  //     </View>
-      <Router scenes={scenes('home')} />
-      
+      //     <View>
+      // <Tex></Tex>
+      //     </View>
+      <Provider store={store}>
+        <Router scenes={scenes('home')} />
+      </Provider>
+
       // <Provider>
       //   <Router scenes={scenes('home')} />
       // </Provider>
-    ); 
+    );
   }
 }
 export default App;

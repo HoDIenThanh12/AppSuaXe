@@ -89,6 +89,9 @@ const styles = StyleSheet.create({
     },
     txtAddress:{
         width:width(60)
+    },
+    btnOption:{
+        marginBottom:10
     }
 })
 export default styles
