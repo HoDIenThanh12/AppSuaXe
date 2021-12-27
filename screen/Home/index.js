@@ -1,10 +1,11 @@
 import React from 'react';
 import Base from '../../container/BaseContainer';
-import In18 from '../../common/constans';
+import In18 from '../../common/constants';
 import Page from './page';
 import {Alert} from 'react-native';
 import {Router, Actions, Scene} from 'react-native-router-flux';
 import User from '../../modals/User'
+import Userss from '../../modals/Users'
 // import firestore from '@react-native-firebase/firestore';
 class Home extends Base {
   constructor(props) {
@@ -20,7 +21,9 @@ class Home extends Base {
     var l= await user.ListWorkerQualyity()
     var l2= await user.ListWorker()
     await this.setState({listWorker:l2, listQuality:l})
-
+    const other = Userss.getInStance();
+    console.log(other);
+      
     // console.log(l)
   }
   onPressViewWorkerSort=()=>{

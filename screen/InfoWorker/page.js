@@ -2,7 +2,7 @@ import React from 'react'
 import { View, TouchableOpacity, Image, TextInput, ScrollView, Text } from 'react-native'
 import styles from './style'
 import Img from '../../assets/index'
-import In18 from '../../common/constans';
+import In18 from '../../common/constants';
 import Buttons from '../../components/btn/index';
 
 const page = (p) => {

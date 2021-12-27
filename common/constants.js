@@ -1,5 +1,12 @@
 import React from 'react'
-export const MENU = 'MENU'
+export var MENU = {
+    SET_MENU_FOOTER: 'SET_MENU_FOOTER',
+    HOME: 'HOME',
+    PROFILE: 'PROFILE',
+    SEARCH: 'SEARCH',
+    MESSAGE: 'MESSAGE'
+}
+
 export default Title = {
     User: {
         password: 'Mật khẩu',
@@ -8,7 +15,7 @@ export default Title = {
         address: 'Địa chỉ ',
         password2: 'Mời bạn nhập lại mật khẩu'
     },
-    Error:{
+    Error: {
         noLogin: 'Sai tài khoản hoặc mật khẩu'
     },
     War: {
@@ -30,7 +37,7 @@ export default Title = {
         call: 'Gọi ngay',
         maintenance: 'Bảo trì',
         history: 'Xem lại hóa đơn',
-        logOut:'Đăng xuất'
+        logOut: 'Đăng xuất'
     },
     List: {
         listSearch: 'Danh sách thợ',
@@ -48,7 +55,7 @@ export default Title = {
         near: 'Gần bạn nhất',
         placeYourLive: 'Gần nơi bạn đang sống',
         quality: 'Nhiều khách Xem nhất',
-        option:'Chức năng'
+        option: 'Chức năng'
     },
     NomalTitle: {
         addressNew: 'Địa chỉ mặc định khi không bật GPS',
@@ -69,10 +76,12 @@ export default Title = {
         note: 'Nội dung ',
         titleInforWord: 'Thông tin thợ'
     },
-    Menu:{
-        home:'home',
-        search:'search',
-        call:'call',
-        profile:'profile'
+    Menu: {
+        HOME: 'Home',
+        PRO_FILE: 'PROFILE',
+        SEARCH: 'SEARCH',
+        MESSAGE: 'MESSAGE'
+
     }
 }
+

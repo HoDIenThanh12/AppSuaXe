@@ -3,7 +3,7 @@ import { View, StyleSheet, Image, Text, ScrollView } from 'react-native'
 import styles from './style'
 import Img from '../../assets/index'
 import TextInput from '../../components/textinput/index'
-import In18 from '../../common/constans'
+import In18 from '../../common/constants'
 import Button from '../../components/btn/index'
 import { Router, Actions, Scene } from 'react-native-router-flux';
 import CheckBox from '@react-native-community/checkbox'

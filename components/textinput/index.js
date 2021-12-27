@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, TextInput, StyleSheet, Text } from 'react-native'
-import In18 from '../../common/constans';
+import In18 from '../../common/constants';
 import { Dimensions, Platform, PixelRatio, StatusBar } from 'react-native'
 
 const MYWIDTH = Dimensions.get('window').width

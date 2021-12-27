@@ -2,7 +2,7 @@ import React, { useState} from 'react';
 import {View, Image, TouchableOpacity, Text} from 'react-native';
 import Img from '../../assets/index';
 import styles from '../Footer/style';
-import In18 from '../../common/constans'
+import In18 from '../../common/constants'
 import { Router, Actions, Scene } from 'react-native-router-flux';
 // ADD REDUX
 import { connect } from 'react-redux'
@@ -10,30 +10,35 @@ import { bindActionCreators } from 'redux'
 import ActionStore from '../../redux/Action/ActionStore'
 
 const Footer = props => { 
-  const onClickOptionMenu=(value)=>{
+  const onClickOptionMenu=(value)=>{ 
     const {menuFooterRedux,setMenuFooter}=props
-    
+    // setMenuFooter(value)
+    console.log('====================================');
+    console.log({menuFooterRedux});
+    console.log({value});
+    console.log('====================================');
     if(value!=menuFooterRedux){
-      if(value===In18.Menu.home){
+      if(value===In18.Menu.HOME){
         Actions.home() 
       }
-      if(value===In18.Menu.call){
-        Actions.call() 
-      }
-      if(value===In18.Menu.search){ 
+      // if(value===In18.Menu.SEARCH){
+      //   Actions.call() 
+      // }
+      if(value===In18.Menu.SEARCH){ 
         Actions.search()
       }
-      if(value===In18.Menu.profile){
+      if(value===In18.Menu.PRO_FILE){
         Actions.profile() 
       }
       console.log(menuFooterRedux)
-      setMenuFooter({page:value})
+      // setMenuFooter({page:value})
       console.log(menuFooterRedux)
+      setMenuFooter(value)
     }
   }
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.footerItem} onPress={()=>onClickOptionMenu(In18.Menu.home)}>
+      <TouchableOpacity style={styles.footerItem} onPress={()=>onClickOptionMenu(In18.Menu.HOME)}>
         <View style={styles.boxMenuInActive}>
           <Image source={Img.Icons.icHome} style={styles.img} />
           {/* <Text>dshjfghds</Text> */}
@@ -44,12 +49,12 @@ const Footer = props => {
           <Image source={Img.Icons.icHome} style={styles.img} />
         </View>
       </TouchableOpacity> */}
-      <TouchableOpacity style={styles.footerItem} onPress={()=>onClickOptionMenu(In18.Menu.search)}>
+      <TouchableOpacity style={styles.footerItem} onPress={()=>onClickOptionMenu(In18.Menu.SEARCH)}>
         <View style={styles.boxMenuInActive}>
           <Image source={Img.Icons.icSearch} style={styles.img}/>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.footerItem} onPress={()=>onClickOptionMenu(In18.Menu.profile)}>
+      <TouchableOpacity style={styles.footerItem} onPress={()=>onClickOptionMenu(In18.Menu.PRO_FILE)}>
         <View style={styles.boxMenuInActive}>
           <Image source={Img.Icons.icProfile} style={styles.img}/>
         </View>
@@ -66,4 +71,5 @@ const mapDispatchToProps = (dispatch) => {
     setMenuFooter: bindActionCreators(ActionStore.setMenuFooter, dispatch)
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Footer);
+export default connect(mapStateToProps, mapDispatchToProps)(Footer)
+// export default Footer

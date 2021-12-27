@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react'
 import { View, TouchableOpacity, Image, Text, ScrollView, FlatList } from 'react-native'
 import styles from './style'
 import Img from '../../assets/index';
-import In18 from '../../common/constans';
+import In18 from '../../common/constants';
 import { IconButton } from 'react-native-paper'
 import {Router, Actions, Scene} from 'react-native-router-flux';
 

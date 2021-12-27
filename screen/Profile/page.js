@@ -10,7 +10,7 @@ import {
 import styles from './style';
 import Img from '../../assets/index';
 import TextInput from '../../components/textinput/index';
-import In18 from '../../common/constans';
+import In18 from '../../common/constants';
 import Buttons from '../../components/btn/index';
 import { Router, Actions, Scene } from 'react-native-router-flux';
 import Modal from 'react-native-modal';
