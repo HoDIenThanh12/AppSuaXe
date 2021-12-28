@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { View, StyleSheet, Image, Text, ScrollView } from 'react-native'
 import styles from './style'
 import Img from '../../assets/index'
@@ -6,15 +6,26 @@ import TextInput from '../../components/textinput/index'
 import In18 from '../../common/constants'
 import Button from '../../components/btn/index'
 import {Router, Actions, Scene} from 'react-native-router-flux';
-
+import { push } from 'react-native-simple-store'
+import database from '@react-native-firebase/database';
 const page = (p) => {
     const { txtSDT, txtPass } = p.state
-    const { onPressLogin, onChangePassword, onChangeSDT } = p.func
+    const { onPressLogin, onChangePassword, onChangeSDT,pus } = p.func
+    
+    // useEffect(get,[])
+    const pushs=async () => {
+        console.log("theem thanhf coong")
+        const reference = database().ref('/User/');
+         reference.push().set({
+          name: "houoiuoiu",
+          pass: "h9879078",
+        })
+    }
     return (
         <View style={styles.container} >
             <ScrollView >
                 <View style={{alignItems: 'center',justifyContent:'center'}}>
-             <View style={styles.containerLogo}>
+             <View style={[styles[`containerLogo`]]}>
                 <Image
                     style={styles.imgLoGo}
                     source={Img.Image.worker}
@@ -48,7 +59,12 @@ const page = (p) => {
             </View>
             <Button
                 title={In18.TitleBtn.login}
-                onPress={onPressLogin}
+                onPress={push}
+            >
+            </Button>
+            <Button
+                title="push dai"
+                onPress={()=>pushs()}
             >
             </Button>
             </View> 
