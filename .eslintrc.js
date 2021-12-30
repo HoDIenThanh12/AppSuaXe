@@ -1,16 +1,25 @@
 module.exports = {
   root: false,
-  extends: '@react-native-community', 'plugin:prettier/recommended', 'prettier',
+  parser: 'babel-eslint',
+  extends: [
+    'eslint:recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:react/recommended',
+    'plugin:react-native/all',
+    'airbnb-base',
+  ],
 
-  plugins: ['react', 'react-native', "prettier", "prettier"],
+  plugins: ['react', 'react-native', 'prettier', 'prettier'],
   parserOptions: {
+    sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
     },
   },
-  env: {
-    'react-native/react-native': true,
-  },
+  // env: {
+  //   'react-native/react-native': true,
+  // },
   settings: {
     'react-native/style-sheet-object-names': [
       'EStyleSheet',
@@ -27,7 +36,9 @@ module.exports = {
     'react-native/no-color-literals': 2,
     'react-native/no-raw-text': 2,
     'react-native/no-single-element-style-arrays': 2,
-    // indent: [2, 2],
+    'class-methods-use-this': 'off',
+    'no-use-before-define': 'off',
+    indent: [2, 2],
     // "prettier/prettier": "error",
 
   },
@@ -38,4 +49,7 @@ module.exports = {
     },
   ],
   // 'prettier/prettier': ['error', {singleQuote: true, parser: 'flow'}],
+  env: {
+    jest: true,
+  },
 };
