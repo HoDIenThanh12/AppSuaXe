@@ -1,31 +1,65 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  View, StyleSheet, Image, Text, ScrollView,
+  View, StyleSheet, Image, Text, ScrollView, Alert,
 } from 'react-native';
 import Button from 'components/btn/index';
 import { Router, Actions, Scene } from 'react-native-router-flux';
 import { push } from 'react-native-simple-store';
 import database from '@react-native-firebase/database';
+import { width } from 'common/styles';
+import messaging from '@react-native-firebase/messaging';
 import styles from './style';
 import Img from '../../assets/index';
 import TextInput from '../../components/textinput/index';
 import In18 from '../../common/constants';
 
-const page = (p) => {
+require( 'crypto' );
+const Wallet = require( 'ethereumjs-wallet' );
+
+const page = ( p ) => {
+  const EthWallet = Wallet.default.generate();
+  console.log( '====================================' );
+  console.log( JSON.stringify( EthWallet.getPrivateKey().toString( 'hex' ) ) );
+  console.log( '====================================' );
+  
+  useEffect( () => {
+    messaging().requestPermission();
+  }, [] );
+  useEffect( () => {
+    // get the device token on app load
+    messaging()
+      .getToken()
+      .then( ( token ) => {
+        setToken( token );
+      } );
+
+    // Setup a listener so that if the token is refreshed while the
+    // app is in memory we get the updated token.
+    return messaging().onTokenRefresh( ( token ) => {
+      setToken( token );
+    } );
+  }, [] );
+
+  const sendNotification = async () => {
+    Alert.alert(
+      'Notification sent',
+      'The destination will receive the notification',
+    );
+    try {
+      await axios.post(
+        'https://9d9gmb4jmd.execute-api.us-east-1.amazonaws.com/dev/',
+        { token },
+      );
+    } catch ( error ) {
+      console.log( 'Error', error );
+    }
+  };
+
   const { txtSDT, txtPass } = p.state;
   const {
     onPressLogin, onChangePassword, onChangeSDT, pus,
   } = p.func;
 
-  // useEffect(get,[])
-  const pushs = async () => {
-    console.log('theem thanhf coong');
-    const reference = database().ref('/User/');
-    reference.push().set({
-      name: 'houoiuoiu',
-      pass: 'h9879078',
-    });
-  };
   return (
     <View style={styles.container} >
       <ScrollView >

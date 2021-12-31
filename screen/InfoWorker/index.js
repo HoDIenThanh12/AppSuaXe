@@ -1,30 +1,33 @@
 import React from 'react';
+import { Alert } from 'react-native';
+import { Router, Actions, Scene } from 'react-native-router-flux';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page';
-import {Alert} from 'react-native';
-import {Router, Actions, Scene} from 'react-native-router-flux';
-import { height, width } from '../../common/styles'
+import { height, width } from '../../common/styles';
 
 class InfoWorker extends Base {
   constructor(props) {
     super(props);
     this.page = Page;
-    this.state = { 
+    this.state = {
     };
   }
+
   componentDidMount() {
-    const{item} = this.props
-    
+    const { item } = this.props;
   }
-  onPressSetup=()=>{
+
+  onPressSetup=() => {
 
   }
-  onPressCall=()=>{
+
+  onPressCall=() => {
 
   }
+
   render() {
-    var Template = this.view;
+    const Template = this.view;
     return (
       <Template
         title={In18.NomalTitle.titleInforWord}
@@ -32,7 +35,7 @@ class InfoWorker extends Base {
         props={this.props}
         func={this}
         state={this.state}
-        
+
       />
     );
   }

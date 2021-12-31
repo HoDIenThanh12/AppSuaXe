@@ -1,15 +1,15 @@
 import React from 'react';
+import { Alert } from 'react-native';
+import { Router, Actions, Scene } from 'react-native-router-flux';
+import store from 'react-native-simple-store';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page';
-import { Alert } from 'react-native';
-import { Router, Actions, Scene } from 'react-native-router-flux';
-import User from '../../modals/User'
-import store from 'react-native-simple-store';
+import User from '../../modals/User';
 // import firestore from '@react-native-firebase/firestore';
 class Profile extends Base {
-  constructor(props) {
-    super(props);
+  constructor( props ) {
+    super( props );
     this.page = Page;
     this.state = {
       sdt: '0387373405',
@@ -17,25 +17,27 @@ class Profile extends Base {
       names: '',
       address: '10 a/1, Bình đngs, Bình hào, thuận An, Bình Dương',
       img: '',
-      isWorker: false
+      isWorker: false,
     };
   }
+
   async componentDidMount() {
-    var users = User._user
-    store.get("user").then(
-      res => console.log(res) // ['milk']
+    const users = User._user;
+    store.get( 'user' ).then(
+      ( res ) => console.log( res ), // ['milk']
     );
-    await this.setState({
+    await this.setState( {
       sdt: users.getSDT(),
       pass: users.getPass(),
       names: users.getName(),
       address: users.getAddress(),
       img: users.getImage(),
-    })
+    } );
   }
-  onPressSave = async (type) => { 
-    console.log(context)
-    var user =new User()
+
+  onPressSave = async ( type ) => {
+    console.log( context );
+    const user = new User();
     // if (type === '0') {
     //   this.setState({ ...this.state, name: context });
     // }
@@ -50,26 +52,28 @@ class Profile extends Base {
     // }
   };
 
-  onChangeTexts = (type, context) => {
-    console.log(context + type)
-    if (type === '0') {
-      this.setState({ ...this.state, name: context });
+  onChangeTexts = ( type, context ) => {
+    console.log( context + type );
+    if ( type === '0' ) {
+      this.setState( { ...this.state, name: context } );
     }
-    if (type === '1') {
-      this.setState({ ...this.state, sdt: context });
+    if ( type === '1' ) {
+      this.setState( { ...this.state, sdt: context } );
     }
-    if (type === '2') {
-      this.setState({ ...this.state, pass: context });
+    if ( type === '2' ) {
+      this.setState( { ...this.state, pass: context } );
     }
-    if (type === '3') {
-      this.setState({ ...this.state, address: context });
+    if ( type === '3' ) {
+      this.setState( { ...this.state, address: context } );
     }
   };
-  onChangeImgAvatar = (value) => {
-    this.setState({ ...this.state, txtSDT: value });
+
+  onChangeImgAvatar = ( value ) => {
+    this.setState( { ...this.state, txtSDT: value } );
   };
+
   render() {
-    var Template = this.view;
+    const Template = this.view;
     return (
       <Template
         title='Thông tin cá nhân'

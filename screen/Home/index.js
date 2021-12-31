@@ -24,9 +24,9 @@ class Home extends Base {
     // await this.setState({ listWorker: l2, listQuality: l });
     // // const other = Userss.getInStance();
     // // console.log(other);
-    const u = User.getInStance();
+    const u = User.user;
     console.log('====================================');
-    console.log({ u });
+    console.log(u);
     console.log('====================================');
   }
 

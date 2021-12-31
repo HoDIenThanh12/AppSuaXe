@@ -1,17 +1,21 @@
-import React, {PureComponent, Component} from 'react';
-import {View, Text, Button, Alert} from 'react-native';
-import {Router, Actions, Scene} from 'react-native-router-flux';
-import {Provider} from 'react-redux';
+import React, { PureComponent, Component } from 'react';
+import {
+  View, Text, Button, Alert,
+} from 'react-native';
+import { Router, Actions, Scene } from 'react-native-router-flux';
+import { Provider } from 'react-redux';
 import Geolocation from 'react-native-geolocation-service';
+import { createStore } from 'redux';
 import scenes from './common/router';
 import Login from './screen/Login/index';
 import rootReducer from './redux/Reducer/index';
-import {createStore} from 'redux';
+
 const store = createStore(rootReducer);
 class Tex extends PureComponent {
   constructor(props) {
     super(props);
   }
+
   render() {
     return (
       <View>
@@ -19,7 +23,7 @@ class Tex extends PureComponent {
         <Button
           title="dang nhap"
           onPress={() => {
-            Actions.home2({names: 'Dien thanh', id: '123'});
+            Actions.home2({ names: 'Dien thanh', id: '123' });
           }}
         />
       </View>
@@ -34,6 +38,7 @@ class App extends Component {
       initScreen: 'home',
     };
   }
+
   async componentDidMount() {
     // var gps
     // await Geolocation.getCurrentPosition(
@@ -50,6 +55,7 @@ class App extends Component {
     // )
     // Alert.alert(gps['latitude'])
   }
+
   render() {
     return (
       //     <View>
@@ -59,9 +65,9 @@ class App extends Component {
         <Router scenes={scenes('home')} />
       </Provider>
 
-      // <Provider>
-      //   <Router scenes={scenes('home')} />
-      // </Provider>
+    // <Provider>
+    //   <Router scenes={scenes('home')} />
+    // </Provider>
     );
   }
 }

@@ -4,20 +4,21 @@ module.exports = {
     [
       'module-resolver',
       {
-        root: ['./'],
+        root: ['.'],
         extensions: ['.js', '.ios.js', '.android.js'],
         alias: {
-          common: './src/Common',
-          controller: './src/Controller',
-          assets: './src/Assets',
-          frontend: './src/Frontend'
-        }
-      }
-    ]
+          common: './common',
+          controller: '.controller',
+          assets: './assets',
+          frontend: '.Frontend',
+          modals: './modals',
+        },
+      },
+    ],
   ],
   env: {
     production: {
-      plugins: ['transform-remove-console']
-    }
-  }
-}
+      plugins: ['transform-remove-console'],
+    },
+  },
+};

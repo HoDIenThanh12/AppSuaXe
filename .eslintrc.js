@@ -10,7 +10,7 @@ module.exports = {
     'airbnb-base',
   ],
 
-  plugins: ['react', 'react-native', 'prettier', 'prettier'],
+  plugins: ['react', 'react-native', 'import'],
   parserOptions: {
     sourceType: 'module',
     ecmaFeatures: {
@@ -30,6 +30,8 @@ module.exports = {
   },
 
   rules: {
+    // 'max-len': [1, 1200, 2, { ignoreComments: true }],
+    // "omitLastInOneLineBlock": "always",
     'react-native/no-unused-styles': 2,
     'react-native/split-platform-components': 2,
     'react-native/no-inline-styles': 2,
@@ -39,6 +41,7 @@ module.exports = {
     'class-methods-use-this': 'off',
     'no-use-before-define': 'off',
     indent: [2, 2],
+    'space-in-parens': ['error', 'always'],
     // "prettier/prettier": "error",
 
   },
@@ -51,5 +54,6 @@ module.exports = {
   // 'prettier/prettier': ['error', {singleQuote: true, parser: 'flow'}],
   env: {
     jest: true,
+    'react-native/react-native': true,
   },
 };
