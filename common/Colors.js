@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
- const Colors = {
+const Colors = {
   // text color
   TEXT_PRIMARY: '#069EDB',
   TEXT_SECONDARY: '#333333',
@@ -21,4 +21,4 @@ import React from 'react'
   RED: '#E61A27',
   RED1: '#ED1C24',
 };
-export default Colors
+export default Colors;
