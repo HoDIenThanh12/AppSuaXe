@@ -10,30 +10,30 @@ import scenes from './common/router';
 import Login from './screen/Login/index';
 import rootReducer from './redux/Reducer/index';
 
-const store = createStore(rootReducer);
-class Tex extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
+const store = createStore( rootReducer );
+// class Tex extends PureComponent {
+//   constructor( props ) {
+//     super( props );
+//   }
 
-  render() {
-    return (
-      <View>
-        <Text>Th first 1</Text>
-        <Button
-          title="dang nhap"
-          onPress={() => {
-            Actions.home2({ names: 'Dien thanh', id: '123' });
-          }}
-        />
-      </View>
-    );
-  }
-}
+//   render() {
+//     return (
+//       <View>
+//         <Text>Th first 1</Text>
+//         <Button
+//           title="dang nhap"
+//           onPress={() => {
+//             Actions.home2( { names: 'Dien thanh', id: '123' } );
+//           }}
+//         />
+//       </View>
+//     );
+//   }
+// }
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor( props ) {
+    super( props );
     this.state = {
       initScreen: 'home',
     };
@@ -62,7 +62,7 @@ class App extends Component {
       // <Tex></Tex>
       //     </View>
       <Provider store={store}>
-        <Router scenes={scenes('home')} />
+        <Router scenes={scenes( 'home' )} />
       </Provider>
 
     // <Provider>

@@ -17,7 +17,7 @@ import In18 from '../../common/constants';
 import Buttons from '../../components/btn/index';
 import { height, width } from '../../common/styles';
 
-const page = (p) => {
+const page = ( p ) => {
   const {
     sdt, pass, names, address, img,
   } = p.state;
@@ -26,13 +26,13 @@ const page = (p) => {
     onChangeTexts, onChangeImgAvatar, onPressSave, onPressLogOut,
   } = p.func;
 
-  const [isModals, setisModals] = useState(false);
+  const [isModals, setisModals] = useState( false );
 
-  const [contentOld, setcontentOld] = useState('');
-  const [content, setcontent] = useState('');
-  const [type, settype] = useState('0');
-  const [txtContext, settxtContext] = useState('');
-  const [nameContent, setnameContent] = useState('Tên');
+  const [contentOld, setcontentOld] = useState( '' );
+  const [content, setcontent] = useState( '' );
+  const [type, settype] = useState( '0' );
+  const [txtContext, settxtContext] = useState( '' );
+  const [nameContent, setnameContent] = useState( 'Tên' );
   // const WrapperComponent = (props) => {
   //     return (
   //         <View>
@@ -69,29 +69,29 @@ const page = (p) => {
   //         </View>
   //     );
   // }
-  const subMit = (types) => {
-    console.log(types);
-    setisModals(!isModals);
-    settype(types);
-    if (types === '0') {
-      setcontentOld(names);
-      setnameContent('Tên ');
+  const subMit = ( types ) => {
+    console.log( types );
+    setisModals( !isModals );
+    settype( types );
+    if ( types === '0' ) {
+      setcontentOld( names );
+      setnameContent( 'Tên ' );
     }
-    if (types === '1') {
-      setcontentOld(sdt);
-      setnameContent('SDT ');
+    if ( types === '1' ) {
+      setcontentOld( sdt );
+      setnameContent( 'SDT ' );
     }
-    if (types === '2') {
-      setcontentOld(pass);
-      setnameContent('Mật khẩu ');
+    if ( types === '2' ) {
+      setcontentOld( pass );
+      setnameContent( 'Mật khẩu ' );
     }
-    if (types === '3') {
-      setcontentOld(address);
-      setnameContent('Địa chỉ ');
+    if ( types === '3' ) {
+      setcontentOld( address );
+      setnameContent( 'Địa chỉ ' );
     }
   };
-  const Texts = (props) => {
-    console.log(props.style);
+  const Texts = ( props ) => {
+    console.log( props.style );
     const txt = props.state;
     return (
       <View style={styles.containerEdit}>
@@ -104,15 +104,15 @@ const page = (p) => {
           </Text>
           <IconButton
             icon="arrow-right-bold"
-            onPress={() => subMit(props.type)}
+            onPress={() => subMit( props.type )}
           >
           </IconButton>
         </View>
       </View>
     );
   };
-  const nhap = (type, txt) => {
-    onChangeTexts(type, txt);
+  const nhap = ( type, txt ) => {
+    onChangeTexts( type, txt );
   };
   return (
     <View style={styles.container}>
@@ -141,7 +141,7 @@ const page = (p) => {
           <Buttons
             styleBTN={styles.styleBtnModal}
             title={In18.TitleBtn.history}
-            onPress={() => setisModals(!isModals)}></Buttons>
+            onPress={() => setisModals( !isModals )}></Buttons>
           <Buttons
             title={In18.TitleBtn.logOut}
             styleBTN={styles.styleBtnModalSave}
@@ -159,17 +159,17 @@ const page = (p) => {
           <TextInput
             // value={}
             placeholder="Mới"
-            onChangeText={(text) => nhap(type, text)}
+            onChangeText={( text ) => nhap( type, text )}
             style={styles.txtEdit}></TextInput>
           <View style={styles.btnModal}>
             <Buttons
               styleBTN={styles.styleBtnModal}
               title="Thoát"
-              onPress={() => setisModals(!isModals)}></Buttons>
+              onPress={() => setisModals( !isModals )}></Buttons>
             <Buttons
               title="Save"
               styleBTN={styles.styleBtnModalSave}
-              onPress={() => onPressSave(type)}></Buttons>
+              onPress={() => onPressSave( type )}></Buttons>
           </View>
         </View>
       </Modal>

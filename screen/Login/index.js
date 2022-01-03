@@ -5,10 +5,10 @@ import User from 'modals/User';
 import database from '@react-native-firebase/database';
 import store from 'react-native-simple-store';
 import Userss from 'modals/Users';
+import { Read } from 'modals/function';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page';
-
 // import firestore from '@react-native-firebase/firestore';
 
 class Login extends Base {
@@ -22,39 +22,11 @@ class Login extends Base {
   }
 
   async componentDidMount() {
-    // console.log('====================================');
-    // console.log('bắt đầu load');
-    // console.log('====================================');
-    // await database().ref('/User/').push().set({
-    //   emails: 'hjcbfhs',
-    // })
-    //   .then((data) => {
-    //     console.log('data', data);
-    //   })
-    //   .catch((error) => {
-    //     console.log('error', error);
-    //   });
-    const usser = Userss.user;
-    usser.setName( 'thanh' );
+    const usser = await Userss.getInStance();
+    await usser.setName( 'thanh' );
     // await usser.write();
-    // await usser.setReduxLocal()
-    // await usser.getReduxLocal();
-    // if (store.get('id')) {
-    //   store.get('user').then((value) => {
-    //     console.log('=========value=usser================');
-    //     console.log(usser);
-    //     console.log('====================================');
-    //   });
-    // }
-    // await database()
-    //   .ref('/users/123')
-    //   .on('value', (snapshot) => {
-    //     console.log('User data: ', snapshot.val());
-    //   });
-    const firebase = await database().ref( '/User/' );
-    // await firebase.push({
-    //   usser,
-    // });
+    // await usser.read();
+    await Read();
   }
 
   pus = async () => {
@@ -87,12 +59,12 @@ class Login extends Base {
 
   render() {
     const Template = this.view;
-    const other = Userss.user;
-    console.log( other );
-    // other.setName('thanh');
-    console.log( other );
-    const others = Userss.getInStance();
-    console.log( others );
+    // const other = Userss.user;
+    // console.log( other );
+    // // other.setName('thanh');
+    // console.log( other );
+    // const others = Userss.getInStance();
+    // console.log( others );
     return (
       <Template
         title={In18.TitleBtn.login}
