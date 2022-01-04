@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Alert } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import store from 'react-native-simple-store';
 import database from '@react-native-firebase/database';
 
 class Users {
-  static user = null
+  static user = this.getInStance() || null
 
   id = '';
 
@@ -30,7 +31,6 @@ class Users {
 
   static getInStance() {
     if ( this.user === null ) {
-      // @ts-ignore
       this.user = new Users();
     }
     return this.user;
@@ -40,22 +40,6 @@ class Users {
     if ( this.user === null ) {
       this.user = new Users();
     }
-  }
-
-  async regitster( name = '', std = '', pass = '', address = '', checkWorker = 0 ) {
-    const firebase = await database().ref( '/User/' );
-    await firebase.push( {
-      name,
-      sdt: std,
-      pass,
-      address,
-      checkWorker,
-      x: '0',
-      y: '0',
-      luotXem: '0',
-      img: '',
-      luotGoi: '0',
-    } );
   }
 
   async getReduxLocal() {
@@ -75,15 +59,92 @@ class Users {
     }
   }
 
-  async write() {
+  async regitster( name = '', std = '', pass = '', address = '', checkWorker = 0 ) {
     const firebase = await database().ref( '/User/' );
-    await firebase.set( {
-      name: 'Ada Lovelace',
-      age: 310,
+    const i = 0;
+    await database()
+      .ref( '/User/' )
+      .on( 'value', ( snapshot ) => {
+        console.log( 'User data: ', snapshot.val() );
+      } );
+    await firebase.push( {
+      name,
+      sdt: std,
+      pass,
+      address,
+      checkWorker,
+      x: '0',
+      y: '0',
+      luotXem: '0',
+      img: '',
+      luotGoi: '0',
+    } );
+  }
+
+  // async Regitster( name, SDT, pass, address, checkWorker ) {
+  //   if ( address == null ) { address = 'Việt nam'; }
+  //   const check = checkWorker == true ? '1' : '0';
+  //   const firestores = firestore().collection( 'User' );
+  //   let i = 0;
+  //   await firestores.get()
+  //     .then( ( querySnapshot ) => {
+  //       querySnapshot.forEach( ( documentSnapshot ) => {
+  //         const datas = documentSnapshot.data();
+  //         if ( datas.sdt === SDT ) {
+  //           // eslint-disable-next-line no-plusplus
+  //           i++;
+  //           Alert.alert( 'Số điện thoại đã đăng ký !' );
+  //         }
+  //       } );
+  //     } );
+  //   if ( i === '0' ) {
+  //     await firestores.add( {
+  //       name,
+  //       sdt: SDT,
+  //       pass,
+  //       image: '',
+  //       x: '-1',
+  //       y: '-1',
+  //       checkWorker: check,
+  //       luotXem: '0',
+  //       address,
+  //     } )
+  //       .then( () => {
+  //         Alert.alert( 'Đăng ký thành công' );
+  //       } );
+  //   }
+  // }
+  async read() {
+    const i = 0;
+    
+    await database()
+      .ref( '/User/' )
+      .on( 'value', ( snapshot ) => {
+        snapshot.forEach( ( key ) => {
+          console.log( key.key );
+        } );
+      } );
+  }
+
+  async write() {
+    // await console.log( '====================================' );
+    // await console.log( 'đag thêmzxczx' );
+    // await console.log( '====================================' );
+    const firebase = await database().ref( '/User/' );
+    await firebase.push( {
+      sdt: '0392225405',
+      pass: 'diencong',
+      address: 'Bình Dương',
+      img: '',
+      luotXem: '0',
+      x: '0',
+      y: '0',
+      checkWorker: '0',
+      luotGoi: '0',
     } ).then( ( data ) => {
-      console.log( 'data ', data );
+
     } ).catch( ( error ) => {
-      console.log( 'error ', error );
+
     } );
   }
 

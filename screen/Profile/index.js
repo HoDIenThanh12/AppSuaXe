@@ -22,6 +22,7 @@ class Profile extends Base {
   }
 
   async componentDidMount() {
+    // eslint-disable-next-line no-underscore-dangle
     const users = User._user;
     store.get( 'user' ).then(
       ( res ) => console.log( res ), // ['milk']

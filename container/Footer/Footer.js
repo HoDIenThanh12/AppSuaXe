@@ -15,7 +15,7 @@ const Footer = props => {
     // setMenuFooter(value)
     console.log('====================================');
     console.log({menuFooterRedux});
-    console.log({value});
+    console.log({value}) ;
     console.log('====================================');
     if(value!=menuFooterRedux){
       if(value===In18.Menu.HOME){

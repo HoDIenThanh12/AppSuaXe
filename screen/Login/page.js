@@ -13,47 +13,15 @@ import Img from '../../assets/index';
 import TextInput from '../../components/textinput/index';
 import In18 from '../../common/constants';
 
-require( 'crypto' );
-const Wallet = require( 'ethereumjs-wallet' );
+// require( 'crypto' );
+// const Wallet = require( 'ethereumjs-wallet' );
 
 const page = ( p ) => {
-  const EthWallet = Wallet.default.generate();
-  console.log( '====================================' );
-  console.log( JSON.stringify( EthWallet.getPrivateKey().toString( 'hex' ) ) );
-  console.log( '====================================' );
-  
-  useEffect( () => {
-    messaging().requestPermission();
-  }, [] );
-  useEffect( () => {
-    // get the device token on app load
-    messaging()
-      .getToken()
-      .then( ( token ) => {
-        setToken( token );
-      } );
+  // const EthWallet = Wallet.default.generate();
+  // console.log( '====================================' );
+  // console.log( JSON.stringify( EthWallet.getPrivateKey().toString( 'hex' ) ) );
+  // console.log( '====================================' );
 
-    // Setup a listener so that if the token is refreshed while the
-    // app is in memory we get the updated token.
-    return messaging().onTokenRefresh( ( token ) => {
-      setToken( token );
-    } );
-  }, [] );
-
-  const sendNotification = async () => {
-    Alert.alert(
-      'Notification sent',
-      'The destination will receive the notification',
-    );
-    try {
-      await axios.post(
-        'https://9d9gmb4jmd.execute-api.us-east-1.amazonaws.com/dev/',
-        { token },
-      );
-    } catch ( error ) {
-      console.log( 'Error', error );
-    }
-  };
 
   const { txtSDT, txtPass } = p.state;
   const {

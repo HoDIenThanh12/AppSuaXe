@@ -1,19 +1,19 @@
-import React, {PureComponent, Component} from 'react';
-import {View, Text, StatusBar} from 'react-native';
-import Header from '../container/Header/Header';
-import styles from '../container/style';
-import Footer from '../container/Footer/Footer';
+import React, { PureComponent, Component } from 'react';
+import { View, Text, StatusBar } from 'react-native';
+import Header from './Header/Header';
+import styles from './style';
+import Footer from './Footer/Footer';
+
 class BaseContainer extends PureComponent {
-  constructor(props, context) {
-    super(props, context);
+  constructor( props, context ) {
+    super( props, context );
     this.page = null;
-    this.view = props => {
-      return this.renderPage(props);
-    };
+    this.view = ( props ) => this.renderPage( props );
   }
-  renderPage = props => {
+
+  renderPage = ( props ) => {
     const Page = this.page;
-    const {noHeader = false, noFooter = false, pageStyle} = props;
+    const { noHeader = false, noFooter = false, pageStyle } = props;
     return (
       <View style={styles.container}>
         <StatusBar
