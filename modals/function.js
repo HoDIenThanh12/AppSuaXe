@@ -20,6 +20,6 @@ export const Read = async () => {
           i = g;
         }
       } );
-    } ).then( () => console.log( 'Data updated.' ) );
-  await console.log( i );
+    } );
+  return i;
 };

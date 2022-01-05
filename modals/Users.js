@@ -5,7 +5,7 @@ import store from 'react-native-simple-store';
 import database from '@react-native-firebase/database';
 
 class Users {
-  static user = this.getInStance() || null
+  static user = null
 
   id = '';
 
@@ -30,16 +30,10 @@ class Users {
   addressNow = '';
 
   static getInStance() {
-    if ( this.user === null ) {
+    if ( !this.user ) {
       this.user = new Users();
     }
     return this.user;
-  }
-
-  constructor() {
-    if ( this.user === null ) {
-      this.user = new Users();
-    }
   }
 
   async getReduxLocal() {
@@ -62,23 +56,21 @@ class Users {
   async regitster( name = '', std = '', pass = '', address = '', checkWorker = 0 ) {
     const firebase = await database().ref( '/User/' );
     const i = 0;
-    await database()
-      .ref( '/User/' )
-      .on( 'value', ( snapshot ) => {
-        console.log( 'User data: ', snapshot.val() );
-      } );
-    await firebase.push( {
-      name,
-      sdt: std,
-      pass,
-      address,
-      checkWorker,
-      x: '0',
-      y: '0',
-      luotXem: '0',
-      img: '',
-      luotGoi: '0',
+    await firebase.on( 'value', ( snapshot ) => {
+      console.log( 'User data: ', snapshot.val() );
     } );
+    // await firebase.push( {
+    //   name,
+    //   sdt: std,
+    //   pass,
+    //   address,
+    //   checkWorker,
+    //   x: '0',
+    //   y: '0',
+    //   luotXem: '0',
+    //   img: '',
+    //   luotGoi: '0',
+    // } );
   }
 
   // async Regitster( name, SDT, pass, address, checkWorker ) {
@@ -114,16 +106,25 @@ class Users {
   //       } );
   //   }
   // }
-  async read() {
-    const i = 0;
-    
-    await database()
-      .ref( '/User/' )
-      .on( 'value', ( snapshot ) => {
-        snapshot.forEach( ( key ) => {
-          console.log( key.key );
-        } );
+  async SuccessCheck( i ) {
+    console.log( '====================================' );
+    await console.log( i );
+    console.log( '====================================' );
+  }
+
+  async Read() {
+    let i = 0;
+    const firebase = await database().ref( '/User/' );
+    await firebase.on( 'value', ( snapshot ) => {
+      snapshot.forEach( ( key ) => {
+        if ( key.val().sdt === '0392225405' ) {
+          i = 1;
+          console.log( key.val().sdt );
+        }
       } );
+    } );
+
+    return i;
   }
 
   async write() {
@@ -188,7 +189,12 @@ class Users {
     this.address = address;
   }
 
-  getAddress() { return this.address; }
+  getAddress() {
+    console.log( '====================================' );
+    console.log( this.address );
+    console.log( '====================================' );
+    return this.address;
+  }
 
   setAddressNow( addressNow ) {
     this.addressNow = addressNow;

@@ -18,15 +18,56 @@ class Login extends Base {
     this.state = {
       txtSDT: '0387373405',
       txtPass: '1',
+      checkUser: 10,
     };
   }
 
-  async componentDidMount() {
-    const usser = await Userss.getInStance();
-    await usser.setName( 'thanh' );
-    // await usser.write();
-    // await usser.read();
-    await Read();
+  arr=[]
+
+  async getAll() {
+    const func = database().ref( '/User/' );
+    await func.on( 'value', ( snapshot ) => {
+      snapshot.forEach( ( item ) => {
+        console.log( item.key );
+        if ( item.val().sdt === '0392225405' ) {
+          this.arr.push( 1 );
+          this.check( 2 );
+          this.setState( { ...this.state, checkUser: 2 } );
+        }
+      } );
+    } );
+  }
+
+  check( check ) {
+    return check;
+  }
+
+  componentDidMount() {
+    const usser = Userss.getInStance();
+
+    this.check();
+    this.getAll();
+    const { checkUser } = this.state;
+    this.getAll();
+    setTimeout( () => {
+      const log = this.arr[0] ? 'ok' : 'sai';
+      console.log( this.arr[0] );
+    }, 3000 );
+
+    // usser.setName( 'thanh' );
+    // // await usser.write();
+    // // await usser.read();
+    // // await usser.Read();
+    // // const { checkUser } = this.state;
+    // const XX = usser.Read().then( ( value ) => { console.log( value ); } );
+    // await this.setState( { ...this.state, checkUser: usser.Read() } );
+    // this.setState( { checkUser: 100 } );
+    // console.log( '====================================' );
+    // const x = await usser.Read();
+    // const { checkUser } = this.state;
+    // await console.log( checkUser );
+    // console.log( '====================================' );
+    // // if(checkUser==)
   }
 
   pus = async () => {

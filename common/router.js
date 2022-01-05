@@ -8,6 +8,8 @@ import Regitster from '../screen/Register/index';
 import Home from '../screen/Home/index';
 import Search from '../screen/Search/index';
 import InfoWorker from '../screen/InfoWorker/index';
+import Screen1 from '../screen/test/screen1';
+import Screen2 from '../screen/test/screen2';
 
 const scenes = ( key ) => {
   const transitionConfig = 0.5;
@@ -18,8 +20,8 @@ const scenes = ( key ) => {
       <Scene key="register" component={Regitster} title="Đăng ký" />
       <Scene key="home" component={Home} title="Trang chủ" />
       <Scene key="search" component={Search} title="Tìm kiếm thợ" />
-      <Scene key="infoWorker" component={InfoWorker} title="Tìm kiếm thợ" />
-
+      <Scene key="screen1" component={Screen1} title="Tìm kiếm thợ" />
+      <Scene key="screen2" component={Screen2} title="Tìm kiếm thợ" />
     </Scene>,
   );
 };
