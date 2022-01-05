@@ -8,11 +8,11 @@ import { push } from 'react-native-simple-store';
 import database from '@react-native-firebase/database';
 import { width } from 'common/styles';
 import messaging from '@react-native-firebase/messaging';
+import User from 'modals/Users';
 import styles from './style';
 import Img from '../../assets/index';
 import TextInput from '../../components/textinput/index';
 import In18 from '../../common/constants';
-
 // require( 'crypto' );
 // const Wallet = require( 'ethereumjs-wallet' );
 
@@ -21,8 +21,15 @@ const page = ( p ) => {
   // console.log( '====================================' );
   // console.log( JSON.stringify( EthWallet.getPrivateKey().toString( 'hex' ) ) );
   // console.log( '====================================' );
-
-
+  // const [list, setlist] = useState( [] );
+  // const [listQuality, setlistQuality] = useState([])
+  // const usser = User.getInStance();
+  // useEffect( () => {
+  //   setlist( usser.getListWorker() );
+  // }, [] );
+  // console.log( '===list get all data============================' );
+  // console.log( list );
+  // console.log( '====================================' );
   const { txtSDT, txtPass } = p.state;
   const {
     onPressLogin, onChangePassword, onChangeSDT, pus,

@@ -133,20 +133,80 @@ class Users {
     // await console.log( '====================================' );
     const firebase = await database().ref( '/User/' );
     await firebase.push( {
-      sdt: '0392225405',
-      pass: 'diencong',
+      sdt: '0123456789 ',
+      pass: '123',
       address: 'Bình Dương',
       img: '',
-      luotXem: '0',
+      luotXem: '10',
       x: '0',
       y: '0',
-      checkWorker: '0',
-      luotGoi: '0',
+      checkWorker: '1',
+      luotGoi: '30',
     } ).then( ( data ) => {
 
     } ).catch( ( error ) => {
 
     } );
+  }
+
+  static getListWorkers() {
+    const list = [];
+    const firebase = database().ref( '/User/' );
+    firebase.on( 'value', ( snapshot ) => {
+      snapshot.forEach( ( item ) => {
+        if ( item.val().checkWorker === '1' ) {
+          const temp = {
+            id: item.key,
+            sdt: item.val().sdt,
+            name: item.val().name,
+            x: item.val().x,
+            y: item.val().y,
+            address: item.val().address,
+            luotXem: item.val().luotXem,
+            luotGoi: item.val().luotGoi,
+            pass: item.val().pass,
+            img: item.val().img,
+            checkWorker: item.val().checkWorker,
+          };
+          list.push( temp );
+          console.log( '=======list.push( item )======================' );
+          console.log( list );
+          console.log( '====================================' );
+        }
+      } );
+    } );
+
+    return list;
+  }
+
+  getListWorker() {
+    const list = [];
+    const firebase = database().ref( '/User/' );
+    firebase.on( 'value', ( snapshot ) => {
+      snapshot.forEach( ( item ) => {
+        if ( item.val().checkWorker === '1' ) {
+          const temp = {
+            id: item.key,
+            sdt: item.val().sdt,
+            name: item.val().name,
+            x: item.val().x,
+            y: item.val().y,
+            address: item.val().address,
+            luotXem: item.val().luotXem,
+            luotGoi: item.val().luotGoi,
+            pass: item.val().pass,
+            img: item.val().img,
+            checkWorker: item.val().checkWorker,
+          };
+          list.push( temp );
+          console.log( '=======list.push( item )======================' );
+          console.log( list );
+          console.log( '====================================' );
+        }
+      } );
+    } );
+
+    return list;
   }
 
   setID( id ) {

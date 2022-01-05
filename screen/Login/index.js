@@ -5,7 +5,7 @@ import User from 'modals/User';
 import database from '@react-native-firebase/database';
 import store from 'react-native-simple-store';
 import Userss from 'modals/Users';
-import { Read } from 'modals/function';
+import { Read, getAllListWorker } from 'modals/function';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page';
@@ -19,43 +19,31 @@ class Login extends Base {
       txtSDT: '0387373405',
       txtPass: '1',
       checkUser: 10,
+      list: [],
     };
   }
 
-  arr=[]
+  getListWorkerQuality( list ) {
 
-  async getAll() {
-    const func = database().ref( '/User/' );
-    await func.on( 'value', ( snapshot ) => {
-      snapshot.forEach( ( item ) => {
-        console.log( item.key );
-        if ( item.val().sdt === '0392225405' ) {
-          this.arr.push( 1 );
-          this.check( 2 );
-          this.setState( { ...this.state, checkUser: 2 } );
-        }
-      } );
-    } );
-  }
-
-  check( check ) {
-    return check;
   }
 
   componentDidMount() {
+    const l = getAllListWorker;
+    console.log( '====================================' );
+    console.log( l );
+    console.log( '====================================' );
     const usser = Userss.getInStance();
+    // // usser.setName( 'thanh' );
+    Userss.getListWorkers().then( ( value ) => { console.log( value ); } );
+    // const proMis = new Promise( ( success, error ) => {
+    //   const l = usser.getListWorker();
+    //   success( l );
+    // } );
 
-    this.check();
-    this.getAll();
-    const { checkUser } = this.state;
-    this.getAll();
-    setTimeout( () => {
-      const log = this.arr[0] ? 'ok' : 'sai';
-      console.log( this.arr[0] );
-    }, 3000 );
+    // console.log( '=====this.state.list ======================' );
+    // console.log( this.state.list );
+    // console.log( '====================================' );
 
-    // usser.setName( 'thanh' );
-    // // await usser.write();
     // // await usser.read();
     // // await usser.Read();
     // // const { checkUser } = this.state;
