@@ -31,9 +31,9 @@ const page = ( p ) => {
     setisCheckWorker,
 
   } = p.func;
-  const users = Userss.user;
-  console.log( '====================================' );
-  console.log( users );
+  const users = Userss.getInStance();
+  console.log( '=====Userss.getInStance()=====================' );
+  console.log( { users } );
   console.log( '====================================' );
   return (
     <View style={styles.container} >

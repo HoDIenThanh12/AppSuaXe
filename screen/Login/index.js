@@ -5,7 +5,7 @@ import User from 'modals/User';
 import database from '@react-native-firebase/database';
 import store from 'react-native-simple-store';
 import Userss from 'modals/Users';
-import { Read } from 'modals/function';
+import { Read, getAllListWorker } from 'modals/function';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page';
@@ -18,15 +18,44 @@ class Login extends Base {
     this.state = {
       txtSDT: '0387373405',
       txtPass: '1',
+      checkUser: 10,
+      list: [],
     };
   }
 
-  async componentDidMount() {
-    const usser = await Userss.getInStance();
-    await usser.setName( 'thanh' );
-    // await usser.write();
-    // await usser.read();
-    await Read();
+  getListWorkerQuality( list ) {
+
+  }
+
+  componentDidMount() {
+    const l = getAllListWorker;
+    console.log( '====================================' );
+    console.log( l );
+    console.log( '====================================' );
+    const usser = Userss.getInStance();
+    // // usser.setName( 'thanh' );
+    Userss.getListWorkers().then( ( value ) => { console.log( value ); } );
+    // const proMis = new Promise( ( success, error ) => {
+    //   const l = usser.getListWorker();
+    //   success( l );
+    // } );
+
+    // console.log( '=====this.state.list ======================' );
+    // console.log( this.state.list );
+    // console.log( '====================================' );
+
+    // // await usser.read();
+    // // await usser.Read();
+    // // const { checkUser } = this.state;
+    // const XX = usser.Read().then( ( value ) => { console.log( value ); } );
+    // await this.setState( { ...this.state, checkUser: usser.Read() } );
+    // this.setState( { checkUser: 100 } );
+    // console.log( '====================================' );
+    // const x = await usser.Read();
+    // const { checkUser } = this.state;
+    // await console.log( checkUser );
+    // console.log( '====================================' );
+    // // if(checkUser==)
   }
 
   pus = async () => {

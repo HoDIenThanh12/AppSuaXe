@@ -8,7 +8,7 @@ import styles from './style';
 import Img from '../../assets/index';
 import In18 from '../../common/constants';
 
-const page = (p) => {
+const page = ( p ) => {
   const { listQuality, listWorker } = p.state;
   const {
     onClickWorkQuality,
@@ -16,9 +16,9 @@ const page = (p) => {
     onPressViewWorkerSort,
     onPressViewList,
   } = p.func;
-  const [listBuild, setlistBuild] = useState([]);
-  const rederQuality = ({ item }) => (
-    <TouchableOpacity style={styles.containerQuality} onPress={() => Actions.infoWorker({ item })} >
+  const [listBuild, setlistBuild] = useState( [] );
+  const rederQuality = ( { item } ) => (
+    <TouchableOpacity style={styles.containerQuality} onPress={() => Actions.infoWorker( { item } )} >
       <View style={styles.containerQualityDetail}>
         <View style={styles.detailQuality}>
           <Text style={styles.titleQuality}>Tên: {item.name}</Text>
@@ -32,7 +32,7 @@ const page = (p) => {
       </View>
     </TouchableOpacity>
   );
-  const Texts = (props) => {
+  const Texts = ( props ) => {
     const txt = props.state;
     return (
       <View style={styles.containerEdit}>
@@ -45,28 +45,28 @@ const page = (p) => {
           </Text>
           <IconButton
             icon="arrow-right-bold"
-            onPress={() => subMit(props.type)}
+            onPress={() => subMit( props.type )}
           >
           </IconButton>
         </View>
       </View>
     );
   };
-  const cacu = (value) => {
-    if ((parseInt(value) / 1000) >= 1) {
-      console.log((parseInt(value) / 1000));
+  const cacu = ( value ) => {
+    if ( ( parseInt( value ) / 1000 ) >= 1 ) {
+      console.log( ( parseInt( value ) / 1000 ) );
       return `${value * 0.001} (km)`;
     }
     return `${value} (m)`;
   };
-  const renderItemWorker = ({ item }) => {
+  const renderItemWorker = ( { item } ) => {
     const {
       img, name, sdt, distance, luotXem, address,
     } = item;
-    const val = cacu(distance);
+    const val = cacu( distance );
     return (
       <TouchableOpacity
-        onPress={() => Actions.infoWorker({ item })}
+        onPress={() => Actions.infoWorker( { item } )}
         style={styles.containerWorker}
       >
         <View style={styles.containerWorkerDetail}>
@@ -105,13 +105,14 @@ const page = (p) => {
           </View>
         </View>
         <FlatList
-          data={Object.values(listQuality)}
+          data={Object.values( listQuality )}
+          // eslint-disable-next-line react-native/no-inline-styles
           contentContainerStyle={{
             flexDirection: 'row',
           }}
           horizontal
           renderItem={rederQuality}
-          keyExtractor={(item) => item.id}
+          keyExtractor={( item ) => item.id}
         >
         </FlatList>
         <View style={styles.optionMenu}>
@@ -127,21 +128,18 @@ const page = (p) => {
           </View>
 
         </View>
-        <View>
-          <FlatList
-            data={Object.values(listWorker)}
-            renderItem={renderItemWorker}
-            keyExtractor={(item) => item.id}
-          >
-          </FlatList>
-        </View>
       </ScrollView>
+      <View>
+        <FlatList
+          data={listWorker}
+          renderItem={( item ) => renderItemWorker( item )}
+          keyExtractor={( item ) => item.key}
+        >
+        </FlatList>
+      </View>
 
     </View>
 
   );
 };
 export default page;
-const Items = (props) => {
-  const { items } = props;
-};
