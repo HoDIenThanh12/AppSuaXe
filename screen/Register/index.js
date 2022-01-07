@@ -1,6 +1,7 @@
 import React from 'react';
 import { Alert } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
+import Users from 'modals/Users';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page';
@@ -18,6 +19,13 @@ class Regitster extends Base {
       isWorker: false,
       txtName: '',
     };
+  }
+
+  componentDidMount() {
+    const u = Users.user;
+    console.log( '====================================' );
+    console.log( u );
+    console.log( '====================================' );
   }
 
   onPressRegister = async () => {
