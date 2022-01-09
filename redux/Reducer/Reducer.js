@@ -10,3 +10,8 @@ export const menuFooterRedux = createReducer( initState.menuFooter, {
     return action.payload;
   },
 } );
+export const user = createReducer( initState.user, {
+  [MENU.USER]( state, action ) {
+    return action.payload;
+  },
+} );

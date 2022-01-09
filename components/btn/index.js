@@ -2,9 +2,8 @@ import React from 'react';
 import {
   View, TouchableOpacity, StyleSheet, Text,
 } from 'react-native';
-import In18 from '../../common/constants';
 
-const Button = (props) => {
+const Button = ( props ) => {
   const {
     title, isDisable = false, styleText, styleBTN,
   } = props;
@@ -17,7 +16,7 @@ const Button = (props) => {
     </TouchableOpacity>
   );
 };
-const styles = StyleSheet.create({
+const styles = StyleSheet.create( {
   container: {
     display: 'flex',
     borderRadius: 10,
@@ -28,5 +27,5 @@ const styles = StyleSheet.create({
     borderColor: 'orange',
     borderWidth: 1,
   },
-});
+} );
 export default Button;

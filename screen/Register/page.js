@@ -8,7 +8,7 @@ import User from 'modals/User';
 import In18 from 'common/constants';
 import styles from './style';
 import Img from '../../assets/index';
-import TextInput from '../../components/textinput/index';
+import TextInput from '../../components/TextInput/index';
 import Button from '../../components/btn/index';
 import Userss from '../../modals/Users';
 

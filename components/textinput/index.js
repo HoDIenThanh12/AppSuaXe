@@ -1,60 +1,77 @@
 import React from 'react';
 import {
   View, TextInput, StyleSheet, Text,
-  Dimensions, Platform, PixelRatio, StatusBar,
+  Dimensions, Platform, PixelRatio, Image,
 } from 'react-native';
+import image from 'assets/index';
 import In18 from '../../common/constants';
 
-const MYWIDTH = Dimensions.get('window').width;
-const MYHEIGHT = Dimensions.get('window').height;
-const width = (num) => PixelRatio.roundToNearestPixel(MYWIDTH * (num / 100));
-const height = (num) => PixelRatio.roundToNearestPixel(MYHEIGHT * (num / 100));
-const TextInputs = (props) => {
+const MYWIDTH = Dimensions.get( 'window' ).width;
+const MYHEIGHT = Dimensions.get( 'window' ).height;
+const width = ( num ) => PixelRatio.roundToNearestPixel( MYWIDTH * ( num / 100 ) );
+const height = ( num ) => PixelRatio.roundToNearestPixel( MYHEIGHT * ( num / 100 ) );
+
+const TextInputs = ( props ) => {
   const {
-    placeholder, isDisable = false, style, icon = null,
+    placeholder, isDisable = false, style, icon, styleImg, styleInput, password = false, noIcon = false,
   } = props;
+  const imgAvatar = !icon ? image.Image.icProfile : icon;
   return (
     <View style={styles.all}>
-      {
-        icon
-          ? <>
-            <View style={styles.styleIcon}>
-              <Text >sdhbfgh</Text>
-            </View>
-          </>
-          : null
-      }
+      <View style={[styles.sectionStyle, style]}>
+        {
+          !noIcon ? (
+            <Image source={imgAvatar} style={[styles.ImageStyle, styleImg]} />
+          ) : null
+        }
 
-      <TextInput
-        placeholder={placeholder}
-        {...props}
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={[styles.container, style, { marginLeft: icon ? 10 : 0 }]}
-      >
-      </TextInput>
+        <TextInput
+          placeholder={placeholder}
+          secureTextEntry={password}
+          {...props}
+          // eslint-disable-next-line react-native/no-inline-styles
+          style={[styles.textInput, styleInput]}
+        >
+        </TextInput>
+      </View>
 
     </View>
 
   );
 };
-const styles = StyleSheet.create({
+const styles = StyleSheet.create( {
   all: {
+    flex: 1,
     justifyContent: 'center',
-    borderRadius: 10,
-    borderColor: 'orange',
-    borderWidth: 1,
-    paddingHorizontal: 15,
-    marginVertical: 10,
+    alignItems: 'center',
+    margin: 10,
   },
   styleIcon: {
     position: 'absolute',
   },
-  container: {
-
-    // width:width(90)
+  textInput: {
+    flex: 1,
   },
-  containerAll: {
-    display: 'flex',
+  sectionStyle: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 0.5,
+    borderColor: 'orange',
+    height: 50,
+    borderRadius: 10,
+    width: width( 85 ),
+    paddingHorizontal: 3,
+    // paddingVertical: 5,
   },
-});
+  ImageStyle: {
+    // padding: 10,
+    marginLeft: 5,
+    height: 25,
+    width: 25,
+    resizeMode: 'stretch',
+    alignItems: 'flex-end',
+    // backgroundColor: 'green',
+  },
+} );
 export default TextInputs;

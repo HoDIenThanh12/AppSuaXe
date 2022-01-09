@@ -42,6 +42,25 @@ class Users {
     }
   }
 
+  Login( sdt, pass ) {
+    const firebase = database().ref( '/User/' );
+    firebase.on( 'value', ( snapshot ) => {
+      snapshot.forEach( ( item ) => {
+        if ( item.val().sdt === sdt && item.val().pass === pass ) {
+          this.setID( item.key ),
+          this.setPass( item.val().pass ),
+          this.setSDT( item.val().sdt ),
+          this.setName( item.val().name ),
+          this.setLuotXem( item.val().luotXem ),
+          this.setImg( item.val().img ),
+          this.setAddress( item.val().address ),
+          this.setX( item.val().x ),
+          this.setY( item.val().y );
+        }
+      } );
+    } );
+  }
+
   setReduxLocal = async ( user ) => {
     if ( await store.get( 'user' ) ) {
       console.log( '==setReduxLocal=======' );
@@ -112,19 +131,20 @@ class Users {
     console.log( '====================================' );
   }
 
-  async Read() {
-    let i = 0;
-    const firebase = await database().ref( '/User/' );
-    await firebase.on( 'value', ( snapshot ) => {
-      snapshot.forEach( ( key ) => {
-        if ( key.val().sdt === '0392225405' ) {
-          i = 1;
-          console.log( key.val().sdt );
-        }
+  static async Read( ) {
+    return new Promise( ( resolve, reject ) => {
+      let i = 0;
+      const firebase = database().ref( '/User/' );
+      firebase.on( 'value', ( snapshot ) => {
+        snapshot.forEach( ( key ) => {
+          if ( key.val().sdt === '0392225405' ) {
+            i = 1;
+          }
+        } );
+        resolve( i );
       } );
+      resolve( i );
     } );
-
-    return i;
   }
 
   async write() {
@@ -250,9 +270,6 @@ class Users {
   }
 
   getAddress() {
-    console.log( '====================================' );
-    console.log( this.address );
-    console.log( '====================================' );
     return this.address;
   }
 

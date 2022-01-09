@@ -4,10 +4,10 @@ import {
 } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 
-const MYWIDTH = Dimensions.get('window').width;
-const MYHEIGHT = Dimensions.get('window').height;
-export const width = (num) => PixelRatio.roundToNearestPixel(MYWIDTH * (num / 100));
-export const height = (num) => PixelRatio.roundToNearestPixel(MYHEIGHT * (num / 100));
+const MYWIDTH = Dimensions.get( 'window' ).width;
+const MYHEIGHT = Dimensions.get( 'window' ).height;
+export const width = ( num ) => PixelRatio.roundToNearestPixel( MYWIDTH * ( num / 100 ) );
+export const height = ( num ) => PixelRatio.roundToNearestPixel( MYHEIGHT * ( num / 100 ) );
 export const Colors = {
   // text color
   TEXT_PRIMARY: '#069EDB',
