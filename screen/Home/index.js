@@ -18,7 +18,9 @@ class Home extends Base {
     };
   }
 
-  getListWorkerQuality( list = [] ) {
+  user = User.getInStance();
+
+  async getListWorkerQuality( list = [] ) {
     if ( list.length > 0 ) {
       for ( let i = 0; i < ( list.length - 1 ); i++ ) {
         for ( let y = i + 1; y < ( list.length ); y++ ) {
@@ -35,34 +37,10 @@ class Home extends Base {
     }
   }
 
-  getAllListWorker() {
-    firebase.on( ( snapshot ) => {
-      const listWorker = [];
-      snapshot.forEach( ( item ) => {
-        if ( item.val().checkWorker === '1' ) {
-          const temp = {
-            id: item.key,
-            sdt: item.val().sdt,
-            name: item.val().name,
-            x: item.val().x,
-            y: item.val().y,
-            address: item.val().address,
-            luotXem: item.val().luotXem,
-            luotGoi: item.val().luotGoi,
-            pass: item.val().pass,
-            img: item.val().img,
-            checkWorker: item.val().checkWorker,
-          };
-          listWorker.push( temp );
-        }
-      } );
-      this.setState( { list: listWorker } );
-      this.getListWorkerQuality( listWorker );
-    } );
-  }
-
-  componentDidMount() {
-    this.getAllListWorker();
+  async componentDidMount() {
+    const l = await User.getAllListWorker();
+    this.setState( { list: await User.getAllListWorker() } );
+    await this.getListWorkerQuality( l );
   }
 
   onPressViewWorkerSort=() => {

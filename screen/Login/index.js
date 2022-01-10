@@ -40,7 +40,9 @@ class Login extends Base {
     console.log( '==u=============' );
     console.log( { u } );
   }
+
   g
+
   saveLogin() {
     this.setState( {
       ...this.state,
@@ -57,34 +59,35 @@ class Login extends Base {
   }
 
   onPressLogin = async () => {
-    const { txtSDT, txtPass } = this.state;
-    const { user, menuFooterRedux, setUser } = this.props;
-    console.log( '====================================' );
-    console.log( { txtSDT } );
-    console.log( '====================================' );
-    firebase.on( 'value', ( snapshot ) => {
-      const listWorker = [];
-      snapshot.forEach( ( item ) => {
-        if ( item.val().sdt === txtSDT && item.val().pass === txtPass ) {
-          const temp = {
-            id: item.key,
-            sdt: item.val().sdt,
-            name: item.val().name,
-            x: item.val().x,
-            y: item.val().y,
-            address: item.val().address,
-            luotXem: item.val().luotXem,
-            luotGoi: item.val().luotGoi,
-            pass: item.val().pass,
-            img: item.val().img,
-            checkWorker: item.val().checkWorker,
-          };
-          setUser( temp );
-          Actions.home();
-        }
-      } );
-      Alert.alert( In18.Error.noLogin );
-    } );
+    // const { txtSDT, txtPass } = this.state;
+    // const { user, menuFooterRedux, setUser } = this.props;
+    // console.log( '====================================' );
+    // console.log( { txtSDT } );
+    // console.log( '====================================' );
+    // firebase.on( 'value', ( snapshot ) => {
+    //   const listWorker = [];
+    //   snapshot.forEach( ( item ) => {
+    //     if ( item.val().sdt === txtSDT && item.val().pass === txtPass ) {
+    //       const temp = {
+    //         id: item.key,
+    //         sdt: item.val().sdt,
+    //         name: item.val().name,
+    //         x: item.val().x,
+    //         y: item.val().y,
+    //         address: item.val().address,
+    //         luotXem: item.val().luotXem,
+    //         luotGoi: item.val().luotGoi,
+    //         pass: item.val().pass,
+    //         img: item.val().img,
+    //         checkWorker: item.val().checkWorker,
+    //       };
+    //       setUser( temp );
+    //       Actions.home();
+    //     }
+    //   } );
+    //   Alert.alert( In18.Error.noLogin );
+    // } );
+    Actions.home();
   };
 
   onChangePassword = ( value ) => {
