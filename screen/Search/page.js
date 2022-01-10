@@ -6,7 +6,7 @@ import { Router, Actions, Scene } from 'react-native-router-flux';
 import Geolocation from 'react-native-geolocation-service';
 import styles from './style';
 import Img from '../../assets/index';
-import TextInput from '../../components/TextInput/index';
+import TextInput from 'components/TextInput/index';
 import In18 from '../../common/constants';
 import Button from '../../components/btn/index';
 import User from '../../modals/User';

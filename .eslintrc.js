@@ -42,8 +42,8 @@ module.exports = {
     'no-use-before-define': 'off',
     indent: [2, 2],
     'space-in-parens': ['error', 'always'],
-    'linebreak-style': ['error', 'windows'],
-    // "prettier/prettier": "error",
+    // 'linebreak-style': ['error', 'windows'],
+    'prettier/prettier': 'error',
     // 'import/resolver': 'web/pack',
 
   },

@@ -29,27 +29,18 @@ class Login extends Base {
 
   async componentDidMount() {
     const { user } = this.props;
-    console.log( { user } );
+    // console.log( { user } );
     if ( user ) {
       this.setState( {
         txtSDT: user.sdt,
         txtPass: user.pass,
       } );
     }
-    this.getTest();
-
-    const firestores = firestore().collection( 'User' );
-    firestores.get()
-      .then( ( querySnapshot ) => {
-        querySnapshot.forEach( ( documentSnapshot ) => {
-          const datas = documentSnapshot.data();
-          console.log( '====================================' );
-          console.log( { datas } );
-          console.log( '====================================' );
-        } );
-      } );
+    const u = await Users.getAllListWorker();
+    console.log( '==u=============' );
+    console.log( { u } );
   }
-
+  g
   saveLogin() {
     this.setState( {
       ...this.state,
