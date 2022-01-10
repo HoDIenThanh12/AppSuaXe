@@ -11,5 +11,8 @@
     "files.autoSave": "onFocusChange", 
     "editor.codeActionsOnSave": {
       "source.fixAll": true
-  }// Khi nào đổi focus thì tự save
+  },
+  "cSpell.words": [
+    "Luot"
+  ] // Khi nào đổi focus thì tự save
   }

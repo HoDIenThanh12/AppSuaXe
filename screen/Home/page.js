@@ -9,7 +9,7 @@ import Img from '../../assets/index';
 import In18 from '../../common/constants';
 
 const page = ( p ) => {
-  const { listQuality, listWorker } = p.state;
+  const { listQuality, list } = p.state;
   const {
     onClickWorkQuality,
     onClickWorkDetals,
@@ -32,26 +32,7 @@ const page = ( p ) => {
       </View>
     </TouchableOpacity>
   );
-  const Texts = ( props ) => {
-    const txt = props.state;
-    return (
-      <View style={styles.containerEdit}>
-        <View style={styles.contentDetails}>
-          <Text style={props.style}>
-            <Text style={{ fontWeight: 'bold' }}>
-              {props.nameConent}
-            </Text>
-            : {props.state}
-          </Text>
-          <IconButton
-            icon="arrow-right-bold"
-            onPress={() => subMit( props.type )}
-          >
-          </IconButton>
-        </View>
-      </View>
-    );
-  };
+
   const cacu = ( value ) => {
     if ( ( parseInt( value ) / 1000 ) >= 1 ) {
       console.log( ( parseInt( value ) / 1000 ) );
@@ -90,7 +71,8 @@ const page = ( p ) => {
     <View style={styles.container}>
       <ScrollView >
         <Text>Chức năng</Text>
-        <View>
+        <View style={styles.containerOption}>
+
         </View>
         <View style={styles.optionMenu}>
           <Text style={styles.titleOption}>{In18.Options.quality}</Text>
@@ -131,9 +113,9 @@ const page = ( p ) => {
       </ScrollView>
       <View>
         <FlatList
-          data={listWorker}
+          data={list}
           renderItem={( item ) => renderItemWorker( item )}
-          keyExtractor={( item ) => item.key}
+          keyExtractor={( item ) => item.id}
         >
         </FlatList>
       </View>

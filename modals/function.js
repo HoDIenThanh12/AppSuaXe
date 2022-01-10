@@ -4,9 +4,17 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import database from '@react-native-firebase/database';
+import store from 'react-native-simple-store';
 
-export const Login = async () => {
-
+export const checkStore = async ( key, data ) => {
+  if ( await store.get( key ) ) {
+    await store.update( key );
+  } else {
+    await store.push( key, data );
+  }
+};
+export const setStoreLocal = ( user ) => {
+  checkStore( 'user', user );
 };
 export const getAllListWorker = () => {
   const [list, setlist] = useState( [] );

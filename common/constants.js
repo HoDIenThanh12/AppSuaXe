@@ -1,12 +1,12 @@
 import React from 'react';
 
-// eslint-disable-next-line import/no-mutable-exports
 export var MENU = {
   SET_MENU_FOOTER: 'SET_MENU_FOOTER',
   HOME: 'HOME',
   PROFILE: 'PROFILE',
   SEARCH: 'SEARCH',
   MESSAGE: 'MESSAGE',
+  USER: 'USER',
 };
 
 export default Title = {

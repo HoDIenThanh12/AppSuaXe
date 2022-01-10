@@ -54,6 +54,11 @@ class App extends Component {
     //   { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
     // )
     // Alert.alert(gps['latitude'])
+    try {
+      
+    } catch (error) {
+      
+    }
   }
 
   render() {

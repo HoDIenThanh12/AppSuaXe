@@ -1,3 +1,4 @@
+import { checkStore } from 'modals/function';
 import { MENU } from '../../common/constants';
 
 export default class StorageReduxAction {
@@ -5,6 +6,14 @@ export default class StorageReduxAction {
     // checkStore(payload, 'SET_MENU_FOOTER')
     return {
       type: MENU.SET_MENU_FOOTER,
+      payload,
+    };
+  }
+
+  static setUser( payload ) {
+    checkStore( 'user', payload );
+    return {
+      type: MENU.USER,
       payload,
     };
   }

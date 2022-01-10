@@ -44,6 +44,7 @@ module.exports = {
     'space-in-parens': ['error', 'always'],
     'linebreak-style': ['error', 'windows'],
     // "prettier/prettier": "error",
+    // 'import/resolver': 'web/pack',
 
   },
   overrides: [

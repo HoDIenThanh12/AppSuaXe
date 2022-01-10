@@ -1,80 +1,99 @@
 import React from 'react';
-import { Alert } from 'react-native';
+import { Alert, View } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
-import User from 'modals/User';
+// import User from 'modals/User';
 import database from '@react-native-firebase/database';
 import store from 'react-native-simple-store';
-import Userss from 'modals/Users';
-import { Read, getAllListWorker } from 'modals/function';
+import Users from 'modals/Users';
+import { Read, getAllListWorker, setStoreLocal } from 'modals/function';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import firestore from '@react-native-firebase/firestore';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page';
-// import firestore from '@react-native-firebase/firestore';
+import ActionStore from '../../redux/Action/ActionStore';
 
+const firebase = database().ref( '/User/' );
 class Login extends Base {
   constructor( props ) {
     super( props );
     this.page = Page;
     this.state = {
       txtSDT: '0387373405',
-      txtPass: '1',
-      checkUser: 10,
-      list: [],
+      txtPass: 'diencong',
+      values: '0',
+      saveLogin: false,
     };
   }
 
-  getListWorkerQuality( list ) {
+  async componentDidMount() {
+    const { user } = this.props;
+    console.log( { user } );
+    if ( user ) {
+      this.setState( {
+        txtSDT: user.sdt,
+        txtPass: user.pass,
+      } );
+    }
+    this.getTest();
 
+    const firestores = firestore().collection( 'User' );
+    firestores.get()
+      .then( ( querySnapshot ) => {
+        querySnapshot.forEach( ( documentSnapshot ) => {
+          const datas = documentSnapshot.data();
+          console.log( '====================================' );
+          console.log( { datas } );
+          console.log( '====================================' );
+        } );
+      } );
   }
 
-  componentDidMount() {
-    const l = getAllListWorker;
-    console.log( '====================================' );
-    console.log( l );
-    console.log( '====================================' );
-    const usser = Userss.getInStance();
-    // // usser.setName( 'thanh' );
-    Userss.getListWorkers().then( ( value ) => { console.log( value ); } );
-    // const proMis = new Promise( ( success, error ) => {
-    //   const l = usser.getListWorker();
-    //   success( l );
-    // } );
-
-    // console.log( '=====this.state.list ======================' );
-    // console.log( this.state.list );
-    // console.log( '====================================' );
-
-    // // await usser.read();
-    // // await usser.Read();
-    // // const { checkUser } = this.state;
-    // const XX = usser.Read().then( ( value ) => { console.log( value ); } );
-    // await this.setState( { ...this.state, checkUser: usser.Read() } );
-    // this.setState( { checkUser: 100 } );
-    // console.log( '====================================' );
-    // const x = await usser.Read();
-    // const { checkUser } = this.state;
-    // await console.log( checkUser );
-    // console.log( '====================================' );
-    // // if(checkUser==)
+  saveLogin() {
+    this.setState( {
+      ...this.state,
+      saveLogin: true,
+    } );
   }
 
-  pus = async () => {
-    const reference = database().ref( '/User/' );
-    await reference.set( {
-      name: 'Ada Lovelace',
-      age: 31,
+  getTest() {
+    firebase.get().then( ( value ) => {
+      console.log( '====================================' );
+      console.log( { value } );
+      console.log( '====================================' );
     } );
   }
 
   onPressLogin = async () => {
-    Actions.home();
-    // const kt = new User();
-    // const i = await kt.Login(
-    //   this.state.txtSDT.toString(),
-    //   this.state.txtPass.toString(),
-    // );
-
-    // i > 0 ? Actions.home() : Alert.alert(In18.Error.noLogin);
+    const { txtSDT, txtPass } = this.state;
+    const { user, menuFooterRedux, setUser } = this.props;
+    console.log( '====================================' );
+    console.log( { txtSDT } );
+    console.log( '====================================' );
+    firebase.on( 'value', ( snapshot ) => {
+      const listWorker = [];
+      snapshot.forEach( ( item ) => {
+        if ( item.val().sdt === txtSDT && item.val().pass === txtPass ) {
+          const temp = {
+            id: item.key,
+            sdt: item.val().sdt,
+            name: item.val().name,
+            x: item.val().x,
+            y: item.val().y,
+            address: item.val().address,
+            luotXem: item.val().luotXem,
+            luotGoi: item.val().luotGoi,
+            pass: item.val().pass,
+            img: item.val().img,
+            checkWorker: item.val().checkWorker,
+          };
+          setUser( temp );
+          Actions.home();
+        }
+      } );
+      Alert.alert( In18.Error.noLogin );
+    } );
   };
 
   onChangePassword = ( value ) => {
@@ -87,13 +106,12 @@ class Login extends Base {
   };
 
   render() {
+    // return (
+    //   <View>
+
+    //   </View>
+    // );
     const Template = this.view;
-    // const other = Userss.user;
-    // console.log( other );
-    // // other.setName('thanh');
-    // console.log( other );
-    // const others = Userss.getInStance();
-    // console.log( others );
     return (
       <Template
         title={In18.TitleBtn.login}
@@ -106,4 +124,14 @@ class Login extends Base {
     );
   }
 }
-export default Login;
+const mapStateToProps = ( state ) => ( {
+  menuFooterRedux: state.menuFooterRedux,
+  user: state.user,
+} );
+
+const mapDispatchToProps = ( dispatch ) => ( {
+  setMenuFooter: bindActionCreators( ActionStore.setMenuFooter, dispatch ),
+  setUser: bindActionCreators( ActionStore.setUser, dispatch ),
+} );
+export default connect( mapStateToProps, mapDispatchToProps )( Login );
+// export default Login;
