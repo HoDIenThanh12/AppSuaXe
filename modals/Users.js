@@ -125,26 +125,54 @@ class Users {
   //       } );
   //   }
   // }
-  async SuccessCheck( i ) {
-    console.log( '====================================' );
-    await console.log( i );
-    console.log( '====================================' );
+  static async getAllListWorker( ) {
+    const list = [];
+    const firestores = firestore().collection( 'User' );
+    await firestores.get()
+      .then( ( querySnapshot ) => {
+        querySnapshot.forEach( ( documentSnapshot ) => {
+          const datas = documentSnapshot.data();
+          if ( datas.checkWorker === '1' ) {
+            const temp = {
+              id: documentSnapshot.id,
+              name: datas.name,
+              sdt: datas.sdt,
+              luotXem: datas.luotXem,
+              x: datas.x,
+              y: datas.y,
+              address: datas.address,
+              image: datas.image,
+              pass: datas.pass,
+              checkWorker: datas.checkWorker,
+            };
+            list.push( temp );
+          }
+          return list;
+        } );
+      } );
+    return list;
   }
 
   static async Read( ) {
-    return new Promise( ( resolve, reject ) => {
-      let i = 0;
-      const firebase = database().ref( '/User/' );
-      firebase.on( 'value', ( snapshot ) => {
-        snapshot.forEach( ( key ) => {
-          if ( key.val().sdt === '0392225405' ) {
-            i = 1;
+    const firestores = firestore().collection( 'User' );
+    let i = 0;
+    await firestores.get()
+      .then( ( querySnapshot ) => {
+        querySnapshot.forEach( ( documentSnapshot ) => {
+          const datas = documentSnapshot.data();
+          if ( datas.sdt === '0392225405s' ) {
+            i = 10;
           }
+          // console.log( '====================================' );
+          // console.log( { datas } );
+          // console.log( '====================================' );
         } );
-        resolve( i );
+        console.log( { i } );
+        return i;
       } );
-      resolve( i );
-    } );
+    console.log( '====================================' );
+    console.log( { i } );
+    return i;
   }
 
   async write() {

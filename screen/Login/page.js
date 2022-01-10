@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   View, StyleSheet, Image, Text, ScrollView, Alert,
 } from 'react-native';
@@ -44,6 +44,7 @@ const page = ( p ) => {
               keyboardType='numeric'
             >
             </TextInput>
+
             <TextInput
               value={txtPass}
               placeholder={In18.User.password}
