@@ -9,9 +9,7 @@ const Images = ( p ) => {
     styleImage,
   } = p;
   return (
-    <View style={[styles.container, style]}>
-      <Image style={[styles.styleImage, styleImage]} source={url} />
-    </View>
+    <Image style={[styles.styleImage, styleImage]} source={url} />
   );
 };
 const styles = StyleSheet.create( {

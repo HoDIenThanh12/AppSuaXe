@@ -13,8 +13,8 @@
       "modals/*": [
         "./modals/*"
       ],
-      "frontend/*": [
-        "./src/Frontend/*"
+      "reudxs/*": [
+        "reduxs/*"
       ]
     }
   },

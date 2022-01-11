@@ -10,7 +10,10 @@ import In18 from '../../common/constants';
 import OptionFunctions from './components/optionFunction';
 
 const page = ( p ) => {
-  const { listQuality, list } = p.state;
+  const { listQuality, listAll } = p.state;
+  console.log( '====================================' );
+  console.log( { listQuality } );
+  console.log( '====================================' );
   const {
     onClickWorkQuality,
     onClickWorkDetals,
@@ -141,7 +144,7 @@ const page = ( p ) => {
           </View> */}
 
           <FlatList
-            data={list}
+            data={listAll}
             renderItem={( item ) => renderItemWorker( item )}
             keyExtractor={( item ) => item.id}
             showsHorizontalScrollIndicator={false}

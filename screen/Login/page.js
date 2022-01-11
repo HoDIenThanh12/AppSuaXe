@@ -23,7 +23,7 @@ const page = ( p ) => {
   } = p.state;
 
   const {
-    onPressLogin, onChangePassword, onChangeSDT,
+    onPressLogin, onChangePassword, onChangeSDT, openPopup,
   } = p.func;
   return (
     <View style={styles.container} >
@@ -61,7 +61,7 @@ const page = ( p ) => {
               // edit
               onPress={() => Actions.register()}
               styleText={styles.textRegister}
-              styleBTN={styles.btnRegister}
+              style={styles.btnRegister}
             ></Button>
           </View>
           <Button
@@ -69,11 +69,11 @@ const page = ( p ) => {
             onPress={onPressLogin}
           >
           </Button>
-          {/* <Button
+          <Button
             title="push dai"
-            onPress={() => pushs()}
+            onPress={openPopup}
           >
-          </Button> */}
+          </Button>
         </View>
       </ScrollView>
     </View>

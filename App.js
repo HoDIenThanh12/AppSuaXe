@@ -8,8 +8,8 @@ import Geolocation from 'react-native-geolocation-service';
 import { createStore } from 'redux';
 import scenes from './common/router';
 import Login from './screen/Login/index';
-import rootReducer from './redux/Reducer/index';
-
+import rootReducer from './reduxs/Reducer/index';
+import { ModalPortal } from 'react-native-modals';
 const store = createStore( rootReducer );
 // class Tex extends PureComponent {
 //   constructor( props ) {
@@ -55,9 +55,9 @@ class App extends Component {
     // )
     // Alert.alert(gps['latitude'])
     try {
-      
-    } catch (error) {
-      
+
+    } catch ( error ) {
+
     }
   }
 
@@ -68,6 +68,7 @@ class App extends Component {
       //     </View>
       <Provider store={store}>
         <Router scenes={scenes( 'home' )} />
+       
       </Provider>
 
     // <Provider>

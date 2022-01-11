@@ -52,6 +52,7 @@ export default Title = {
     buildFail: 'Hóa đơn chưa hoàn thành',
     setupBuild: 'Có khách đang gọi thợ',
     messageNew: 'Bạn có tin nhắn mới',
+    successMessage: 'Lưu thành công',
   },
   Options: {
     near: 'Gần bạn nhất',
@@ -79,7 +80,7 @@ export default Title = {
     titleInforWord: 'Thông tin thợ',
   },
   Menu: {
-    HOME: 'Home',
+    HOME: 'HOME',
     PRO_FILE: 'PROFILE',
     SEARCH: 'SEARCH',
     MESSAGE: 'MESSAGE',

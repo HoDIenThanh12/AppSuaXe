@@ -41,10 +41,9 @@ const TextInputs = ( props ) => {
 };
 const styles = StyleSheet.create( {
   all: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    margin: 10,
+
   },
   styleIcon: {
     position: 'absolute',
@@ -58,12 +57,9 @@ const styles = StyleSheet.create( {
     alignItems: 'center',
     borderWidth: 1,
     borderColor: 'orange',
-    // height: 50,
     borderRadius: 10,
     width: width( 90 ),
     paddingHorizontal: 5,
-    // paddingVertical: 5,
-    // backgroundColor: 'red',
   },
   ImageStyle: {
     // padding: 10,

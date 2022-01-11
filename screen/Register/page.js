@@ -101,7 +101,7 @@ const page = ( p ) => {
               title={In18.TitleBtn.login}
               onPress={() => Actions.login()}
               styleText={styles.textRegister}
-              styleBTN={styles.btnRegister}
+              style={styles.btnRegister}
             ></Button>
 
           </View>
