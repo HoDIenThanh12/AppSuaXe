@@ -16,6 +16,43 @@ export const checkStore = async ( key, data ) => {
 export const setStoreLocal = ( user ) => {
   checkStore( 'user', user );
 };
+export const getStoreLocal = async ( key ) => {
+  let user = null;
+  if ( store.get( key ) ) {
+    user = await store.get( key );
+  }
+  return user;
+};
+export const setStoreLocalDetails = async ( type, data ) => {
+  const datas = await getStoreLocal( 'user' );
+  const user = datas[0];
+  if ( type === 1 ) {
+    user.name = data;
+  }
+  if ( type === 2 ) {
+    user.sdt = data;
+  }
+  if ( type === 3 ) {
+    user.pass = data;
+  }
+  if ( type === 4 ) {
+    user.address = data;
+  }
+  if ( type === 5 ) {
+    user.x = data;
+  }
+  if ( type === 6 ) {
+    user.y = data;
+  }
+  if ( type === 7 ) {
+    user.image = data;
+  }
+  if ( type === 9 ) {
+    user.checkWorker = !user.checkWorker;
+  }
+  await checkStore( 'user', user );
+};
+
 export const Register = async ( _sdt, _name, _address, _checkWorker = 0, _pass ) => {
   const users = {
     name: _name,
@@ -28,8 +65,6 @@ export const Register = async ( _sdt, _name, _address, _checkWorker = 0, _pass )
     pass: _pass,
     luotXem: '0',
   };
-  console.log( '====================================' );
-  console.log( 'đã vào' );
   await firestores
     .add( {
       name: _name,
@@ -43,66 +78,61 @@ export const Register = async ( _sdt, _name, _address, _checkWorker = 0, _pass )
       luotXem: '0',
     } )
     .then( ( user ) => {
-      setStoreLocal( user );
+      setStoreLocal( users );
     } );
 };
-
+export const getDistance = ( xUser, yUser, xWoker, yWoker ) => {
+  const x1 = parseInt( xUser, 10 );
+  const x2 = parseInt( xWoker, 10 );
+  const y1 = parseInt( yUser, 10 );
+  const y2 = parseInt( yWoker, 10 );
+  const reslt = ( Math.sqrt( ( x1 - x2 ) ** 2 + ( y1 - y2 ) ** 2 ) ) / 1000;
+  return `${reslt}m`;
+};
 export const SaveProfile = async ( idUser, type, text ) => {
-  if ( type === '0' ) {
-    try {
+  // eslint-disable-next-line no-shadow
+  const getNameType = ( type, text ) => {
+    if ( type === 1 ) {
+      return { name: text };
+    }
+    if ( type === 2 ) {
+      return { sdt: text };
+    }
+    if ( type === 3 ) {
+      return { pass: text };
+    }
+    if ( type === 4 ) {
+      return { address: text };
+    }
+    if ( type === 5 ) {
+      return { x: text };
+    }
+    if ( type === 7 ) {
+      return { image: text };
+    }
+    return { checkWorker: text };
+  };
+  const names = getNameType( type, text );
+  try {
+    if ( type === 2 ) {
+      if ( text.length < 10 && text.length > 11 ) {
+        Alert.alert( In18.War.numberPhoneFail );
+      } else {
+        await firestores.doc( idUser )
+          .update( names )
+          .then( () => {
+            Alert.alert( In18.Notification.successMessage );
+          } ).catch( ( err ) => console.log( { err } ) );
+      }
+    } else {
       await firestores.doc( idUser )
-        .update( {
-          name: text,
-        } )
+        .update( names )
         .then( () => {
           Alert.alert( In18.Notification.successMessage );
         } );
-    } catch ( error ) {
-
     }
-  }
-  if ( type === '1' ) {
-    if ( text.length > 11 && text.length < 10 ) {
-      Alert.alert( In18.War.numberPhoneFail );
-    } else {
-      try {
-        await firestores.doc( idUser )
-          .update( {
-            name: text,
-          } )
-          .then( () => {
-            Alert.alert( In18.Notification.successMessage );
-          } );
-      } catch ( error ) {
+  } catch ( error ) {
 
-      }
-    }
-  }
-  if ( type === '2' ) {
-    try {
-      await firestores.doc( idUser )
-        .update( {
-          name: text,
-        } )
-        .then( () => {
-          Alert.alert( 'asgfdgh' );
-        } );
-    } catch ( error ) {
-
-    }
-  }
-  if ( type === '3' ) {
-    try {
-      await firestores.doc( idUser )
-        .update( {
-          name: text,
-        } )
-        .then( () => {
-          Alert.alert( 'asgfdgh' );
-        } );
-    } catch ( error ) {
-
-    }
   }
 };
 
