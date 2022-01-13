@@ -14,6 +14,7 @@ const Img = {
     icProfile: require( './images/iconProfile.png' ),
     iconEditImg: require( './images/iconEditImg.png' ),
     iconPass: require( './images/iconPass.png' ),
+    iconClose: require( './images/iconClose.png' ),
   },
 
 };

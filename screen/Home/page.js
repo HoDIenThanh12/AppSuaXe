@@ -1,15 +1,19 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import {
-  View, TouchableOpacity, Image, Text, ScrollView, FlatList,
+  View, TouchableOpacity, Image, Text, ScrollView, FlatList, styleSheet,
 } from 'react-native';
 import { IconButton } from 'react-native-paper';
 import { Router, Actions, Scene } from 'react-native-router-flux';
 import styles from './style';
 import Img from '../../assets/index';
 import In18 from '../../common/constants';
+import OptionFunctions from './components/optionFunction';
 
 const page = ( p ) => {
-  const { listQuality, list } = p.state;
+  const { listQuality, listAll } = p.state;
+  console.log( '====================================' );
+  console.log( { listQuality } );
+  console.log( '====================================' );
   const {
     onClickWorkQuality,
     onClickWorkDetals,
@@ -17,6 +21,16 @@ const page = ( p ) => {
     onPressViewList,
   } = p.func;
   const [listBuild, setlistBuild] = useState( [] );
+  const listOptions = [
+    {
+      title: In18.TitleBtn.call,
+      image: Img.Image.imgCall,
+    },
+    {
+      title: In18.TitleBtn.maintenance,
+      image: Img.Image.worker,
+    },
+  ];
   const rederQuality = ( { item } ) => (
     <TouchableOpacity style={styles.containerQuality} onPress={() => Actions.infoWorker( { item } )} >
       <View style={styles.containerQualityDetail}>
@@ -69,10 +83,15 @@ const page = ( p ) => {
   };
   return (
     <View style={styles.container}>
-      <ScrollView >
+      <ScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+      >
         <Text>Chức năng</Text>
         <View style={styles.containerOption}>
-
+          {
+            listOptions.map( ( items, index ) => <OptionFunctions items={items} func={() => {}}></OptionFunctions> )
+          }
         </View>
         <View style={styles.optionMenu}>
           <Text style={styles.titleOption}>{In18.Options.quality}</Text>
@@ -87,7 +106,7 @@ const page = ( p ) => {
           </View>
         </View>
         <FlatList
-          data={Object.values( listQuality )}
+          data={listQuality}
           // eslint-disable-next-line react-native/no-inline-styles
           contentContainerStyle={{
             flexDirection: 'row',
@@ -110,16 +129,31 @@ const page = ( p ) => {
           </View>
 
         </View>
-      </ScrollView>
-      <View>
-        <FlatList
-          data={list}
-          renderItem={( item ) => renderItemWorker( item )}
-          keyExtractor={( item ) => item.id}
-        >
-        </FlatList>
-      </View>
 
+        <View>
+          {/* <View style={{ display: 'flex' }}>
+            <FlatList
+              data={list}
+              renderItem={( item ) => renderItemWorker( item )}
+              keyExtractor={( item ) => item.key}
+              showsHorizontalScrollIndicator={false}
+              showsVerticalScrollIndicator={false}
+              scrollEnabled={false}
+            >
+            </FlatList>
+          </View> */}
+
+          <FlatList
+            data={listAll}
+            renderItem={( item ) => renderItemWorker( item )}
+            keyExtractor={( item ) => item.id}
+            showsHorizontalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}
+            scrollEnabled={false}
+          >
+          </FlatList>
+        </View>
+      </ScrollView>
     </View>
 
   );

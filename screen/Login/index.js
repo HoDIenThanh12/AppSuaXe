@@ -5,16 +5,19 @@ import { Router, Actions, Scene } from 'react-native-router-flux';
 import database from '@react-native-firebase/database';
 import store from 'react-native-simple-store';
 import Users from 'modals/Users';
-import { Read, getAllListWorker, setStoreLocal } from 'modals/function';
+import {
+  Read, getAllListWorker, setStoreLocal, Register,
+} from 'modals/function';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import firestore from '@react-native-firebase/firestore';
+import ActionStore from '../../reduxs/Action/ActionStore';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page';
-import ActionStore from '../../redux/Action/ActionStore';
 
 const firebase = database().ref( '/User/' );
+const firestores = firestore().collection( 'User' );
 class Login extends Base {
   constructor( props ) {
     super( props );
@@ -28,19 +31,11 @@ class Login extends Base {
   }
 
   async componentDidMount() {
+    // await Register( '0123456789', 'ho dien cong', 'bình dương', 0, 'diencong' );
     const { user } = this.props;
-    // console.log( { user } );
-    if ( user ) {
-      this.setState( {
-        txtSDT: user.sdt,
-        txtPass: user.pass,
-      } );
-    }
-    const u = await Users.getAllListWorker();
-    console.log( '==u=============' );
-    console.log( { u } );
+    console.log( { user } );
   }
-  g
+
   saveLogin() {
     this.setState( {
       ...this.state,
@@ -58,33 +53,69 @@ class Login extends Base {
 
   onPressLogin = async () => {
     const { txtSDT, txtPass } = this.state;
-    const { user, menuFooterRedux, setUser } = this.props;
+
+    const { user, setUser } = this.props;
     console.log( '====================================' );
-    console.log( { txtSDT } );
+    console.log( { setUser } );
     console.log( '====================================' );
-    firebase.on( 'value', ( snapshot ) => {
-      const listWorker = [];
-      snapshot.forEach( ( item ) => {
-        if ( item.val().sdt === txtSDT && item.val().pass === txtPass ) {
-          const temp = {
-            id: item.key,
-            sdt: item.val().sdt,
-            name: item.val().name,
-            x: item.val().x,
-            y: item.val().y,
-            address: item.val().address,
-            luotXem: item.val().luotXem,
-            luotGoi: item.val().luotGoi,
-            pass: item.val().pass,
-            img: item.val().img,
-            checkWorker: item.val().checkWorker,
-          };
-          setUser( temp );
-          Actions.home();
-        }
+    let i = 0;
+    const list = [];
+    await firestores.get()
+      .then( ( querySnapshot ) => {
+        querySnapshot.forEach( ( documentSnapshot ) => {
+          const datas = documentSnapshot.data();
+          if ( datas.sdt === txtSDT && datas.pass === txtPass ) {
+            i = 1;
+            const temp = {
+              id: documentSnapshot.id,
+              name: datas.name,
+              sdt: datas.sdt,
+              luotXem: datas.luotXem,
+              x: datas.x,
+              y: datas.y,
+              address: datas.address,
+              image: datas.image,
+              pass: datas.pass,
+              checkWorker: datas.checkWorker,
+            };
+            setUser( temp );
+            Actions.home();
+          }
+          if ( i === 0 ) {
+            Alert.alert( In18.Error.noLogin );
+          }
+        } );
       } );
-      Alert.alert( In18.Error.noLogin );
-    } );
+    // console.log( '====================================' );
+    // console.log( { txtSDT } );
+    // console.log( '====================================' );
+    // firebase.on( 'value', ( snapshot ) => {
+    //   const listWorker = [];
+    //   snapshot.forEach( ( item ) => {
+    //     if ( item.val().sdt === txtSDT && item.val().pass === txtPass ) {
+    //       const temp = {
+    //         id: item.key,
+    //         sdt: item.val().sdt,
+    //         name: item.val().name,
+    //         x: item.val().x,
+    //         y: item.val().y,
+    //         address: item.val().address,
+    //         luotXem: item.val().luotXem,
+    //         luotGoi: item.val().luotGoi,
+    //         pass: item.val().pass,
+    //         img: item.val().img,
+    //         checkWorker: item.val().checkWorker,
+    //       };
+    //       setUser( temp );
+    //       Actions.home();
+    //       i = 1;
+    //     }
+    //   } );
+    //   if ( i === 0 ) {
+    //     Alert.alert( In18.Error.noLogin );
+    //   }
+    // } );
+    // Actions.home();
   };
 
   onChangePassword = ( value ) => {

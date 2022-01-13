@@ -9,17 +9,13 @@ import Img from '../../assets/index';
 import styles from './style';
 import In18 from '../../common/constants';
 // ADD REDUX
-import ActionStore from '../../redux/Action/ActionStore';
+import ActionStore from '../../reduxs/Action/ActionStore';
 
 const Footer = ( props ) => {
   const onClickOptionMenu = ( value ) => {
     const { menuFooterRedux, setMenuFooter } = props;
-    // setMenuFooter(value)
-    console.log( '====================================' );
-    console.log( { menuFooterRedux } );
-    console.log( { value } );
-    console.log( '====================================' );
-    if ( value != menuFooterRedux ) {
+
+    if ( value !== menuFooterRedux ) {
       if ( value === In18.Menu.HOME ) {
         Actions.home();
       }

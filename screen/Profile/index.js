@@ -2,71 +2,98 @@ import React from 'react';
 import { Alert } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
 import store from 'react-native-simple-store';
-import Base from '../../container/BaseContainer';
+import User from 'modals/Users';
+import { connect } from 'react-redux';
+import ActionStore from 'reduxs/Action/ActionStore';
+import Base from 'container/BaseContainer';
+import { bindActionCreators } from 'redux';
+import { SaveProfile } from 'modals/function';
 import In18 from '../../common/constants';
 import Page from './page';
-import User from '../../modals/User';
-// import firestore from '@react-native-firebase/firestore';
+import PopupEdit from './componets/popupEdit';
+
 class Profile extends Base {
   constructor( props ) {
     super( props );
     this.page = Page;
     this.state = {
-      sdt: '0387373405',
+      sdt: '',
       pass: '1',
       names: '',
       address: '10 a/1, Bình đngs, Bình hào, thuận An, Bình Dương',
       img: '',
       isWorker: false,
+      contentNew: '',
     };
   }
 
   async componentDidMount() {
-    // eslint-disable-next-line no-underscore-dangle
-    const users = User._user;
-    store.get( 'user' ).then(
-      ( res ) => console.log( res ), // ['milk']
-    );
-    await this.setState( {
-      sdt: users.getSDT(),
-      pass: users.getPass(),
-      names: users.getName(),
-      address: users.getAddress(),
-      img: users.getImage(),
+    const { user } = this.props;
+    this.setState( {
+      sdt: user.sdt,
+      names: user.name,
+      address: user.address,
+      imag: user.image,
+      pass: user.pass,
     } );
   }
 
-  onPressSave = async ( type ) => {
-    console.log( context );
-    const user = new User();
-    // if (type === '0') {
-    //   this.setState({ ...this.state, name: context });
-    // }
-    // if (type === '1') {
-    //   this.setState({ ...this.state, sdt: context });
-    // }
-    // if (type === '2') {
-    //   this.setState({ ...this.state, pass: context });
-    // }
-    // if (type === '3') {
-    //   this.setState({ ...this.state, address: context });
-    // }
-  };
+  onPressLogOut() {
+    Actions.login();
+  }
 
-  onChangeTexts = ( type, context ) => {
-    console.log( context + type );
+  onPressSave = async ( type ) => {
+    // const user = new User();
+    const { user } = this.props;
+    const { contentNew } = this.state;
     if ( type === '0' ) {
-      this.setState( { ...this.state, name: context } );
+      await SaveProfile( user.id, type, contentNew );
     }
     if ( type === '1' ) {
-      this.setState( { ...this.state, sdt: context } );
+
     }
     if ( type === '2' ) {
-      this.setState( { ...this.state, pass: context } );
+
     }
     if ( type === '3' ) {
-      this.setState( { ...this.state, address: context } );
+
     }
+  };
+
+  onChangTextNew=( text ) => {
+    this.setState( { ...this.state, contentNew: text } );
+  }
+
+  onOpenEdit=( type, nameTextOld, textOld ) => {
+    this.openModal();
+    // eslint-disable-next-line no-lone-blocks
+    { this.popup = <PopupEdit
+      nameTextOld={nameTextOld}
+      textOld={textOld}
+      onSave={() => this.onPressSave( type )}
+      onChangText={this.onChangTextNew}
+      onClose={this.closeModal}>
+
+    </PopupEdit>; }
+  }
+
+  onChangeTexts = ( type ) => {
+    console.log( '====================================' );
+    console.log( { type } );
+    console.log( '====================================' );
+    // console.log( context + type );
+    // if ( type === '0' ) {
+    //   this.setState( { ...this.state, name: context } );
+    // }
+    // if ( type === '1' ) {
+    //   this.setState( { ...this.state, sdt: context } );
+    // }
+    // if ( type === '2' ) {
+    //   this.setState( { ...this.state, pass: context } );
+    // }
+    // if ( type === '3' ) {
+    //   this.setState( { ...this.state, address: context } );
+    // }
   };
 
   onChangeImgAvatar = ( value ) => {
@@ -87,4 +114,13 @@ class Profile extends Base {
     );
   }
 }
-export default Profile;
+const mapStateToProps = ( state ) => ( {
+  menuFooterRedux: state.menuFooterRedux,
+  user: state.user,
+} );
+const mapDispatchToProps = ( dispatch ) => ( {
+  setMenuFooter: bindActionCreators( ActionStore.setMenuFooter, dispatch ),
+  setUser: bindActionCreators( ActionStore.setUser, dispatch ),
+} );
+export default connect( mapStateToProps, mapDispatchToProps )( Profile );
+// export default Profile;

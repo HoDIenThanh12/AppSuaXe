@@ -1,8 +1,11 @@
 import React from 'react';
 import { Alert } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
-import User from 'modals/Users';
 import database from '@react-native-firebase/database';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { getAllListWorker, getListWorkerQuality } from 'modals/function';
+import ActionStore from 'reduxs/Action/ActionStore';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page';
@@ -13,56 +16,19 @@ class Home extends Base {
     super( props );
     this.page = Page;
     this.state = {
-      list: [],
+      listAll: [],
       listQuality: [],
     };
   }
 
-  getListWorkerQuality( list = [] ) {
-    if ( list.length > 0 ) {
-      for ( let i = 0; i < ( list.length - 1 ); i++ ) {
-        for ( let y = i + 1; y < ( list.length ); y++ ) {
-          if ( parseInt( list[i].luotXem, 10 ) < parseInt( list[y].luotXem, 10 ) ) {
-            console.log( list[y].luotXem );
-            const temps = list[i];
-            // eslint-disable-next-line no-param-reassign
-            list[i] = list[y];
-            list[y] = temps;
-          }
-        }
-      }
-      this.setState( { listQuality: list } );
-    }
-  }
-
-  getAllListWorker() {
-    firebase.on( ( snapshot ) => {
-      const listWorker = [];
-      snapshot.forEach( ( item ) => {
-        if ( item.val().checkWorker === '1' ) {
-          const temp = {
-            id: item.key,
-            sdt: item.val().sdt,
-            name: item.val().name,
-            x: item.val().x,
-            y: item.val().y,
-            address: item.val().address,
-            luotXem: item.val().luotXem,
-            luotGoi: item.val().luotGoi,
-            pass: item.val().pass,
-            img: item.val().img,
-            checkWorker: item.val().checkWorker,
-          };
-          listWorker.push( temp );
-        }
-      } );
-      this.setState( { list: listWorker } );
-      this.getListWorkerQuality( listWorker );
-    } );
-  }
-
-  componentDidMount() {
-    this.getAllListWorker();
+  async componentDidMount() {
+    const list = await getAllListWorker();
+    this.setState( { listAll: list } );
+    this.setState( { listQuality: getListWorkerQuality( list ) } );
+    const { user } = this.props;
+    console.log( '====================================' );
+    // console.log( { user } );
+    console.log( '====================================' );
   }
 
   onPressViewWorkerSort=() => {
@@ -85,4 +51,13 @@ class Home extends Base {
     );
   }
 }
-export default Home;
+const mapStateToProps = ( state ) => ( {
+  menuFooterRedux: state.menuFooterRedux,
+  user: state.user,
+} );
+
+const mapDispatchToProps = ( dispatch ) => ( {
+  setMenuFooter: bindActionCreators( ActionStore.setMenuFooter, dispatch ),
+  setUser: bindActionCreators( ActionStore.setUser, dispatch ),
+} );
+export default connect( mapStateToProps, mapDispatchToProps )( Home );
