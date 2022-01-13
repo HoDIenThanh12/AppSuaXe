@@ -43,7 +43,7 @@ const styles = StyleSheet.create( {
   all: {
     justifyContent: 'center',
     alignItems: 'center',
-
+    margin: 10,
   },
   styleIcon: {
     position: 'absolute',

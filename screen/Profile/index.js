@@ -110,6 +110,7 @@ class Profile extends Base {
         func={this}
         state={this.state}
         showBtnBack={false}
+        noHeader
       />
     );
   }

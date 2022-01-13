@@ -10,10 +10,13 @@ const Button = ( props ) => {
   } = props;
   return (
     <TouchableOpacity disabled={isDisable}
-      style={[styles.container, styleBtn]}
+      style={styles.container}
       {...props}
     >
-      <Text style={[styles.textButton, styleText]}>{title}</Text>
+      <View style={[styles.containerText, styleBtn]}>
+        <Text style={[styles.textButton, styleText]}>{title}</Text>
+
+      </View>
     </TouchableOpacity>
   );
 };
@@ -23,10 +26,17 @@ const styles = StyleSheet.create( {
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  containerText: {
+    display: 'flex',
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderColor: 'orange',
     borderWidth: 1,
+    height: height( 6 ),
   },
   textButton: {
     alignSelf: 'center',

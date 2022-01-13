@@ -11,14 +11,7 @@ import { Router, Actions, Scene } from 'react-native-router-flux';
 // import Modal from 'react-native-modal';
 import { IconButton } from 'react-native-paper';
 import TextInput from 'components/TextInput/index';
-import {
-  Modal,
-  ModalFooter,
-  ModalButton,
-  ModalContent,
-  ModalPortal,
-  ModalTitle,
-} from 'react-native-modals';
+
 import styles from './style';
 import Img from '../../assets/index';
 import In18 from '../../common/constants';
@@ -34,7 +27,7 @@ const page = ( p ) => {
     onChangeTexts, onChangeImgAvatar, closePopups, onPressLogOut, onOpenEdit,
   } = p.func;
 
-  const [isModals, setisModals] = useState( false ); 
+  const [isModals, setisModals] = useState( false );
   const subMit = ( types, nameTextOld, textOld ) => {
     onOpenEdit( types, nameTextOld, textOld );
   };
@@ -83,12 +76,12 @@ const page = ( p ) => {
         </View>
         <View style={[styles.btnModal, styles.btnOption]}>
           <Buttons
-            style={styles.styleBtnModal}
+            styleBtn={styles.styleBtnModal}
             title={In18.TitleBtn.history}
             onPress={() => setisModals( !isModals )}></Buttons>
           <Buttons
             title={In18.TitleBtn.logOut}
-            style={styles.styleBtnModalSave}
+            styleBtn={styles.styleBtnModalSave}
             onPress={() => onPressLogOut()}></Buttons>
         </View>
       </ScrollView>

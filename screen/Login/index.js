@@ -4,10 +4,8 @@ import { Router, Actions, Scene } from 'react-native-router-flux';
 // import User from 'modals/User';
 import database from '@react-native-firebase/database';
 import store from 'react-native-simple-store';
-import Users from 'modals/Users';
-import {
-  Read, getAllListWorker, setStoreLocal, Register,
-} from 'modals/function';
+import storage from '@react-native-firebase/storage';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import firestore from '@react-native-firebase/firestore';

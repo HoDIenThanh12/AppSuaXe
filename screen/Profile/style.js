@@ -23,7 +23,8 @@ const styles = StyleSheet.create( {
     alignItems: 'center',
   },
   imgAvatart: {
-    // width:200,
+    height: width( 30 ),
+    width: width( 30 ),
     marginTop: 20,
   },
   iconEditAvatar: {

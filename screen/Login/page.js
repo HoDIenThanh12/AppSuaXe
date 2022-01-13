@@ -58,10 +58,9 @@ const page = ( p ) => {
             <Text>{In18.NomalTitle.questionAccount}</Text>
             <Button
               title={In18.TitleBtn.register}
-              // edit
               onPress={() => Actions.register()}
               styleText={styles.textRegister}
-              style={styles.btnRegister}
+              styleBtn={styles.btnRegister}
             ></Button>
           </View>
           <Button
