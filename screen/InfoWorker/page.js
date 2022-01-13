@@ -7,13 +7,14 @@ import Img from '../../assets/index';
 import In18 from '../../common/constants';
 import Buttons from '../../components/btn/index';
 
-const page = (p) => {
-  const { onPressSetup, onPressCall } = p.state;
+const page = ( p ) => {
+  // const { onPressSetup onPressCall } = p.func;
+  const { time, setUpCaulate, note } = p.state;
   const { item } = p.props;
   const {
     name, sdt, img, address, luotXem,
   } = item;
-  console.log(name);
+  console.log( { item } );
   return (
     <View style={styles.container}>
       {/* // add new for test */}

@@ -20,7 +20,9 @@ const scenes = ( key ) => {
       <Scene key="register" component={Regitster} title="Đăng ký" />
       <Scene key="home" component={Home} title="Trang chủ" />
       <Scene key="search" component={Search} title="Tìm kiếm thợ" />
-      <Scene key="screen1" component={Screen1} title="Tìm kiếm thợ" />
+      <Scene key="screen2" component={Screen2} title="Tìm kiếm thợ" />
+
+      <Scene key="infoWorker" component={InfoWorker} title="Thông tin thợ" />
       <Scene key="screen2" component={Screen2} title="Tìm kiếm thợ" />
     </Scene>,
   );

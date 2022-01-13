@@ -131,18 +131,6 @@ const page = ( p ) => {
         </View>
 
         <View>
-          {/* <View style={{ display: 'flex' }}>
-            <FlatList
-              data={list}
-              renderItem={( item ) => renderItemWorker( item )}
-              keyExtractor={( item ) => item.key}
-              showsHorizontalScrollIndicator={false}
-              showsVerticalScrollIndicator={false}
-              scrollEnabled={false}
-            >
-            </FlatList>
-          </View> */}
-
           <FlatList
             data={listAll}
             renderItem={( item ) => renderItemWorker( item )}

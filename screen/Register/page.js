@@ -6,9 +6,9 @@ import { Router, Actions, Scene } from 'react-native-router-flux';
 import CheckBox from '@react-native-community/checkbox';
 import User from 'modals/User';
 import In18 from 'common/constants';
+import TextInput from 'components/TextInput/index';
 import styles from './style';
 import Img from '../../assets/index';
-// import TextInput from 'components/TextInput/index';
 import Button from '../../components/btn/index';
 import Userss from '../../modals/Users';
 
@@ -65,6 +65,7 @@ const page = ( p ) => {
               value={txtPass}
               placeholder={In18.User.password}
               onChangeText={onChangePassword}
+              password
             >
             </TextInput>
 
@@ -101,7 +102,7 @@ const page = ( p ) => {
               title={In18.TitleBtn.login}
               onPress={() => Actions.login()}
               styleText={styles.textRegister}
-              style={styles.btnRegister}
+              styleBtn={styles.btnRegister}
             ></Button>
 
           </View>

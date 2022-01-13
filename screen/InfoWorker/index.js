@@ -7,10 +7,14 @@ import Page from './page';
 import { height, width } from '../../common/styles';
 
 class InfoWorker extends Base {
-  constructor(props) {
-    super(props);
+  constructor( props ) {
+    super( props );
     this.page = Page;
     this.state = {
+      setUpCaulate: '',
+      note: '',
+      address: '',
+      time: '',
     };
   }
 
@@ -31,7 +35,7 @@ class InfoWorker extends Base {
     return (
       <Template
         title={In18.NomalTitle.titleInforWord}
-        noFooter={false}
+        noFooter
         props={this.props}
         func={this}
         state={this.state}
