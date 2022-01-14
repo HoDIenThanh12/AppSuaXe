@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 import ActionStore from 'reduxs/Action/ActionStore';
 import { connect } from 'react-redux';
 import { getAllListWorker } from 'modals/function';
-
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page';
@@ -17,7 +16,9 @@ class Search extends Base {
     this.page = Page;
     this.state = {
       list: [],
-      type: this.types ? types : 0,
+      type: 1,
+      x: '0',
+      y: '0',
     };
   }
 
@@ -26,6 +27,13 @@ class Search extends Base {
     this.setState( {
       list: listWorker,
     } );
+    // const { user } = this.props;
+    // this.setState( {
+    //   ...this.state,
+    //   x: user.x,
+    //   y: user.y,
+    //   list: await getAllListWorker(),
+    // } );
   }
 
   onChangeType = async ( type ) => {
@@ -56,12 +64,19 @@ class Search extends Base {
 }
 const mapStateToProps = ( state ) => ( {
   menuFooterRedux: state.menuFooterRedux,
+
   listWorker: state.listWorker,
+
+  user: state.user,
+
 } );
 
 const mapDispatchToProps = ( dispatch ) => ( {
   setMenuFooter: bindActionCreators( ActionStore.setMenuFooter, dispatch ),
+
   listWorker: bindActionCreators( ActionStore.setListWorker, dispatch ),
+  setUser: bindActionCreators( ActionStore.setUser, dispatch ),
+
 } );
 export default connect( mapStateToProps, mapDispatchToProps )( Search );
 // export default Search;

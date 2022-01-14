@@ -10,7 +10,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import firestore from '@react-native-firebase/firestore';
 import { setStoreLocal, getStoreLocal, SaveProfile } from 'modals/function';
-import ActionStore from '../../reduxs/Action/ActionStore';
+import ActionStore from 'reduxs/Action/ActionStore';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page';
@@ -84,7 +84,7 @@ class Login extends Base {
               await setStoreLocal( temp );
             }
             setUser( temp );
-            // Actions.home();
+            Actions.home();
             const users = await getStoreLocal( 'user' );
             console.log( '==user[0]============================' );
             console.log( users[0] );
