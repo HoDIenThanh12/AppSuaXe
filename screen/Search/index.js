@@ -1,6 +1,11 @@
 import React from 'react';
 import { Alert } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
+import { bindActionCreators } from 'redux';
+import ActionStore from 'reduxs/Action/ActionStore';
+import { connect } from 'react-redux';
+import { getAllListWorker } from 'modals/function';
+
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page';
@@ -17,26 +22,18 @@ class Search extends Base {
   }
 
   async componentDidMount() {
-    const users = new User();
-    // const l=await users.ListWorker()
-    let l = [];
-    if ( this.type === 0 ) {
-      l = await users.ListWorker();
-    } else {
-      l = await users.ListWorkerQualyity();
-    }
-    this.setState( { ...this.state, list: l } );
+    const { listWorker } = this.props;
+    this.setState( {
+      list: listWorker,
+    } );
   }
 
   onChangeType = async ( type ) => {
-    const users = new User();
-    this.setState( { ...this.state, type } );
-    if ( this.type === 0 ) {
-      const l = await users.ListWorker();
-      await this.setState( { ...this.state, list: l } );
-    } else {
-      const l = await users.ListWorkerQualyity();
-      await this.setState( { ...this.state, list: l } );
+    const { listWorker } = this.props;
+    if ( type === 1 ) {
+      this.setState( {
+        list: listWorker,
+      } );
     }
   };
 
@@ -52,8 +49,19 @@ class Search extends Base {
         func={this}
         state={this.state}
         showBtnBack={false}
+        noHeader
       />
     );
   }
 }
-export default Search;
+const mapStateToProps = ( state ) => ( {
+  menuFooterRedux: state.menuFooterRedux,
+  listWorker: state.listWorker,
+} );
+
+const mapDispatchToProps = ( dispatch ) => ( {
+  setMenuFooter: bindActionCreators( ActionStore.setMenuFooter, dispatch ),
+  listWorker: bindActionCreators( ActionStore.setListWorker, dispatch ),
+} );
+export default connect( mapStateToProps, mapDispatchToProps )( Search );
+// export default Search;

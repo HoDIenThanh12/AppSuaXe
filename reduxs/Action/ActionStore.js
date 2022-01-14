@@ -1,5 +1,5 @@
 import { checkStore } from 'modals/function';
-import { MENU } from '../../common/constants';
+import { MENU, KEY_PAGE } from 'common/constants';
 
 export default class StorageReduxAction {
   static setMenuFooter( payload ) {
@@ -17,18 +17,12 @@ export default class StorageReduxAction {
       payload,
     };
   }
-  // static setSDT (payload) {
-  //   checkStore(payload, KEYSTORE.SET_MENU_FOOTER)
-  //   return {
-  //     type: KEYSTORE.SET_MENU_FOOTER,
-  //     payload
-  //   }
-  // }
-  // static setName (payload) {
-  //   checkStore(payload, KEYSTORE.SET_MENU_FOOTER)
-  //   return {
-  //     type: KEYSTORE.SET_MENU_FOOTER,
-  //     payload
-  //   }
-  // }
+
+  static setListWorker( payload ) {
+    // checkStore( 'user', payload );
+    return {
+      type: KEY_PAGE.SET_LIST_WORKER,
+      payload,
+    };
+  }
 }

@@ -132,7 +132,7 @@ export const SaveProfile = async ( idUser, type, text ) => {
         } );
     }
   } catch ( error ) {
-
+    console.log( { err } );
   }
 };
 

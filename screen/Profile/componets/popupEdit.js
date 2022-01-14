@@ -21,8 +21,8 @@ export default function popupEdit( props ) {
       >
       </TextInput>
       <View style={styles.containerButton}>
-        <Button onPress={onClose} styleBtn={styles.buttonClose} title={In18.TitleBtn.close}></Button>
-        <Button onPress={onSave} styleBtn={styles.buttonSave} title={In18.TitleBtn.submit}></Button>
+        <Button onPress={onClose} styleBtn={styles.buttonClose} title={In18.TitleBtn.close} />
+        <Button onPress={onSave} styleBtn={styles.buttonSave} title={In18.TitleBtn.submit} />
 
       </View>
     </View>

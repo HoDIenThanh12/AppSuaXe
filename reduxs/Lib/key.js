@@ -5,5 +5,6 @@ const initState = {
   stringInit: '',
   menuFooter: MENU.HOME,
   user: null,
+  list: [],
 };
 export default initState;

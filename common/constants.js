@@ -8,6 +8,9 @@ export var MENU = {
   MESSAGE: 'MESSAGE',
   USER: 'USER',
 };
+export var KEY_PAGE = {
+  SET_LIST_WORKER: 'SET_LIST_WORKER',
+};
 
 export default Title = {
   User: {
@@ -78,6 +81,7 @@ export default Title = {
     totalMoney: 'Tổng tiền',
     note: 'Nội dung ',
     titleInforWord: 'Thông tin thợ',
+    all: 'Tất cả',
   },
   Menu: {
     HOME: 'HOME',
