@@ -23,6 +23,10 @@ class Search extends Base {
   }
 
   async componentDidMount() {
+    const { listWorker } = this.props;
+    this.setState( {
+      list: listWorker,
+    } );
     // const { user } = this.props;
     // this.setState( {
     //   ...this.state,
@@ -33,14 +37,11 @@ class Search extends Base {
   }
 
   onChangeType = async ( type ) => {
-    const users = new User();
-    this.setState( { ...this.state, type } );
-    if ( this.type === 0 ) {
-      const l = await users.ListWorker();
-      await this.setState( { ...this.state, list: l } );
-    } else {
-      const l = await users.ListWorkerQualyity();
-      await this.setState( { ...this.state, list: l } );
+    const { listWorker } = this.props;
+    if ( type === 1 ) {
+      this.setState( {
+        list: listWorker,
+      } );
     }
   };
 
@@ -56,18 +57,26 @@ class Search extends Base {
         func={this}
         state={this.state}
         showBtnBack={false}
+        noHeader
       />
     );
   }
 }
 const mapStateToProps = ( state ) => ( {
   menuFooterRedux: state.menuFooterRedux,
+
+  listWorker: state.listWorker,
+
   user: state.user,
+
 } );
 
 const mapDispatchToProps = ( dispatch ) => ( {
   setMenuFooter: bindActionCreators( ActionStore.setMenuFooter, dispatch ),
+
+  listWorker: bindActionCreators( ActionStore.setListWorker, dispatch ),
   setUser: bindActionCreators( ActionStore.setUser, dispatch ),
+
 } );
 export default connect( mapStateToProps, mapDispatchToProps )( Search );
 // export default Search;
