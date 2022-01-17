@@ -5,13 +5,13 @@ import Img from 'assets/index';
 import styles from './styles';
 
 export default function Items( p ) {
-  const { item } = p;
+  const { item, onPressInfoWorker } = p;
+  const url = item.image ? item.image : Img.Image.imgAvatar;
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPressInfoWorker}>
       <View style={styles.containerWorkerDetail}>
-        <View style={styles.imgAvatarWorker}>
-          <Image source={Img.Image.imgAvatar} style={styles.imgAvatarWorker} />
-        </View>
+        <Image url={url} http={item.image} style={styles.imgAvatarWorker} />
+
         <View style={styles.contentDetailDistance}>
           <Text style={[styles.textAll, styles.titleContentWorker]}>{item.name} </Text>
           <Text style={[styles.textAll, styles.numberPhoneDetailWorker]}>{item.sdt}</Text>
@@ -20,7 +20,7 @@ export default function Items( p ) {
           {/* <Text style={[styles.textAll, styles.addressContentWorker]}>ĐC: {address} </Text> */}
 
         </View>
-        <View>
+        <View style={styles.containerFunction}>
           {/* <Image source={images[`${img ? null : 'menuSwitchNetwork'}`]} /> */}
         </View>
       </View>

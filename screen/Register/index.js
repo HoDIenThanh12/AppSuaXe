@@ -2,6 +2,7 @@ import React from 'react';
 import { Alert } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
 import Users from 'modals/Users';
+import { Register } from 'modals/function';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page';
@@ -22,19 +23,16 @@ class Regitster extends Base {
   }
 
   componentDidMount() {
-    const u = Users.user;
-    console.log( '====================================' );
-    console.log( u );
-    console.log( '====================================' );
   }
 
   onPressRegister = async () => {
-    const users = new User();
     const {
       txtSDT, txtPass, txtPass2, txtAddress, txtName, isWorker,
     } = this.state;
     const worker = isWorker ? '1' : 0;
-    await users.Regitster( txtName, txtSDT, txtPass, txtAddress, worker );
+    await Register( txtSDT, txtName, txtAddress, worker, txtPass );
+    // _sdt, _name, _address, _checkWorker = 0, _pass
+    // await users.Regitster( txtName, txtSDT, txtPass, txtAddress, worker );
   };
 
   onChangePassword = ( value ) => {

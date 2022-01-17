@@ -6,10 +6,18 @@ const Images = ( p ) => {
   const {
     url,
     style,
-    styleImage,
+    http = null,
   } = p;
+  const urlHttp = http || null;
   return (
-    <Image style={[styles.styleImage, styleImage]} source={url} />
+    <View >
+      {
+        urlHttp
+          ? <Image style={[styles.styleImage, style]} source={{ uri: http }} />
+          : <Image style={[styles.styleImage, style]} source={url} />
+      }
+    </View>
+
   );
 };
 const styles = StyleSheet.create( {

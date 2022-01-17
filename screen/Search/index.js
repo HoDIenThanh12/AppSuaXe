@@ -19,6 +19,7 @@ class Search extends Base {
       type: 1,
       x: '0',
       y: '0',
+      currentIndex: 0,
     };
   }
 
@@ -27,25 +28,28 @@ class Search extends Base {
     this.setState( {
       list: listWorker,
     } );
-    // const { user } = this.props;
-    // this.setState( {
-    //   ...this.state,
-    //   x: user.x,
-    //   y: user.y,
-    //   list: await getAllListWorker(),
-    // } );
   }
 
   onChangeType = async ( type ) => {
     const { listWorker } = this.props;
-    if ( type === 1 ) {
+    if ( type === 0 ) {
       this.setState( {
         list: listWorker,
+        currentIndex: 0,
+      } );
+    } else {
+      this.setState( {
+        list: listWorker,
+        currentIndex: 1,
       } );
     }
   };
 
-  onPressInfoWorker = ( item ) => {};
+  onPressInfoWorker = ( item ) => {
+    console.log( 'item====================' );
+    console.log( { item } );
+    console.log( '====================================' );
+  };
 
   render() {
     const Template = this.view;
@@ -64,19 +68,15 @@ class Search extends Base {
 }
 const mapStateToProps = ( state ) => ( {
   menuFooterRedux: state.menuFooterRedux,
-
-  listWorker: state.listWorker,
-
   user: state.user,
-
+  listWorker: state.listWorker,
 } );
 
 const mapDispatchToProps = ( dispatch ) => ( {
   setMenuFooter: bindActionCreators( ActionStore.setMenuFooter, dispatch ),
-
-  listWorker: bindActionCreators( ActionStore.setListWorker, dispatch ),
   setUser: bindActionCreators( ActionStore.setUser, dispatch ),
-
+  setListWorker: bindActionCreators( ActionStore.setListWorker, dispatch ),
+  setListQualityWorker: bindActionCreators( ActionStore.setListQualityWorker, dispatch ),
 } );
 export default connect( mapStateToProps, mapDispatchToProps )( Search );
 // export default Search;

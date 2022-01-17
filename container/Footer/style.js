@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-// import {height, width} from '../../common/styles'
+// import {height, width} from 'common/styles'
 const styles = StyleSheet.create({
   container: {
     display: 'flex',

@@ -35,7 +35,7 @@ class Login extends Base {
     console.log( '====================================' );
     console.log( { user } );
     console.log( '====================================' );
-    SaveProfile( 'PvKEFs9MrDxhzFhoSyI5', 1, 'minh khang' );
+    // SaveProfile( 'PvKEFs9MrDxhzFhoSyI5', 1, 'minh khang' );
   }
 
   saveLogin() {
@@ -57,9 +57,6 @@ class Login extends Base {
     const { txtSDT, txtPass } = this.state;
 
     const { user, setUser } = this.props;
-    console.log( '====================================' );
-    console.log( { setUser } );
-    console.log( '====================================' );
     let i = 0;
     const list = [];
     await firestores.get()
@@ -86,9 +83,6 @@ class Login extends Base {
             setUser( temp );
             Actions.home();
             const users = await getStoreLocal( 'user' );
-            console.log( '==user[0]============================' );
-            console.log( users[0] );
-            console.log( '====================================' );
           }
           if ( i === 0 ) {
             Alert.alert( In18.Error.noLogin );

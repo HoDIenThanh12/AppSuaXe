@@ -5,64 +5,58 @@ import {
 import { Router, Actions, Scene } from 'react-native-router-flux';
 import Geolocation from 'react-native-geolocation-service';
 import TextInput from 'components/TextInput/index';
-import DropDownPicker from 'react-native-dropdown-picker';
 import styles from './style';
 import Img from '../../assets/index';
 import In18 from '../../common/constants';
 import Button from '../../components/btn/index';
-import User from '../../modals/User';
+import Items from './components/Items';
 
 const page = ( p ) => {
-  const { list, type } = p.state;
+  const { list, currentIndex } = p.state;
   const { onPressInfoWorker, onChangeType } = p.func;
   const [y, sety] = useState( 0 );
   const [x, setx] = useState( 0 );
-  const [valueOption, setValueOption] = useState( 1 );
-  const [itemOption, setitemOption] = useState( [
-    { label: 'Tat ca', value: 0 },
-    { label: 'Hoan Thanh', value: 1 },
-    { label: 'Chua Hoan Thanh', value: 2 },
-  ] );
-  const [isOpenChuild, setisOpenChuild] = useState( false );
+  const render = ( { item } ) => (
+    <Items item={item} onPressInfoWorker={() => onPressInfoWorker( item )}/>
+  );
+  const listOptions = [
+    {
+      name: In18.Options.near,
+    },
+    {
+      name: In18.Options.quality,
+    },
+  ];
+  const RenderOptions = ( props ) => {
+    const { itemOptions, indexOptions } = props;
+    return (
+      <TouchableOpacity onPress={() => onChangeType( indexOptions )}>
+        <View style={styles.containerOptions}>
+          <Text style={currentIndex === indexOptions ? styles.nameOptions : styles.nameUnOptions}>{`${itemOptions.name}`}</Text>
+          <View style={currentIndex === indexOptions ? styles.lineOptions : {}}/>
+        </View>
+      </TouchableOpacity>
 
+    );
+  };
   return (
     <View style={styles.container} >
-
       <View>
         <View style={styles.option}>
-
-          <DropDownPicker
-            theme="DARK"
-            placeholder="Tat ca"
-            // loading={loading}
-            open={isOpenChuild}
-            value={valueOption}
-            items={itemOption}
-            setOpen={setisOpenChuild}
-            setValue={setValueOption}
-            setItems={setitemOption}
-            onChangeValue={( type ) => {
-              // SelectType( type );
-            }}
-            onPress={( open ) => console.log( 'was the picker open?', open )}
-          >
-          </DropDownPicker>
+          {
+            listOptions.map( ( item, index ) => <RenderOptions itemOptions={item} indexOptions={index}></RenderOptions> )
+          }
         </View>
       </View>
       <View style={styles.flatList}>
-        <ScrollView>
-          {
-            list.map( ( item, index ) => {} )
-          }
-        </ScrollView>
-        {/* <FlatList
+        <FlatList
           data={list}
-          keyExtractor={item => item.id}
-          renderItem={renderItemWorker}
+          keyExtractor={( item ) => item.id}
+          renderItem={render}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
         >
-        </FlatList> */}
+        </FlatList>
       </View>
     </View>
   );

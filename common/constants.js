@@ -10,6 +10,7 @@ export var MENU = {
 };
 export var KEY_PAGE = {
   SET_LIST_WORKER: 'SET_LIST_WORKER',
+  SET_LIST_QUALITY_WORKER: 'SET_LIST_QUALITY_WORKER',
 };
 
 export default Title = {
@@ -58,9 +59,9 @@ export default Title = {
     successMessage: 'Lưu thành công',
   },
   Options: {
-    near: 'Gần bạn nhất',
+    near: 'Gần nhất',
     placeYourLive: 'Gần nơi bạn đang sống',
-    quality: 'Nhiều khách Xem nhất',
+    quality: 'Xem nhiều',
     option: 'Chức năng',
   },
   NomalTitle: {

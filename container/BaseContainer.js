@@ -65,6 +65,7 @@ class BaseContainer extends PureComponent {
           backgroundColor="transparent"
           barStyle="dark-content"
         />
+        {noHeader && <View style={styles.noHeader}/>}
         {!noHeader && <Header {...props} />}
         <View style={styles.content}>
           <Page {...props} />

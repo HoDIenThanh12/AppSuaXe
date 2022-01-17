@@ -4,6 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import store from 'react-native-simple-store';
 import firestore from '@react-native-firebase/firestore';
 import In18 from 'common/constants';
+import storage from '@react-native-firebase/storage';
 
 const firestores = firestore().collection( 'User' );
 export const checkStore = async ( key, data ) => {
@@ -58,7 +59,7 @@ export const Register = async ( _sdt, _name, _address, _checkWorker = 0, _pass )
     name: _name,
     sdt: _sdt,
     address: _address,
-    checkWorker: _checkWorker,
+    checkWorker: `${_checkWorker}`,
     x: '0',
     y: '0',
     image: '',
@@ -79,6 +80,7 @@ export const Register = async ( _sdt, _name, _address, _checkWorker = 0, _pass )
     } )
     .then( ( user ) => {
       setStoreLocal( users );
+      Alert.alert( 'thanhf cong' );
     } );
 };
 export const getDistance = ( xUser, yUser, xWoker, yWoker ) => {
@@ -142,7 +144,7 @@ export const getAllListWorker = async () => {
     .then( ( querySnapshot ) => {
       querySnapshot.forEach( ( documentSnapshot ) => {
         const datas = documentSnapshot.data();
-        if ( datas.checkWorker === 1 ) {
+        if ( datas.checkWorker == 1 ) {
           const temp = {
             id: documentSnapshot.id,
             name: datas.name,
@@ -177,18 +179,16 @@ export const getListWorkerQuality = ( list ) => {
   return list;
 };
 
-export const Read = async () => {
-  let i = 0;
-  const func = database().ref( '/User/' );
-  await func
-    .on( 'value', ( snapshot ) => {
-      snapshot.forEach( ( item ) => {
-        console.log( item.key );
-        if ( item.val().sdt === '0392225405' ) {
-          const g = 1;
-          i = g;
-        }
-      } );
-    } );
-  return i;
+export const getLinkImage = async ( selectedImage ) => {
+  const fileName = selectedImage.substring(
+    selectedImage.lastIndexOf( '/' ) + 1,
+  );
+  let url = '';
+  const ref = storage().ref( `Anh/${fileName}` );
+  const task = ref.putFile( selectedImage );
+  task.then( async () => {
+    url = await ref.getDownloadURL();
+    return url;
+  } );
+  return url;
 };
