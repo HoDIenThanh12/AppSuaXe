@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 import ActionStore from 'reduxs/Action/ActionStore';
 import { connect } from 'react-redux';
 import { getAllListWorker } from 'modals/function';
-
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page';
@@ -17,7 +16,10 @@ class Search extends Base {
     this.page = Page;
     this.state = {
       list: [],
-      type: this.types ? types : 0,
+      type: 1,
+      x: '0',
+      y: '0',
+      currentIndex: 0,
     };
   }
 
@@ -30,14 +32,24 @@ class Search extends Base {
 
   onChangeType = async ( type ) => {
     const { listWorker } = this.props;
-    if ( type === 1 ) {
+    if ( type === 0 ) {
       this.setState( {
         list: listWorker,
+        currentIndex: 0,
+      } );
+    } else {
+      this.setState( {
+        list: listWorker,
+        currentIndex: 1,
       } );
     }
   };
 
-  onPressInfoWorker = ( item ) => {};
+  onPressInfoWorker = ( item ) => {
+    console.log( 'item====================' );
+    console.log( { item } );
+    console.log( '====================================' );
+  };
 
   render() {
     const Template = this.view;
@@ -56,12 +68,15 @@ class Search extends Base {
 }
 const mapStateToProps = ( state ) => ( {
   menuFooterRedux: state.menuFooterRedux,
+  user: state.user,
   listWorker: state.listWorker,
 } );
 
 const mapDispatchToProps = ( dispatch ) => ( {
   setMenuFooter: bindActionCreators( ActionStore.setMenuFooter, dispatch ),
-  listWorker: bindActionCreators( ActionStore.setListWorker, dispatch ),
+  setUser: bindActionCreators( ActionStore.setUser, dispatch ),
+  setListWorker: bindActionCreators( ActionStore.setListWorker, dispatch ),
+  setListQualityWorker: bindActionCreators( ActionStore.setListQualityWorker, dispatch ),
 } );
 export default connect( mapStateToProps, mapDispatchToProps )( Search );
 // export default Search;

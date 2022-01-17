@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
+import TextInput from 'components/TextInput/index';
+import { height, width } from 'common/styles';
 import Colors from '../../common/Colors';
-import TextInput from '../../components/TextInput/index';
-import { height, width } from '../../common/styles';
 
 const styles = StyleSheet.create( {
   container: {

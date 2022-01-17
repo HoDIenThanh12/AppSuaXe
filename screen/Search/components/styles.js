@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
+import Colors from 'common/Colors';
 import TextInput from 'components/TextInput/index';
 import { height, width } from 'common/styles';
-import Colors from '../../common/Colors';
 
 const styles = StyleSheet.create( {
   containerView: {
@@ -13,26 +13,7 @@ const styles = StyleSheet.create( {
   },
   container: {
     flex: 1,
-  },
-  containerOptions: {
-    // width: width( 50 ),
-    marginRight: height( 4 ),
     justifyContent: 'center',
-    alignItems: 'center',
-  },
-  nameOptions: {
-    fontWeight: 'bold',
-    fontSize: 20,
-    marginBottom: height( 0.5 ),
-  },
-  nameUnOptions: {
-    fontSize: 20,
-  },
-  lineOptions: {
-    width: width( 15 ),
-    height: height( 0.5 ),
-    backgroundColor: Colors.GRAY,
-    borderRadius: 5,
   },
   flatList: {
     marginTop: height( 5 ),
@@ -40,6 +21,7 @@ const styles = StyleSheet.create( {
     width: width( 90 ),
   },
   option: {
+    justifyContent: 'center',
     flexDirection: 'row',
 
   },
@@ -54,15 +36,24 @@ const styles = StyleSheet.create( {
     paddingBottom: 10,
     borderRadius: 20,
     marginBottom: 10,
+    flex: 1,
   },
   imgAvatarWorker: {
-    height: height( 12 ),
-    padding: 5,
-    width: width( 15 ),
+    width: width( 20 ),
+    height: height( 10 ),
     alignItems: 'center',
-    marginTop: height( 1.3 ),
     resizeMode: 'contain',
-    marginHorizontal: 12,
+    alignSelf: 'center',
+    marginHorizontal: 10,
+    flex: 2,
+
+  },
+  contentDetailDistance: {
+    flex: 6,
+  },
+  containerFunction: {
+    flex: 2,
+    backgroundColor: 'red',
   },
   titleContentWorker: {
     fontWeight: 'bold',
@@ -76,6 +67,7 @@ const styles = StyleSheet.create( {
     color: Colors.RED,
     fontSize: height( 1.5 ),
     width: width( 60 ),
+    flexWrap: 'wrap',
     // textAlign:'right'
   },
 } );

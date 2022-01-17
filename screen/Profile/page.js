@@ -16,7 +16,7 @@ import styles from './style';
 import Img from '../../assets/index';
 import In18 from '../../common/constants';
 import Buttons from '../../components/btn/index';
-import { height, width } from '../../common/styles';
+import { height, width } from 'common/styles';
 
 const page = ( p ) => {
   const {

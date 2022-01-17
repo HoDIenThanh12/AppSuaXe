@@ -25,4 +25,12 @@ export default class StorageReduxAction {
       payload,
     };
   }
+
+  static setListQualityWorker( payload ) {
+    // checkStore( 'user', payload );
+    return {
+      type: KEY_PAGE.SET_LIST_QUALITY_WORKER,
+      payload,
+    };
+  }
 }

@@ -22,13 +22,12 @@ class Home extends Base {
   }
 
   async componentDidMount() {
+    const { setListWorker, setListQualityWorker } = this.props;
     const list = await getAllListWorker();
     this.setState( { listAll: list } );
     this.setState( { listQuality: getListWorkerQuality( list ) } );
-    const { user } = this.props;
-    console.log( '====================================' );
-    // console.log( { user } );
-    console.log( '====================================' );
+    await setListWorker( list );
+    await setListQualityWorker( await getListWorkerQuality( list ) );
   }
 
   onPressViewWorkerSort=() => {
@@ -47,6 +46,7 @@ class Home extends Base {
         func={this}
         state={this.state}
         showBtnBack={false}
+        noHeader
       />
     );
   }
@@ -54,10 +54,13 @@ class Home extends Base {
 const mapStateToProps = ( state ) => ( {
   menuFooterRedux: state.menuFooterRedux,
   user: state.user,
+  listWorker: state.listWorker,
 } );
 
 const mapDispatchToProps = ( dispatch ) => ( {
   setMenuFooter: bindActionCreators( ActionStore.setMenuFooter, dispatch ),
   setUser: bindActionCreators( ActionStore.setUser, dispatch ),
+  setListWorker: bindActionCreators( ActionStore.setListWorker, dispatch ),
+  setListQualityWorker: bindActionCreators( ActionStore.setListQualityWorker, dispatch ),
 } );
 export default connect( mapStateToProps, mapDispatchToProps )( Home );
