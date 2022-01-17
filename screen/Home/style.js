@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import Colors from '../../common/Colors';
-import { height, width } from '../../common/styles';
+import { height, width } from 'common/styles';
 
 const styles = StyleSheet.create( {
   container: {

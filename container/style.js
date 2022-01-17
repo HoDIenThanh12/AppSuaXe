@@ -27,5 +27,8 @@ const styles = StyleSheet.create( {
     alignItems: 'flex-end',
     width: width( 80 ),
   },
+  noHeader: {
+    marginTop: height( 5 ),
+  },
 } );
 export default styles;

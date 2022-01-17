@@ -20,3 +20,8 @@ export const listWorker = createReducer( initState.list, {
     return action.payload;
   },
 } );
+export const listQualityWorker = createReducer( initState.list, {
+  [KEY_PAGE.SET_LIST_QUALITY_WORKER]( state, action ) {
+    return action.payload;
+  },
+} );

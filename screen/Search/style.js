@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
+import TextInput from 'components/TextInput/index';
+import { height, width } from 'common/styles';
 import Colors from '../../common/Colors';
-import TextInput from '../../components/TextInput/index';
-import { height, width } from '../../common/styles';
 
 const styles = StyleSheet.create( {
   containerView: {
@@ -13,7 +13,26 @@ const styles = StyleSheet.create( {
   },
   container: {
     flex: 1,
+  },
+  containerOptions: {
+    // width: width( 50 ),
+    marginRight: height( 4 ),
     justifyContent: 'center',
+    alignItems: 'center',
+  },
+  nameOptions: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    marginBottom: height( 0.5 ),
+  },
+  nameUnOptions: {
+    fontSize: 20,
+  },
+  lineOptions: {
+    width: width( 15 ),
+    height: height( 0.5 ),
+    backgroundColor: Colors.GRAY,
+    borderRadius: 5,
   },
   flatList: {
     marginTop: height( 5 ),
@@ -21,7 +40,6 @@ const styles = StyleSheet.create( {
     width: width( 90 ),
   },
   option: {
-    justifyContent: 'center',
     flexDirection: 'row',
 
   },

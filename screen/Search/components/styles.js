@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import Colors from '../../common/Colors';
-import TextInput from '../../components/TextInput/index';
-import { height, width } from '../../common/styles';
+import Colors from 'common/Colors';
+import TextInput from 'components/TextInput/index';
+import { height, width } from 'common/styles';
 
 const styles = StyleSheet.create( {
   containerView: {
@@ -36,15 +36,24 @@ const styles = StyleSheet.create( {
     paddingBottom: 10,
     borderRadius: 20,
     marginBottom: 10,
+    flex: 1,
   },
   imgAvatarWorker: {
-    height: height( 12 ),
-    padding: 5,
-    width: width( 15 ),
+    width: width( 20 ),
+    height: height( 10 ),
     alignItems: 'center',
-    marginTop: height( 1.3 ),
     resizeMode: 'contain',
-    marginHorizontal: 12,
+    alignSelf: 'center',
+    marginHorizontal: 10,
+    flex: 2,
+
+  },
+  contentDetailDistance: {
+    flex: 6,
+  },
+  containerFunction: {
+    flex: 2,
+    backgroundColor: 'red',
   },
   titleContentWorker: {
     fontWeight: 'bold',
@@ -58,6 +67,7 @@ const styles = StyleSheet.create( {
     color: Colors.RED,
     fontSize: height( 1.5 ),
     width: width( 60 ),
+    flexWrap: 'wrap',
     // textAlign:'right'
   },
 } );
