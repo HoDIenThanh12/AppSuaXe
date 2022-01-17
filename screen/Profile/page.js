@@ -15,7 +15,7 @@ import TextInput from 'components/TextInput/index';
 import styles from './style';
 import Img from '../../assets/index';
 import In18 from '../../common/constants';
-import Buttons from '../../components/btn/index';
+import Buttons from '../../components/Button/index';
 import { height, width } from 'common/styles';
 
 const page = ( p ) => {

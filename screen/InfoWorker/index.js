@@ -1,10 +1,10 @@
 import React from 'react';
 import { Alert } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
+import { height, width } from 'common/styles';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page';
-import { height, width } from 'common/styles';
 
 class InfoWorker extends Base {
   constructor( props ) {

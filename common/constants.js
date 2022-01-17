@@ -1,6 +1,6 @@
 import React from 'react';
 
-export var MENU = {
+export const MENU = {
   SET_MENU_FOOTER: 'SET_MENU_FOOTER',
   HOME: 'HOME',
   PROFILE: 'PROFILE',
@@ -8,7 +8,7 @@ export var MENU = {
   MESSAGE: 'MESSAGE',
   USER: 'USER',
 };
-export var KEY_PAGE = {
+export const KEY_PAGE = {
   SET_LIST_WORKER: 'SET_LIST_WORKER',
   SET_LIST_QUALITY_WORKER: 'SET_LIST_QUALITY_WORKER',
 };
@@ -20,6 +20,8 @@ export default Title = {
     name: 'Họ tên',
     address: 'Địa chỉ ',
     password2: 'Mời bạn nhập lại mật khẩu',
+    numberView: 'Lượt xem',
+    fixedAddress: 'Địa chỉ cố định',
   },
   Error: {
     noLogin: 'Sai tài khoản hoặc mật khẩu',

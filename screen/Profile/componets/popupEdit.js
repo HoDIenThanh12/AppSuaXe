@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import Button from 'components/btn/index';
+import Button from 'components/Button/index';
 import TextInput from 'components/TextInput/index';
 import In18 from 'common/constants';
 import styles from './styles';

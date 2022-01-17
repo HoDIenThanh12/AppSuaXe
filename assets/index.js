@@ -15,6 +15,9 @@ const Img = {
     iconEditImg: require( './images/iconEditImg.png' ),
     iconPass: require( './images/iconPass.png' ),
     iconClose: require( './images/iconClose.png' ),
+    iconBack2: require( './images/iconBack2.png' ),
+    iconSuccess: require( './images/iconSuccess.png' ),
+    iconError: require( './images/iconError.png' ),
   },
 
 };

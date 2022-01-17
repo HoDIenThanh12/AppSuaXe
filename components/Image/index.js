@@ -7,10 +7,11 @@ const Images = ( p ) => {
     url,
     style,
     http = null,
+    stylesContainerImage,
   } = p;
   const urlHttp = http || null;
   return (
-    <View >
+    <View style={stylesContainerImage}>
       {
         urlHttp
           ? <Image style={[styles.styleImage, style]} source={{ uri: http }} />
