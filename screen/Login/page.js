@@ -2,7 +2,7 @@ import React from 'react';
 import {
   View, StyleSheet, Image, Text, ScrollView, Alert,
 } from 'react-native';
-import Button from 'components/btn/index';
+import Button from 'components/Button/index';
 import { Router, Actions, Scene } from 'react-native-router-flux';
 import { push } from 'react-native-simple-store';
 import database from '@react-native-firebase/database';

@@ -2,10 +2,10 @@ import React from 'react';
 import {
   View, TouchableOpacity, Image, TextInput, ScrollView, Text,
 } from 'react-native';
+import Img from 'assets/index';
+import In18 from 'common/constants';
+import Buttons from 'components/Button/index';
 import styles from './style';
-import Img from '../../assets/index';
-import In18 from '../../common/constants';
-import Buttons from '../../components/btn/index';
 
 const page = ( p ) => {
   // const { onPressSetup onPressCall } = p.func;
@@ -14,10 +14,8 @@ const page = ( p ) => {
   const {
     name, sdt, img, address, luotXem,
   } = item;
-  console.log( { item } );
   return (
     <View style={styles.container}>
-      {/* // add new for test */}
       <ScrollView>
         <View style={styles.containerTest}>
 
@@ -25,19 +23,19 @@ const page = ( p ) => {
             <Image style={styles.imgAvatar} source={img || Img.Image.imgAvatar} />
           </View>
           <View style={styles.containerInfo}>
-            <Text style={styles.titleContent}>Họ tên: </Text>
+            <Text style={styles.titleContent}>{In18.User.name} : </Text>
             <Text style={styles.contentDetail}>{name}</Text>
           </View>
           <View style={styles.containerInfo}>
-            <Text style={styles.titleContent}>SDT: </Text>
+            <Text style={styles.titleContent}>{In18.User.numberPhone} : </Text>
             <Text style={styles.contentDetail}>{sdt}</Text>
           </View>
           <View style={styles.containerInfo}>
-            <Text style={styles.titleContent}>Địa chỉ cố định: </Text>
+            <Text style={styles.titleContent}>{In18.User.fixedAddress} : </Text>
             <Text style={styles.contentDetailAddress}>{address}</Text>
           </View>
           <View style={styles.containerInfo}>
-            <Text style={styles.titleContent}>Lượt xem: </Text>
+            <Text style={styles.titleContent}>{In18.User.numberView} : </Text>
             <Text style={styles.contentDetailLuotXem}>{luotXem}</Text>
           </View>
           <View>

@@ -26,6 +26,12 @@ module.exports = {
       'OtherStyleSheet',
       'PStyleSheet',
     ],
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        moduleDirectory: ['node_modules', './'],
+      },
+    },
 
   },
 
@@ -45,6 +51,8 @@ module.exports = {
     // 'linebreak-style': ['error', 'windows'],
     'prettier/prettier': 'error',
     // 'import/resolver': 'web/pack',
+    'react/prop-types': 0,
+    'global-require': 0,
 
   },
   overrides: [

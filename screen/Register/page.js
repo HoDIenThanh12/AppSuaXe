@@ -9,7 +9,7 @@ import In18 from 'common/constants';
 import TextInput from 'components/TextInput/index';
 import styles from './style';
 import Img from '../../assets/index';
-import Button from '../../components/btn/index';
+import Button from '../../components/Button/index';
 import Userss from '../../modals/Users';
 
 const page = ( p ) => {
