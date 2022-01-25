@@ -2,13 +2,13 @@ import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 import { width, height } from 'common/styles';
 
-const Images = ( p ) => {
+const Images = ( props ) => {
   const {
     url,
     style,
     http = null,
     stylesContainerImage,
-  } = p;
+  } = props;
   const urlHttp = http || null;
   return (
     <View style={stylesContainerImage}>

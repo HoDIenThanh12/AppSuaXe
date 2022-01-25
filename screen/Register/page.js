@@ -32,9 +32,6 @@ const page = ( p ) => {
 
   } = p.func;
   const users = Userss.getInStance();
-  console.log( '=====Userss.getInStance()=====================' );
-  console.log( { users } );
-  console.log( '====================================' );
   return (
     <View style={styles.container} >
       <ScrollView >

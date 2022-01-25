@@ -1,5 +1,7 @@
 import React from 'react';
-import { Alert, View } from 'react-native';
+import {
+  Alert, View, PermissionsAndroid, Platform,
+} from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
 // import User from 'modals/User';
 import database from '@react-native-firebase/database';
@@ -11,6 +13,7 @@ import { connect } from 'react-redux';
 import firestore from '@react-native-firebase/firestore';
 import { setStoreLocal, getStoreLocal, SaveProfile } from 'modals/function';
 import ActionStore from 'reduxs/Action/ActionStore';
+import Geolocation from 'react-native-geolocation-service';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page';
@@ -30,12 +33,7 @@ class Login extends Base {
   }
 
   async componentDidMount() {
-    // await Register( '0123456789', 'ho dien cong', 'bình dương', 0, 'diencong' );
-    const { user } = this.props;
-    console.log( '====================================' );
-    console.log( { user } );
-    console.log( '====================================' );
-    // SaveProfile( 'PvKEFs9MrDxhzFhoSyI5', 1, 'minh khang' );
+
   }
 
   saveLogin() {
@@ -46,11 +44,6 @@ class Login extends Base {
   }
 
   getTest() {
-    firebase.get().then( ( value ) => {
-      console.log( '====================================' );
-      console.log( { value } );
-      console.log( '====================================' );
-    } );
   }
 
   onPressLogin = async () => {

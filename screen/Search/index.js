@@ -4,7 +4,7 @@ import { Router, Actions, Scene } from 'react-native-router-flux';
 import { bindActionCreators } from 'redux';
 import ActionStore from 'reduxs/Action/ActionStore';
 import { connect } from 'react-redux';
-import { getAllListWorker } from 'modals/function';
+import { getListWorkerNear } from 'modals/function';
 import User from 'modals/User';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
@@ -20,35 +20,38 @@ class Search extends Base {
       x: '0',
       y: '0',
       currentIndex: 0,
+      listWorkerNear: [],
+      listShow: [],
     };
   }
 
   async componentDidMount() {
-    const { listWorker } = this.props;
+    const { listWorker, listQualityWorker } = this.props;
     this.setState( {
-      list: listWorker,
+      list: listQualityWorker,
+      listWorkerNear: await getListWorkerNear( listWorker ),
     } );
   }
 
-  onChangeType = async ( type ) => {
-    const { listWorker } = this.props;
-    if ( type === 0 ) {
+  onChangeType = async ( types ) => {
+    const { listQualityWorker } = this.props;
+    if ( types === 0 ) {
       this.setState( {
-        list: listWorker,
+        list: listQualityWorker,
         currentIndex: 0,
+        type: 0,
       } );
     } else {
       this.setState( {
-        list: listWorker,
+        list: this.state.listWorkerNear,
         currentIndex: 1,
+        type: 1,
       } );
     }
   };
 
   onPressInfoWorker = ( item ) => {
-    console.log( 'item====================' );
-    console.log( { item } );
-    console.log( '====================================' );
+    Actions.infoWorker( { item } );
   };
 
   render() {
@@ -70,6 +73,8 @@ const mapStateToProps = ( state ) => ( {
   menuFooterRedux: state.menuFooterRedux,
   user: state.user,
   listWorker: state.listWorker,
+  listQualityWorker: state.listQualityWorker,
+
 } );
 
 const mapDispatchToProps = ( dispatch ) => ( {
