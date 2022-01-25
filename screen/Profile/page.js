@@ -12,11 +12,11 @@ import { Router, Actions, Scene } from 'react-native-router-flux';
 import { IconButton } from 'react-native-paper';
 import TextInput from 'components/TextInput/index';
 
+import { height, width } from 'common/styles';
 import styles from './style';
 import Img from '../../assets/index';
 import In18 from '../../common/constants';
 import Buttons from '../../components/Button/index';
-import { height, width } from 'common/styles';
 
 const page = ( p ) => {
   const {
@@ -32,7 +32,6 @@ const page = ( p ) => {
     onOpenEdit( types, nameTextOld, textOld );
   };
   const Texts = ( props ) => {
-    console.log( props.style );
     const txt = props.state;
     return (
       <View style={styles.containerEdit}>

@@ -83,12 +83,12 @@ export const Register = async ( _sdt, _name, _address, _checkWorker = 0, _pass )
       Alert.alert( 'thanhf cong' );
     } );
 };
-export const getDistance = ( xUser, yUser, xWoker, yWoker ) => {
+export const getDistance = ( xUser = '0', yUser = '0', xWoker, yWoker ) => {
   const x1 = parseInt( xUser, 10 );
   const x2 = parseInt( xWoker, 10 );
   const y1 = parseInt( yUser, 10 );
   const y2 = parseInt( yWoker, 10 );
-  const reslt = ( Math.sqrt( ( x1 - x2 ) ** 2 + ( y1 - y2 ) ** 2 ) ) / 1000;
+  const reslt = ( ( Math.sqrt( ( x1 - x2 ) ** 2 + ( y1 - y2 ) ** 2 ) ) / 1000 ).toFixed( 2 );
   return `${reslt}m`;
 };
 export const SaveProfile = async ( idUser, type, text ) => {
@@ -138,13 +138,14 @@ export const SaveProfile = async ( idUser, type, text ) => {
   }
 };
 
-export const getAllListWorker = async () => {
+export const getAllListWorker = async ( xUser, yUser ) => {
   const list = [];
   await firestores.get()
     .then( ( querySnapshot ) => {
       querySnapshot.forEach( ( documentSnapshot ) => {
         const datas = documentSnapshot.data();
         if ( datas.checkWorker == 1 ) {
+          const distances = getDistance( xUser, yUser, datas.x, datas.y );
           const temp = {
             id: documentSnapshot.id,
             name: datas.name,
@@ -156,6 +157,7 @@ export const getAllListWorker = async () => {
             image: datas.image,
             pass: datas.pass,
             checkWorker: datas.checkWorker,
+            distance: distances,
           };
           list.push( temp );
         }
@@ -164,12 +166,22 @@ export const getAllListWorker = async () => {
     } );
   return list;
 };
-export const getListWorkerQuality = ( list ) => {
+export const getListWorkerQuality = async ( list ) => {
   for ( let i = 0; i < ( list.length - 1 ); i++ ) {
     for ( let y = i + 1; y < ( list.length ); y++ ) {
-      console.log( list[y].luotXem );
       if ( parseInt( list[i].luotXem, 10 ) < parseInt( list[y].luotXem, 10 ) ) {
-        console.log( list[y].luotXem );
+        const temps = list[i];
+        list[i] = list[y];
+        list[y] = temps;
+      }
+    }
+  }
+  return list;
+};
+export const getListWorkerNear = ( list ) => {
+  for ( let i = 0; i < ( list.length - 1 ); i++ ) {
+    for ( let y = i + 1; y < ( list.length ); y++ ) {
+      if ( list[i].distance > list[y].distance ) {
         const temps = list[i];
         list[i] = list[y];
         list[y] = temps;

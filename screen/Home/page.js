@@ -11,16 +11,15 @@ import OptionFunctions from './components/optionFunction';
 
 const page = ( p ) => {
   const { listQuality, listAll } = p.state;
-  console.log( '====================================' );
-  console.log( { listQuality } );
-  console.log( '====================================' );
   const {
     onClickWorkQuality,
     onClickWorkDetals,
     onPressViewWorkerSort,
     onPressViewList,
+
   } = p.func;
   const [listBuild, setlistBuild] = useState( [] );
+
   const listOptions = [
     {
       title: In18.TitleBtn.call,
@@ -35,10 +34,10 @@ const page = ( p ) => {
     <TouchableOpacity style={styles.containerQuality} onPress={() => Actions.infoWorker( { item } )} >
       <View style={styles.containerQualityDetail}>
         <View style={styles.detailQuality}>
-          <Text style={styles.titleQuality}>Tên: {item.name}</Text>
+          <Text style={styles.titleQuality}>{In18.User.name}:  {item.name}</Text>
           <Text>SDT :{item.sdt}</Text>
-          <Text style={styles.addressQuality} numberOfLines={3}>Địa chỉ: {item.address}</Text>
-          <Text style={styles.luotXemQuality}>lượt xem: {item.luotXem}</Text>
+          <Text style={styles.addressQuality} numberOfLines={3}>{In18.User.address}: {item.address}</Text>
+          <Text style={styles.luotXemQuality}>{In18.User.numberView}: {item.luotXem}</Text>
         </View>
         <View style={styles.callQuantity}>
           <Image source={Img.Image.imgCall} style={styles.icCallQuality} />
@@ -48,8 +47,8 @@ const page = ( p ) => {
   );
 
   const cacu = ( value ) => {
-    if ( ( parseInt( value ) / 1000 ) >= 1 ) {
-      console.log( ( parseInt( value ) / 1000 ) );
+    if ( ( parseInt( value, 10 ) / 1000 ) >= 1 ) {
+      // console.log( ( parseInt( value, 10 ) / 1000 ) );
       return `${value * 0.001} (km)`;
     }
     return `${value} (m)`;
@@ -90,7 +89,8 @@ const page = ( p ) => {
         <Text>Chức năng</Text>
         <View style={styles.containerOption}>
           {
-            listOptions.map( ( items, index ) => <OptionFunctions items={items} func={() => {}}></OptionFunctions> )
+            // eslint-disable-next-line max-len
+            listOptions.map( ( items ) => <OptionFunctions items={items} func={() => {}} ></OptionFunctions> )
           }
         </View>
         <View style={styles.optionMenu}>

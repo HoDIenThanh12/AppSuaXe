@@ -5,7 +5,7 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start", 
+    "start": "react-native start",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -61,6 +61,7 @@
     "react-native-get-location": "^2.1.2",
     "react-native-image-picker": "^4.3.0",
     "react-native-level-fs": "^3.0.0",
+    "react-native-maps": "^0.30.1",
     "react-native-modal": "^13.0.0",
     "react-native-modalbox": "^2.0.2",
     "react-native-modals": "^0.22.3",
