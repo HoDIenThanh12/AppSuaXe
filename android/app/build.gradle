@@ -1,8 +1,6 @@
+
 apply plugin: "com.android.application"
 apply plugin: 'com.google.gms.google-services'
-
-import com.android.build.OutputFile
-
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
  * and bundleReleaseJsAndAssets).
@@ -110,8 +108,7 @@ def enableProguardInReleaseBuilds = false
  * give correct results when using with locales other than en-US.  Note that
  * this variant is about 6MiB larger per architecture than default.
  */
-def jscFlavor = 'org.webkit:android-jsc:+'
-
+def jscFlavor = 'org.webkit:android-jsc:+' 
 /**
  * Whether to enable the Hermes VM.
  *
@@ -179,7 +176,7 @@ android {
             // https://developer.android.com/studio/build/configure-apk-splits.html
             // Example: versionCode 1 will generate 1001 for armeabi-v7a, 1002 for x86, etc.
             def versionCodes = ["armeabi-v7a": 1, "x86": 2, "arm64-v8a": 3, "x86_64": 4]
-            def abi = output.getFilter(OutputFile.ABI)
+            def abi = output.getFilter(com.android.build.OutputFile.ABI)
             if (abi != null) {  // null for the universal-debug, universal-release variants
                 output.versionCodeOverride =
                         defaultConfig.versionCode * 1000 + versionCodes.get(abi)
@@ -190,9 +187,16 @@ android {
 }
 
 dependencies {
+  
     implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation(project(':react-native-maps')){
+       exclude group: 'com.google.android.gms', module: 'play-services-base'
+       exclude group: 'com.google.android.gms', module: 'play-services-maps'
+   }
+   implementation 'com.google.android.gms:play-services-base:17.2.1'
+   implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.android.support:appcompat-v7:28.0.0'
- implementation 'androidx.annotation:annotation:1.0.2'
+ implementation 'androidx.annotation:annotation:1.1.0'
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
