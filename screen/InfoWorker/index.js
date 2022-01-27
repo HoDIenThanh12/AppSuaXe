@@ -14,7 +14,7 @@ class InfoWorker extends Base {
       setUpCaulate: '',
       note: '',
       address: '',
-      time: '',
+      time: ''
     };
   }
 
@@ -34,7 +34,7 @@ class InfoWorker extends Base {
     const Template = this.view;
     return (
       <Template
-        title={In18.NomalTitle.titleInforWord}
+        title={In18.NormalTitle.titleInforWord}
         noFooter
         props={this.props}
         func={this}

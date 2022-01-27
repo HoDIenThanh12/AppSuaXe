@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, TouchableOpacity, Image, TextInput, ScrollView, Text,
+  View, TouchableOpacity, Image, TextInput, ScrollView, Text
 } from 'react-native';
 import Img from 'assets/index';
 import In18 from 'common/constants';
@@ -12,7 +12,7 @@ const page = ( p ) => {
   const { time, setUpCaulate, note } = p.state;
   const { item } = p.props;
   const {
-    name, sdt, img, address, luotXem,
+    name, sdt, img, address, luotXem
   } = item;
   return (
     <View style={styles.container}>
@@ -41,7 +41,7 @@ const page = ( p ) => {
           <View>
             <View style={styles.containerTestBtn}>
               <Buttons
-                title='Đặt lịch bảo trì'
+                title={In18.TitleBtn.setUpCaulate}
                 onPress={() => {}}
               ></Buttons>
               <Buttons

@@ -18,7 +18,7 @@ class Regitster extends Base {
       txtPass2: '',
       txtAddress: 'Việt Nam',
       isWorker: false,
-      txtName: '',
+      txtName: ''
     };
   }
 
@@ -27,7 +27,7 @@ class Regitster extends Base {
 
   onPressRegister = async () => {
     const {
-      txtSDT, txtPass, txtPass2, txtAddress, txtName, isWorker,
+      txtSDT, txtPass, txtPass2, txtAddress, txtName, isWorker
     } = this.state;
     const worker = isWorker ? '1' : 0;
     await Register( txtSDT, txtName, txtAddress, worker, txtPass );

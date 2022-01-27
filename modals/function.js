@@ -64,7 +64,7 @@ export const Register = async ( _sdt, _name, _address, _checkWorker = 0, _pass )
     y: '0',
     image: '',
     pass: _pass,
-    luotXem: '0',
+    luotXem: '0'
   };
   await firestores
     .add( {
@@ -76,7 +76,7 @@ export const Register = async ( _sdt, _name, _address, _checkWorker = 0, _pass )
       y: '0',
       image: '',
       pass: _pass,
-      luotXem: '0',
+      luotXem: '0'
     } )
     .then( ( user ) => {
       setStoreLocal( users );
@@ -157,7 +157,7 @@ export const getAllListWorker = async ( xUser, yUser ) => {
             image: datas.image,
             pass: datas.pass,
             checkWorker: datas.checkWorker,
-            distance: distances,
+            distance: distances
           };
           list.push( temp );
         }
@@ -193,7 +193,7 @@ export const getListWorkerNear = ( list ) => {
 
 export const getLinkImage = async ( selectedImage ) => {
   const fileName = selectedImage.substring(
-    selectedImage.lastIndexOf( '/' ) + 1,
+    selectedImage.lastIndexOf( '/' ) + 1
   );
   let url = '';
   const ref = storage().ref( `Anh/${fileName}` );
@@ -203,4 +203,32 @@ export const getLinkImage = async ( selectedImage ) => {
     return url;
   } );
   return url;
+};
+export const getLisBill = async ( sdtUser ) => {
+  const list = [];
+  await firestores.get()
+    .then( ( querySnapshot ) => {
+      querySnapshot.forEach( ( documentSnapshot ) => {
+        const datas = documentSnapshot.data();
+        if ( datas.checkWorker == 1 ) {
+          const distances = getDistance( xUser, yUser, datas.x, datas.y );
+          const temp = {
+            id: documentSnapshot.id,
+            name: datas.name,
+            sdt: datas.sdt,
+            luotXem: datas.luotXem,
+            x: datas.x,
+            y: datas.y,
+            address: datas.address,
+            image: datas.image,
+            pass: datas.pass,
+            checkWorker: datas.checkWorker,
+            distance: distances
+          };
+          list.push( temp );
+        }
+        return list;
+      } );
+    } );
+  return list;
 };

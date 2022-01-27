@@ -7,7 +7,7 @@ const Images = ( props ) => {
     url,
     style,
     http = null,
-    stylesContainerImage,
+    stylesContainerImage
   } = props;
   const urlHttp = http || null;
   return (
@@ -23,12 +23,12 @@ const Images = ( props ) => {
 };
 const styles = StyleSheet.create( {
   container: {
-    padding: 10,
+    padding: 10
   },
   styleImage: {
     width: width( 10 ),
-    height: width( 10 ),
-  },
+    height: width( 10 )
+  }
 } );
 // eslint-disable-next-line no-undef
 export default Images;

@@ -21,7 +21,7 @@ class Search extends Base {
       y: '0',
       currentIndex: 0,
       listWorkerNear: [],
-      listShow: [],
+      listShow: []
     };
   }
 
@@ -29,7 +29,7 @@ class Search extends Base {
     const { listWorker, listQualityWorker } = this.props;
     this.setState( {
       list: listQualityWorker,
-      listWorkerNear: await getListWorkerNear( listWorker ),
+      listWorkerNear: await getListWorkerNear( listWorker )
     } );
   }
 
@@ -39,13 +39,13 @@ class Search extends Base {
       this.setState( {
         list: listQualityWorker,
         currentIndex: 0,
-        type: 0,
+        type: 0
       } );
     } else {
       this.setState( {
         list: this.state.listWorkerNear,
         currentIndex: 1,
-        type: 1,
+        type: 1
       } );
     }
   };
@@ -73,7 +73,7 @@ const mapStateToProps = ( state ) => ( {
   menuFooterRedux: state.menuFooterRedux,
   user: state.user,
   listWorker: state.listWorker,
-  listQualityWorker: state.listQualityWorker,
+  listQualityWorker: state.listQualityWorker
 
 } );
 
@@ -81,7 +81,7 @@ const mapDispatchToProps = ( dispatch ) => ( {
   setMenuFooter: bindActionCreators( ActionStore.setMenuFooter, dispatch ),
   setUser: bindActionCreators( ActionStore.setUser, dispatch ),
   setListWorker: bindActionCreators( ActionStore.setListWorker, dispatch ),
-  setListQualityWorker: bindActionCreators( ActionStore.setListQualityWorker, dispatch ),
+  setListQualityWorker: bindActionCreators( ActionStore.setListQualityWorker, dispatch )
 } );
 export default connect( mapStateToProps, mapDispatchToProps )( Search );
 // export default Search;

@@ -8,43 +8,43 @@ const styles = StyleSheet.create( {
   containerView: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'blue',
+    backgroundColor: 'blue'
     // flex:1
   },
   container: {
-    flex: 1,
+    flex: 1
   },
   containerOptions: {
     // width: width( 50 ),
     marginRight: height( 4 ),
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   nameOptions: {
     fontWeight: 'bold',
     fontSize: 20,
-    marginBottom: height( 0.5 ),
+    marginBottom: height( 0.5 )
   },
   nameUnOptions: {
-    fontSize: 20,
+    fontSize: 20
   },
   lineOptions: {
     width: width( 15 ),
     height: height( 0.5 ),
     backgroundColor: Colors.GRAY,
-    borderRadius: 5,
+    borderRadius: 5
   },
   flatList: {
     marginTop: height( 5 ),
     height: height( 65 ),
-    width: width( 90 ),
+    width: width( 90 )
   },
   option: {
-    flexDirection: 'row',
+    flexDirection: 'row'
 
   },
   textAll: {
-    paddingVertical: 5,
+    paddingVertical: 5
   },
   containerWorkerDetail: {
     flexDirection: 'row',
@@ -53,7 +53,7 @@ const styles = StyleSheet.create( {
     paddingVertical: 5,
     paddingBottom: 10,
     borderRadius: 20,
-    marginBottom: 10,
+    marginBottom: 10
   },
   imgAvatarWorker: {
     height: height( 12 ),
@@ -62,21 +62,21 @@ const styles = StyleSheet.create( {
     alignItems: 'center',
     marginTop: height( 1.3 ),
     resizeMode: 'contain',
-    marginHorizontal: 12,
+    marginHorizontal: 12
   },
   titleContentWorker: {
     fontWeight: 'bold',
-    color: Colors.BLACK,
+    color: Colors.BLACK
   },
   viewContentWorker: {
     color: Colors.BORDER_BOX,
-    fontSize: height( 1.5 ),
+    fontSize: height( 1.5 )
   },
   addressContentWorker: {
     color: Colors.RED,
     fontSize: height( 1.5 ),
-    width: width( 60 ),
+    width: width( 60 )
     // textAlign:'right'
-  },
+  }
 } );
 export default styles;
