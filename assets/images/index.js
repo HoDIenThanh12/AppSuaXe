@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-
-
 const Img = {
 
   Icons: {
@@ -20,8 +18,7 @@ const Img = {
 
     icProfile: require( './icons/iconProfile.png' ),
 
-    iconEditImg: require( './icons/iconEditImg.png' ),
-
+    iconEditImg: require( './icons/iconEditImg.png' )
   },
 
   Image: {
@@ -29,7 +26,6 @@ const Img = {
     worker: require( './images/tho.png' ),
 
     imgAvatar: require( './images/imgAvatar.png' ),
-
     imgCall: require( './images/imgCall.png' ),
 
     icBaoTri: require( './images/baoTri.jpg' ),
@@ -56,13 +52,10 @@ const Img = {
 
     iconSuccess: require( './images/iconSuccess.png' ),
 
-    iconError: require( './images/iconError.png' ),
+    iconError: require( './images/iconError.png' )
 
-  },
-
-
+  }
 
 };
 
 export default Img;
-

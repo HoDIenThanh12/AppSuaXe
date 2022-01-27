@@ -88,7 +88,6 @@ export default Title = {
     titleInforWord: 'Thông tin thợ',
     all: 'Tất cả',
     brokenCar: 'Xe hư'
-
   },
   Menu: {
     HOME: 'HOME',
