@@ -7,14 +7,14 @@ import styles from './styles';
 
 export default function popupEdit( props ) {
   const {
-    nameTextOld, textOld, onChangText, onSave, onClose,
+    nameTextOld, textOld, onChangText, onSave, onClose
   } = props;
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{In18.NomalTitle.edit}</Text>
+      <Text style={styles.title}>{In18.NormalTitle.edit}</Text>
       <Text style={styles.decription}>{nameTextOld} : {textOld}</Text>
       <TextInput
-        placeholder={In18.NomalTitle.new}
+        placeholder={In18.NormalTitle.new}
         onChangeText={onChangText}
         style={styles.styleInput}
         noIcon={true}

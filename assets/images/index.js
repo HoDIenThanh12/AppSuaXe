@@ -9,13 +9,13 @@ const Img = {
     icSearch: require( './icons/iconSearch.png' ),
     icBack: require( './icons/iconBack.png' ),
     icProfile: require( './icons/iconProfile.png' ),
-    iconEditImg: require( './icons/iconEditImg.png' ),
+    iconEditImg: require( './icons/iconEditImg.png' )
   },
   Image: {
     worker: require( './tho.png' ),
     imgAvatar: require( './images/imgAvatar.png' ),
-    imgCall: require( './images/imgCall.png' ),
-  },
+    imgCall: require( './images/imgCall.png' )
+  }
 
 };
 export default Img;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  View, FlatList, Image, Text, TouchableOpacity, Alert, ScrollView,
+  View, FlatList, Image, Text, TouchableOpacity, Alert, ScrollView
 } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
 import Geolocation from 'react-native-geolocation-service';
@@ -21,11 +21,11 @@ const page = ( p ) => {
   );
   const listOptions = [
     {
-      name: In18.Options.quality,
+      name: In18.Options.quality
     },
     {
-      name: In18.Options.near,
-    },
+      name: In18.Options.near
+    }
   ];
   const RenderOptions = ( props ) => {
     const { itemOptions, indexOptions } = props;
@@ -44,7 +44,7 @@ const page = ( p ) => {
       <View>
         <View style={styles.option}>
           {
-            listOptions.map( ( item, index ) => <RenderOptions itemOptions={item} indexOptions={index}></RenderOptions> )
+            listOptions.map( ( item, index ) => <RenderOptions itemOptions={item} indexOptions={index} key></RenderOptions> )
           }
         </View>
       </View>

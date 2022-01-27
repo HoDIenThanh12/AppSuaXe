@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, StyleSheet, Image, Text, ScrollView,
+  View, StyleSheet, Image, Text, ScrollView
 } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
 import CheckBox from '@react-native-community/checkbox';
@@ -19,7 +19,7 @@ const page = ( p ) => {
     txtPass2,
     txtAddress,
     isWorker,
-    txtName,
+    txtName
   } = p.state;
   const {
     onPressRegister,
@@ -28,7 +28,7 @@ const page = ( p ) => {
     onChangePassword2,
     onChangeName,
     onChangeAddress,
-    setisCheckWorker,
+    setisCheckWorker
 
   } = p.func;
   const users = Userss.getInStance();
@@ -36,9 +36,9 @@ const page = ( p ) => {
     <View style={styles.container} >
       <ScrollView >
         <View style={{
-          alignItems: 'center', paddingHorizontal: 30, justifyContent: 'center', paddingVertical: 10,
+          alignItems: 'center', paddingHorizontal: 30, justifyContent: 'center', paddingVertical: 10
         }}>
-          <View style={styles.containerLogo}>
+          < View style={styles.containerLogo}>
 
             <Text style={{ fontSize: 15, fontWeight: 'bold' }}>
                             ĐIỀN CÁC THÔNG TIN CẦN THIẾT
@@ -80,7 +80,7 @@ const page = ( p ) => {
             </TextInput>
           </View>
           <View style={styles.checkboxContainer}>
-            <Text style={styles.label}>{In18.NomalTitle.questionWorker} </Text>
+            <Text style={styles.label}>{In18.NormalTitle.questionWorker} </Text>
             <CheckBox
               onValueChange={() => setisCheckWorker( isWorker )}
 
@@ -94,7 +94,7 @@ const page = ( p ) => {
           >
           </Button>
           <View style={styles.conatinerRegitster}>
-            <Text>{In18.NomalTitle.questionAccount}</Text>
+            <Text>{In18.NormalTitle.questionAccount}</Text>
             <Button
               title={In18.TitleBtn.login}
               onPress={() => Actions.login()}

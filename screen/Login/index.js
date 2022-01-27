@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Alert, View, PermissionsAndroid, Platform,
+  Alert, View, PermissionsAndroid, Platform
 } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
 // import User from 'modals/User';
@@ -28,7 +28,7 @@ class Login extends Base {
       txtSDT: '0387373405',
       txtPass: 'diencong',
       values: '0',
-      saveLogin: false,
+      saveLogin: false
     };
   }
 
@@ -39,7 +39,7 @@ class Login extends Base {
   saveLogin() {
     this.setState( {
       ...this.state,
-      saveLogin: true,
+      saveLogin: true
     } );
   }
 
@@ -68,7 +68,7 @@ class Login extends Base {
               address: datas.address,
               image: datas.image,
               pass: datas.pass,
-              checkWorker: datas.checkWorker,
+              checkWorker: datas.checkWorker
             };
             if ( this.state.saveLogin ) {
               await setStoreLocal( temp );
@@ -114,12 +114,12 @@ class Login extends Base {
 }
 const mapStateToProps = ( state ) => ( {
   menuFooterRedux: state.menuFooterRedux,
-  user: state.user,
+  user: state.user
 } );
 
 const mapDispatchToProps = ( dispatch ) => ( {
   setMenuFooter: bindActionCreators( ActionStore.setMenuFooter, dispatch ),
-  setUser: bindActionCreators( ActionStore.setUser, dispatch ),
+  setUser: bindActionCreators( ActionStore.setUser, dispatch )
 } );
 export default connect( mapStateToProps, mapDispatchToProps )( Login );
 // export default Login;

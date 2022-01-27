@@ -18,13 +18,13 @@ class Home extends Base {
     this.page = Page;
     this.state = {
       listAll: [],
-      listQuality: [],
+      listQuality: []
     };
   }
 
   async componentDidMount() {
     const {
-      setListWorker, setListQualityWorker, user, setUser,
+      setListWorker, setListQualityWorker, user, setUser
     } = this.props;
     await Geolocation.getCurrentPosition(
       ( position ) => {
@@ -37,7 +37,7 @@ class Home extends Base {
         // See error code charts below.
         console.log( error.code, error.message );
       },
-      { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 },
+      { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
     );
     const list = await getAllListWorker( user.x, user.y );
     this.setState( { listAll: list } );
@@ -56,7 +56,7 @@ class Home extends Base {
     const Template = this.view;
     return (
       <Template
-        title={In18.NomalTitle.home}
+        title={In18.NormalTitle.home}
         // noFooter
         props={this.props}
         func={this}
@@ -70,13 +70,13 @@ class Home extends Base {
 const mapStateToProps = ( state ) => ( {
   menuFooterRedux: state.menuFooterRedux,
   user: state.user,
-  listWorker: state.listWorker,
+  listWorker: state.listWorker
 } );
 
 const mapDispatchToProps = ( dispatch ) => ( {
   setMenuFooter: bindActionCreators( ActionStore.setMenuFooter, dispatch ),
   setUser: bindActionCreators( ActionStore.setUser, dispatch ),
   setListWorker: bindActionCreators( ActionStore.setListWorker, dispatch ),
-  setListQualityWorker: bindActionCreators( ActionStore.setListQualityWorker, dispatch ),
+  setListQualityWorker: bindActionCreators( ActionStore.setListQualityWorker, dispatch )
 } );
 export default connect( mapStateToProps, mapDispatchToProps )( Home );

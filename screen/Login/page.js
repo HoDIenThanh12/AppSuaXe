@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, StyleSheet, Image, Text, ScrollView, Alert,
+  View, StyleSheet, Image, Text, ScrollView, Alert
 } from 'react-native';
 import Button from 'components/Button/index';
 import { Router, Actions, Scene } from 'react-native-router-flux';
@@ -19,11 +19,11 @@ import In18 from '../../common/constants';
 
 const page = ( p ) => {
   const {
-    txtSDT, txtPass,
+    txtSDT, txtPass
   } = p.state;
 
   const {
-    onPressLogin, onChangePassword, onChangeSDT, openPopup,
+    onPressLogin, onChangePassword, onChangeSDT, openPopup
   } = p.func;
   return (
     <View style={styles.container} >
@@ -55,7 +55,7 @@ const page = ( p ) => {
             </TextInput>
           </View>
           <View style={styles.conatinerRegitster}>
-            <Text>{In18.NomalTitle.questionAccount}</Text>
+            <Text>{In18.NormalTitle.questionAccount}</Text>
             <Button
               title={In18.TitleBtn.register}
               onPress={() => Actions.register()}

@@ -7,15 +7,15 @@ module.exports = {
     'plugin:import/warnings',
     'plugin:react/recommended',
     'plugin:react-native/all',
-    'airbnb-base',
+    'airbnb-base'
   ],
 
   plugins: ['react', 'react-native', 'import'],
   parserOptions: {
     sourceType: 'module',
     ecmaFeatures: {
-      jsx: true,
-    },
+      jsx: true
+    }
   },
   // env: {
   //   'react-native/react-native': true,
@@ -24,14 +24,14 @@ module.exports = {
     'react-native/style-sheet-object-names': [
       'EStyleSheet',
       'OtherStyleSheet',
-      'PStyleSheet',
+      'PStyleSheet'
     ],
     'import/resolver': {
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        moduleDirectory: ['node_modules', './'],
-      },
-    },
+        moduleDirectory: ['node_modules', './']
+      }
+    }
 
   },
 
@@ -40,7 +40,7 @@ module.exports = {
     // "omitLastInOneLineBlock": "always",
     'react-native/no-unused-styles': 2,
     'react-native/split-platform-components': 2,
-    'react-native/no-inline-styles': 2,
+    'react-native/no-inline-styles': 0,
     'react-native/no-color-literals': 2,
     'react-native/no-raw-text': 2,
     'react-native/no-single-element-style-arrays': 2,
@@ -48,22 +48,30 @@ module.exports = {
     'no-use-before-define': 'off',
     indent: [2, 2],
     'space-in-parens': ['error', 'always'],
-    'linebreak-style': ['error', 'windows'],
-    'prettier/prettier': 'error',
+    // 'linebreak-style': ['error', 'windows'],
+    'prettier/prettier': ['error', {
+      'no-inline-styles': false
+    }],
     // 'import/resolver': 'web/pack',
     'react/prop-types': 0,
     'global-require': 0,
+    'no-param-reassign': 0,
+    'no-plusplus': 'off',
+    'comma-dangle': ['error', 'never'],
+    'max-len': 'off',
+    'object-shorthand': 0
+    // 'prettier.bracketSpacing': true
 
   },
   overrides: [
     {
       files: ['*.js'],
-      rules: { 'react/jsx-handler-names': 0 },
-    },
+      rules: { 'react/jsx-handler-names': 0 }
+    }
   ],
   // 'prettier/prettier': ['error', {singleQuote: true, parser: 'flow'}],
   env: {
     jest: true,
-    'react-native/react-native': true,
-  },
+    'react-native/react-native': true
+  }
 };
