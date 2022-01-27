@@ -20,8 +20,9 @@ export default Title = {
     name: 'Họ tên',
     address: 'Địa chỉ ',
     password2: 'Mời bạn nhập lại mật khẩu',
-    numberView: 'Lượt xem',
-    fixedAddress: 'Địa chỉ cố định'
+    numberView: 'Lượt xem', 
+    fixedAddress: 'Địa chỉ cố định',
+    numberWorker: 'Số điện thoại khách hàng', 
   },
   Error: {
     noLogin: 'Sai tài khoản hoặc mật khẩu'
@@ -85,8 +86,8 @@ export default Title = {
     totalMoney: 'Tổng tiền',
     note: 'Nội dung ',
     titleInforWord: 'Thông tin thợ',
-    all: 'Tất cả',
-    brokenCar: 'Xe hư'
+    all: 'Tất cả', 
+    brokenCar: 'Xe hư' 
   },
   Menu: {
     HOME: 'HOME',
