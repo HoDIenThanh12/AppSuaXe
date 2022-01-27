@@ -8,7 +8,7 @@
     "editor.rulers": [120],            // Tạo ra cái vách ngăn 120 ký tự
                                        // để biết đường mà xuống dòng     
     "files.insertFinalNewline": true,  // Tự thêm newline mới vào cuối file
-    "files.autoSave": "onFocusChange", 
+    "files.autoSave": "off", 
     "editor.codeActionsOnSave": {
       "source.fixAll": true
   },

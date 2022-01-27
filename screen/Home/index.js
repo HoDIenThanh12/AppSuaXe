@@ -1,11 +1,12 @@
 import React from 'react';
-import { Alert } from 'react-native';
+import { Alert, Platform, PermissionsAndroid } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
 import database from '@react-native-firebase/database';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getAllListWorker, getListWorkerQuality } from 'modals/function';
 import ActionStore from 'reduxs/Action/ActionStore';
+import Geolocation from 'react-native-geolocation-service';
 import Base from '../../container/BaseContainer';
 import In18 from '../../common/constants';
 import Page from './page';
@@ -22,8 +23,23 @@ class Home extends Base {
   }
 
   async componentDidMount() {
-    const { setListWorker, setListQualityWorker } = this.props;
-    const list = await getAllListWorker();
+    const {
+      setListWorker, setListQualityWorker, user, setUser,
+    } = this.props;
+    await Geolocation.getCurrentPosition(
+      ( position ) => {
+        const positions = position.coords;
+        user.x = positions.latitude;
+        user.y = positions.longitude;
+        setUser( user );
+      },
+      ( error ) => {
+        // See error code charts below.
+        console.log( error.code, error.message );
+      },
+      { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 },
+    );
+    const list = await getAllListWorker( user.x, user.y );
     this.setState( { listAll: list } );
     this.setState( { listQuality: getListWorkerQuality( list ) } );
     await setListWorker( list );

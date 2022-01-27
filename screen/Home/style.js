@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import Colors from '../../common/Colors';
 import { height, width } from 'common/styles';
+import Colors from '../../common/Colors';
 
 const styles = StyleSheet.create( {
   container: {
@@ -34,6 +34,8 @@ const styles = StyleSheet.create( {
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: width( 50 ),
+    alignItems: 'center',
+    alignSelf: 'center',
   },
   optionMenu: {
     justifyContent: 'space-between',

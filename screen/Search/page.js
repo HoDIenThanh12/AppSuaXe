@@ -12,19 +12,19 @@ import Button from '../../components/Button/index';
 import Items from './components/Items';
 
 const page = ( p ) => {
-  const { list, currentIndex } = p.state;
+  const { list, currentIndex, type } = p.state;
   const { onPressInfoWorker, onChangeType } = p.func;
   const [y, sety] = useState( 0 );
   const [x, setx] = useState( 0 );
   const render = ( { item } ) => (
-    <Items item={item} onPressInfoWorker={() => onPressInfoWorker( item )}/>
+    <Items currentIndex={currentIndex} item={item} onPressInfoWorker={() => onPressInfoWorker( item )}/>
   );
   const listOptions = [
     {
-      name: In18.Options.near,
+      name: In18.Options.quality,
     },
     {
-      name: In18.Options.quality,
+      name: In18.Options.near,
     },
   ];
   const RenderOptions = ( props ) => {

@@ -50,10 +50,12 @@ const styles = StyleSheet.create( {
   },
   contentDetailDistance: {
     flex: 6,
+    paddingLeft: 5,
   },
   containerFunction: {
     flex: 2,
-    backgroundColor: 'red',
+    alignItems: 'center',
+    alignSelf: 'center',
   },
   titleContentWorker: {
     fontWeight: 'bold',
@@ -64,11 +66,16 @@ const styles = StyleSheet.create( {
     fontSize: height( 1.5 ),
   },
   addressContentWorker: {
-    color: Colors.RED,
     fontSize: height( 1.5 ),
-    width: width( 60 ),
     flexWrap: 'wrap',
-    // textAlign:'right'
+  },
+  distanceContentWorker: {
+    color: Colors.GREEN,
+  },
+  image: {
+    resizeMode: 'contain',
+    height: height( 6 ),
+    width: height( 6 ),
   },
 } );
 export default styles;

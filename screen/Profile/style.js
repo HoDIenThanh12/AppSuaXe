@@ -51,7 +51,6 @@ const styles = StyleSheet.create( {
     justifyContent: 'space-between',
     alignItems: 'center',
     width: width( 85 ),
-    height: height( 9 ),
   },
   titleModals: {
     textAlign: 'center',
