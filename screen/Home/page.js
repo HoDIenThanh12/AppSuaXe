@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import {
-  View, TouchableOpacity, Image, Text, ScrollView, FlatList, styleSheet,
+  View, TouchableOpacity, Image, Text, ScrollView, FlatList, styleSheet
 } from 'react-native';
 import { IconButton } from 'react-native-paper';
 import { Router, Actions, Scene } from 'react-native-router-flux';
@@ -15,7 +15,7 @@ const page = ( p ) => {
     onClickWorkQuality,
     onClickWorkDetals,
     onPressViewWorkerSort,
-    onPressViewList,
+    onPressViewList
 
   } = p.func;
   const [listBuild, setlistBuild] = useState( [] );
@@ -23,12 +23,12 @@ const page = ( p ) => {
   const listOptions = [
     {
       title: In18.TitleBtn.call,
-      image: Img.Image.imgCall,
+      image: Img.Image.imgCall
     },
     {
       title: In18.TitleBtn.maintenance,
-      image: Img.Image.worker,
-    },
+      image: Img.Image.worker
+    }
   ];
   const rederQuality = ( { item } ) => (
     <TouchableOpacity style={styles.containerQuality} onPress={() => Actions.infoWorker( { item } )} >
@@ -55,7 +55,7 @@ const page = ( p ) => {
   };
   const renderItemWorker = ( { item } ) => {
     const {
-      img, name, sdt, distance, luotXem, address,
+      img, name, sdt, distance, luotXem, address
     } = item;
     const val = cacu( distance );
     return (
@@ -90,7 +90,7 @@ const page = ( p ) => {
         <View style={styles.containerOption}>
           {
             // eslint-disable-next-line max-len
-            listOptions.map( ( items ) => <OptionFunctions items={items} func={() => {}} ></OptionFunctions> )
+            listOptions.map( ( items ) => <OptionFunctions items={items} func={() => {}} key ></OptionFunctions> )
           }
         </View>
         <View style={styles.optionMenu}>
@@ -109,7 +109,7 @@ const page = ( p ) => {
           data={listQuality}
           // eslint-disable-next-line react-native/no-inline-styles
           contentContainerStyle={{
-            flexDirection: 'row',
+            flexDirection: 'row'
           }}
           horizontal
           renderItem={rederQuality}

@@ -22,6 +22,7 @@ export default Title = {
     password2: 'Mời bạn nhập lại mật khẩu',
     numberView: 'Lượt xem',
     fixedAddress: 'Địa chỉ cố định',
+    numberWorker: 'Số điện thoại khách hàng',
   },
   Error: {
     noLogin: 'Sai tài khoản hoặc mật khẩu',
@@ -85,6 +86,8 @@ export default Title = {
     note: 'Nội dung ',
     titleInforWord: 'Thông tin thợ',
     all: 'Tất cả',
+    brokenCar: 'Xe hư',
+
   },
   Menu: {
     HOME: 'HOME',
