@@ -12,14 +12,14 @@ module.exports = {
           assets: './assets',
           frontend: '.Frontend',
           modals: './modals',
-          reduxs: './reduxs',
-        },
-      },
-    ],
+          reduxs: './reduxs'
+        }
+      }
+    ]
   ],
   env: {
     production: {
-      plugins: ['transform-remove-console'],
-    },
-  },
+      plugins: ['transform-remove-console']
+    }
+  }
 };

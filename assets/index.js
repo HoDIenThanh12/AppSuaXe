@@ -1,5 +1,3 @@
-import React, { Component } from 'react';
-
 const Img = {
   Image: {
     worker: require( './images/tho.png' ),
@@ -17,7 +15,8 @@ const Img = {
     iconClose: require( './images/iconClose.png' ),
     iconBack2: require( './images/iconBack2.png' ),
     iconSuccess: require( './images/iconSuccess.png' ),
-    iconError: require( './images/error.png' )
+    iconError: require( './images/error.png' ),
+    doing: require( './images/doing.png' )
   }
 
 };
