@@ -44,7 +44,7 @@ const page = ( p ) => {
       <View>
         <View style={styles.option}>
           {
-            listOptions.map( ( item, index ) => <RenderOptions itemOptions={item} indexOptions={index} key></RenderOptions> )
+            listOptions.map( ( item, index ) => <RenderOptions itemOptions={item} indexOptions={index} key ={index}></RenderOptions> )
           }
         </View>
       </View>

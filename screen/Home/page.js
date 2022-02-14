@@ -90,7 +90,7 @@ const page = ( p ) => {
         <View style={styles.containerOption}>
           {
             // eslint-disable-next-line max-len
-            listOptions.map( ( items ) => <OptionFunctions items={items} func={() => {}} key ></OptionFunctions> )
+            listOptions.map( ( items, index ) => <OptionFunctions items={items} func={() => {}} key={index} ></OptionFunctions> )
           }
         </View>
         <View style={styles.optionMenu}>

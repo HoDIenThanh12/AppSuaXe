@@ -28,20 +28,22 @@ class Search extends Base {
   async componentDidMount() {
     const { listWorker, listQualityWorker } = this.props;
     this.setState( {
-      list: listQualityWorker,
-      listWorkerNear: await getListWorkerNear( listWorker )
+      list: await listQualityWorker,
+      listWorkerNear: await getListWorkerNear( listQualityWorker )
     } );
   }
 
   onChangeType = async ( types ) => {
     const { listQualityWorker } = this.props;
     if ( types === 0 ) {
+      console.log( this.state.listWorker );
       this.setState( {
         list: listQualityWorker,
         currentIndex: 0,
         type: 0
       } );
     } else {
+      console.log( this.state.listWorkerNear );
       this.setState( {
         list: this.state.listWorkerNear,
         currentIndex: 1,

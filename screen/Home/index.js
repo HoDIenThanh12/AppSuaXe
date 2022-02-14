@@ -41,7 +41,7 @@ class Home extends Base {
     );
     const list = await getAllListWorker( user.x, user.y );
     this.setState( { listAll: list } );
-    this.setState( { listQuality: getListWorkerQuality( list ) } );
+    this.setState( { listQuality: await getListWorkerQuality( list ) } );
     await setListWorker( list );
     await setListQualityWorker( await getListWorkerQuality( list ) );
   }

@@ -12,7 +12,8 @@ module.exports = {
           assets: './assets',
           frontend: '.Frontend',
           modals: './modals',
-          reduxs: './reduxs'
+          reduxs: './reduxs',
+          components: './components'
         }
       }
     ]

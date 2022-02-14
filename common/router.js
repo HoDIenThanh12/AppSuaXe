@@ -23,8 +23,8 @@ const scenes = ( key ) => {
       <Scene key="screen2" component={Screen2} title="Tìm kiếm thợ" />
 
       <Scene key="infoWorker" component={InfoWorker} title="Thông tin thợ" />
-      <Scene key="screen2" component={Screen2} title="Tìm kiếm thợ" initial={true} />
-    </Scene>,
+      <Scene key="screen2" component={Screen2} title="Tìm kiếm thợ" />
+    </Scene>
   );
 };
 export default scenes;
