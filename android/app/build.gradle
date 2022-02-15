@@ -187,7 +187,7 @@ android {
 }
 
 dependencies {
-  
+  compile project(':react-native-momosdk')
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation(project(':react-native-maps')){
        exclude group: 'com.google.android.gms', module: 'play-services-base'

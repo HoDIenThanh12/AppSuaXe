@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">AppSuaXeRuduxFlux</string>
      <color name="white">#FFF</color>
+     <color name="my-custom-color">#123456</color>
 </resources>
+<manifest xmlns:tools="http://schemas.android.com/tools">
+  <application>
+      <!-- ... -->
+
+      <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/my-custom-color"
+            tools:replace="android:resource" />
+  </application>
+</manifest>

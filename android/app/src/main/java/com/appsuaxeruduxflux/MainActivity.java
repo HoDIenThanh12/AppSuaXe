@@ -1,7 +1,7 @@
 package com.appsuaxeruduxflux;
 
 import com.facebook.react.ReactActivity;
-
+import com.reactlibrary.RNMomosdkPackage;
 public class MainActivity extends ReactActivity {
 
   /**
