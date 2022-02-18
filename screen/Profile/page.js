@@ -5,7 +5,7 @@ import {
   Image,
   Text,
   ScrollView,
-  TouchableOpacity,
+  TouchableOpacity
 } from 'react-native';
 import { Router, Actions, Scene } from 'react-native-router-flux';
 // import Modal from 'react-native-modal';
@@ -20,14 +20,28 @@ import Buttons from '../../components/Button/index';
 
 const page = ( p ) => {
   const {
-    sdt, pass, names, address, img,
+    sdt, pass, names, address, img
   } = p.state;
 
   const {
-    onChangeTexts, onChangeImgAvatar, closePopups, onPressLogOut, onOpenEdit,
+    onChangeTexts, onChangeImgAvatar, closePopups, onPressLogOut, onOpenEdit
   } = p.func;
 
   const [isModals, setisModals] = useState( false );
+  const listOptions = [
+    {
+      id: 0,
+      name: In18.TitleBtn.history
+    },
+    {
+      id: 1,
+      name: In18.TitleBtn.history
+    },
+    {
+      id: 2,
+      name: In18.TitleBtn.logOut
+    }
+  ];
   const subMit = ( types, nameTextOld, textOld ) => {
     onOpenEdit( types, nameTextOld, textOld );
   };

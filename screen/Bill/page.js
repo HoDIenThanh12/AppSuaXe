@@ -11,7 +11,7 @@ export default function page( props ) {
   const [items, setItems] = useState([
     { label: "Tat ca", value: -1 },
     {
-      label: ,
+      label: '',
       value: 1,
       icon: () => (
         <Image
