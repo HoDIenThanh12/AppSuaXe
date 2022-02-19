@@ -1,7 +1,6 @@
 package com.appsuaxeruduxflux;
 
 import com.facebook.react.ReactActivity;
-import com.reactlibrary.RNMomosdkPackage;
 public class MainActivity extends ReactActivity {
 
   /**
@@ -10,6 +9,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "AppSuaXeRuduxFlux";
+    return "AppSuaXeRuduxFlux";                                                                                                                                                            
   }
 }
