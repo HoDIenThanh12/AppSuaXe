@@ -47,12 +47,19 @@ const page = ( p ) => {
   };
   const Texts = ( props ) => {
     const txt = props.state;
+    const icon=props.icon?props.icon:null
     return (
       <View style={styles.containerEdit}>
         <View style={styles.contentDetails}>
           <Text style={props.style}>
-            <Text style={{ fontWeight: 'bold' }}>
-              {props.nameConent}
+            
+          <Text style={{ fontWeight: 'bold' }}>
+            {
+              icon==null?props.nameConent:(
+                <Text></Text>
+              )
+            }
+              {/* {props.nameConent} */}
             </Text>: {props.state} </Text>
           <IconButton
             icon="arrow-right-bold"
